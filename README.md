@@ -1,7 +1,7 @@
 <h1 align="center">Hi 👋, I'm Rafi Ferdos</h1>
 <h3 align="center">MERN-Stack Web Developer</h3>
 
-<p align="left"> <img src="https://komarev.com/ghpvc/?username=rafiferdos&label=Profile%2000views&color=0e75b6&style=flat" alt="rafiferdos" /> </p>
+<p align="left"> <img src="https://komarev.com/ghpvc/?username=rafiferdos&label=Profile%20views&color=0e75b6&style=flat" alt="rafiferdos" /> </p>
 
 - 🌱 I’m currently learning **React-Redux**
 
