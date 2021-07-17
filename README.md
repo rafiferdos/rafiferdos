@@ -5,7 +5,7 @@
 
 - 🌱 I’m currently learning **React-Redux**
 
-- 👨‍💻 All of my projects are available at [comingsoon.com](comingsoon.com)
+- 👨‍💻 All of my projects are available at [https://rafiferdos.netlify.app/](comingsoon.com)
 
 - 💬 Ask me about **react**
 
