@@ -16,7 +16,21 @@ const Navbar = ({ className }: { className?: string }) => {
           className
         )}
       >
-        Rafi Ferdos
+        <Menu setActive={setActive}>
+          <Link href={"/"}>
+            <MenuItem setActive={setActive} active={active} item="Home" />
+          </Link>
+          <Link href={"/projects"}>
+            <MenuItem
+              setActive={setActive}
+              active={active}
+              item="My Projects"
+            />
+          </Link>
+          <Link href={"/contact"}>
+            <MenuItem setActive={setActive} active={active} item="Contact" />
+          </Link>
+        </Menu>
       </div>
     </>
   );
