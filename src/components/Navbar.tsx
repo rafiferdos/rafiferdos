@@ -12,7 +12,7 @@ const Navbar = ({ className }: { className?: string }) => {
     <>
       <div
         className={cn(
-          "fixed top-10 inset-x-0 max-w-2xl mx-auto z-50",
+          "fixed top-7 inset-x-0 max-w-4xl mx-auto z-50",
           className
         )}
       >
@@ -26,6 +26,15 @@ const Navbar = ({ className }: { className?: string }) => {
               active={active}
               item="My Projects"
             />
+          </Link>
+          <Link href={"/skills"}>
+            <MenuItem setActive={setActive} active={active} item="My Skills" />
+          </Link>
+          <Link href={"/about_me"}>
+            <MenuItem setActive={setActive} active={active} item="About Me" />
+          </Link>
+          <Link href={"/education"}>
+            <MenuItem setActive={setActive} active={active} item="Education" />
           </Link>
           <Link href={"/contact"}>
             <MenuItem setActive={setActive} active={active} item="Contact" />
