@@ -4,6 +4,7 @@ import type { Config } from "tailwindcss";
 //   default: flattenColorPalette,
 // } = require("tailwindcss/lib/util/flattenColorPalette");
 
+
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",

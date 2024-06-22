@@ -1,8 +1,9 @@
 "use client";
 
+import { ThemeContext } from "@/providers/ThemeProvider";
 import { cn } from "@/utils/cn";
 import { motion, stagger, useAnimate, useInView } from "framer-motion";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 
 export const TypewriterEffect = ({
   words,
@@ -110,6 +111,7 @@ export const TypewriterEffectSmooth = ({
   className?: string;
   cursorClassName?: string;
 }) => {
+  const {theme} = useContext(ThemeContext);
   // split text inside of words into array of characters
   const wordsArray = words.map((word) => {
     return {
@@ -118,6 +120,7 @@ export const TypewriterEffectSmooth = ({
     };
   });
   const renderWords = () => {
+    const changeTextColor = theme === 'dark' ? 'text-blue-600' : 'text-blue-800'
     return (
       <div>
         {wordsArray.map((word, idx) => {
@@ -126,7 +129,7 @@ export const TypewriterEffectSmooth = ({
               {word.text.map((char, index) => (
                 <span
                   key={`char-${index}`}
-                  className={cn(`dark:text-white text-black `, word.className)}
+                  className={cn(`${changeTextColor}`, word.className)}
                 >
                   {char}
                 </span>
