@@ -65,7 +65,7 @@ const Hero = () => {
           <div className="flex flex-col gap-3">
 
           <div className="avatar">
-            <div className="ring ring-blue-700 ring-offset-4 ring-offset-base-100 rounded-full max-w-sm mx-auto">
+            <div className="ring ring-blue-700 ring-offset-4 ring-offset-base-100 rounded-full max-w-[250px] sm:max-w-sm mx-auto">
               <Image
                 src={profilePhoto}
                 alt="Hero Image"
