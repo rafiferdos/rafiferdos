@@ -7,6 +7,7 @@ import { TypewriterEffectSmooth } from "./ui/typewriter-effect";
 import { TextGenerateEffect } from "./ui/text-generate-effect";
 import Image from "next/image";
 import profilePhoto from '../assets/images/profile-pic.png';
+import { HoverBorderGradient } from "./ui/hover-border-gradient";
 
 const Hero = () => {
   const { theme } = useContext(ThemeContext);
@@ -49,7 +50,13 @@ const Hero = () => {
           <TextGenerateEffect words={description} />
         </div>
         <div>
+        <HoverBorderGradient
+        containerClassName="rounded-full"
+        as="button"
+        className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
+      >
             <Image src={profilePhoto} alt="Hero Image" width={400} height={400} />
+            </HoverBorderGradient>
         </div>
       </div>
       </div>
