@@ -25,7 +25,7 @@ const Navbar = ({ className }: { className?: string }) => {
     <>
       <div
         className={cn(
-          "fixed top-7 inset-x-0 max-w-4xl mx-auto z-50",
+          "fixed top-7 inset-x-0 max-w-4xl mx-auto z-50 px-3",
           className
         )}
       >
@@ -61,7 +61,7 @@ const Navbar = ({ className }: { className?: string }) => {
             />
 
             <svg
-              className="swap-off w-6 h-6"
+              className="swap-off md:w-6 md:h-6 w-4 h-4"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
@@ -69,7 +69,7 @@ const Navbar = ({ className }: { className?: string }) => {
             </svg>
 
             <svg
-              className="swap-on w-6 h-6 fill-current"
+              className="swap-on md:w-6 md:h-6 w-4 h-4 fill-current"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >

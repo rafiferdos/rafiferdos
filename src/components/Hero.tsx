@@ -6,8 +6,9 @@ import { useContext } from "react";
 import { TypewriterEffectSmooth } from "./ui/typewriter-effect";
 import { TextGenerateEffect } from "./ui/text-generate-effect";
 import Image from "next/image";
-import profilePhoto from '../assets/images/profile-pic.png';
+import profilePhoto from "../assets/images/profile-pic.png";
 import { HoverBorderGradient } from "./ui/hover-border-gradient";
+import { LuDownload } from "react-icons/lu";
 
 const Hero = () => {
   const { theme } = useContext(ThemeContext);
@@ -24,7 +25,8 @@ const Hero = () => {
     },
   ];
 
-  const description = "With a passion for crafting intuitive and user-friendly web applications, I'm dedicated to delivering seamless user experiences through clean, maintainable, and optimized code."
+  const description =
+    "With a passion for crafting intuitive and user-friendly web applications, I'm dedicated to delivering seamless user experiences through clean, maintainable, and optimized code.";
 
   return (
     <div
@@ -36,29 +38,38 @@ const Hero = () => {
     >
       <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="blue" />
       <div className="mx-auto container max-w-7xl w-11/12">
-
-      <div className="flex items-center justify-center">
-        <div className="p-4 z-10 relative max-w-3xl">
-          <h1 className="lg:text-7xl">
-            Hello, I&apos;m Rafi Ferdos
-            <TypewriterEffectSmooth
-              words={words}
-              cursorClassName="text-blue-500 dark:text-blue-300"
-              className={theme === "dark" ? "text-white" : "text-black"}
-            />
-          </h1>
-          <TextGenerateEffect words={description} />
-        </div>
-        <div>
-        <HoverBorderGradient
-        containerClassName="rounded-full"
-        as="button"
-        className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
-      >
-            <Image src={profilePhoto} alt="Hero Image" width={400} height={400} />
+        <div className="flex items-center justify-center gap-8 flex-col md:flex-row">
+          <div className="p-4 z-10 relative max-w-3xl md:w-4/6 space-y-4">
+            <h1 className="lg:text-7xl">
+              Hello, I&apos;m Rafi Ferdos
+              <TypewriterEffectSmooth
+                words={words}
+                cursorClassName="text-blue-500 dark:text-blue-300"
+                className={theme === "dark" ? "text-white" : "text-black"}
+              />
+            </h1>
+            <TextGenerateEffect words={description} />
+            <HoverBorderGradient
+              containerClassName="rounded-full"
+              as="button"
+              className={
+                theme === "dark"
+                  ? "text-white bg-black dark:text-white flex items-center space-x-2"
+                  : "text-black flex items-center bg-white space-x-2"
+              }
+            >
+              <span className="flex items-center justify-center gap-1">Resume <LuDownload /></span>
             </HoverBorderGradient>
+          </div>
+          <div>
+            <Image
+              src={profilePhoto}
+              alt="Hero Image"
+              width={400}
+              height={400}
+            />
+          </div>
         </div>
-      </div>
       </div>
     </div>
   );

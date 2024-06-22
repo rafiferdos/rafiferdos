@@ -1,7 +1,8 @@
 "use client";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { motion, stagger, useAnimate } from "framer-motion";
 import { cn } from "@/utils/cn";
+import { ThemeContext } from "@/providers/ThemeProvider";
 
 export const TextGenerateEffect = ({
   words,
@@ -10,6 +11,7 @@ export const TextGenerateEffect = ({
   words: string;
   className?: string;
 }) => {
+  const {theme } = useContext(ThemeContext);
   const [scope, animate] = useAnimate();
   let wordsArray = words.split(" ");
   useEffect(() => {
@@ -32,7 +34,7 @@ export const TextGenerateEffect = ({
           return (
             <motion.span
               key={word + idx}
-              className="dark:text-white text-black opacity-0"
+              className={theme === "dark" ? "text-white opacity-0 font-normal" : "text-black opacity-0 font-normal"}
             >
               {word}{" "}
             </motion.span>
@@ -45,7 +47,7 @@ export const TextGenerateEffect = ({
   return (
     <div className={cn("font-bold", className)}>
       <div className="mt-4">
-        <div className=" dark:text-white text-black text-2xl leading-snug tracking-wide">
+        <div className=" dark:text-white text-black text-xl leading-snug tracking-wide">
           {renderWords()}
         </div>
       </div>

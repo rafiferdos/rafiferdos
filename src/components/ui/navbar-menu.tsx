@@ -33,8 +33,8 @@ export const MenuItem = ({
         transition={{ duration: 0.3 }}
         className={
           theme === "dark"
-            ? "text-neutral-200 dark:text-neutral-300 cursor-pointer"
-            : "text-neutral-700 dark:text-neutral-200 cursor-pointer"
+            ? "text-neutral-200 dark:text-neutral-300 cursor-pointer lg:text-xl md:text-lg text-xs"
+            : "text-neutral-700 dark:text-neutral-200 cursor-pointer lg:text-xl md:text-lg text-xs"
         }
       >
         {item}
