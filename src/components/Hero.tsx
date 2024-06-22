@@ -9,6 +9,7 @@ import Image from "next/image";
 import profilePhoto from "../assets/images/profile-pic.png";
 import { HoverBorderGradient } from "./ui/hover-border-gradient";
 import { LuDownload } from "react-icons/lu";
+import { SparklesCore } from "./ui/sparkles";
 
 const Hero = () => {
   const { theme } = useContext(ThemeContext);
@@ -58,16 +59,43 @@ const Hero = () => {
                   : "text-black flex items-center bg-white space-x-2"
               }
             >
-              <span className="flex items-center justify-center gap-1">Resume <LuDownload /></span>
+              <span className="">Resume</span>
             </HoverBorderGradient>
           </div>
-          <div>
-            <Image
-              src={profilePhoto}
-              alt="Hero Image"
-              width={400}
-              height={400}
+          <div className="flex flex-col gap-3">
+
+          <div className="avatar">
+            <div className="ring ring-blue-700 ring-offset-4 ring-offset-base-100 rounded-full max-w-sm mx-auto">
+              <Image
+                src={profilePhoto}
+                alt="Hero Image"
+                width={400}
+                height={400}
+              />
+            </div>
+          </div>
+          <div className="w-[40rem] h-40 relative mx-auto">
+            {/* Gradients */}
+            <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-3/4 blur-sm" />
+            <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-3/4" />
+            <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-[5px] w-1/4 blur-sm" />
+            <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px w-1/4" />
+
+            {/* Core component */}
+            <SparklesCore
+              background="transparent"
+              minSize={0.4}
+              maxSize={1}
+              particleDensity={1200}
+              className="w-full h-full"
+              particleColor={theme === "dark" ? "#fff" : "#000"}
             />
+
+            {/* Radial Gradient to prevent sharp edges */}
+            <div className={
+              theme === 'dark' ? "absolute inset-0 w-full h-full bg-black [mask-image:radial-gradient(350px_200px_at_top,transparent_20%,white)]" : "absolute inset-0 w-full h-full bg-white [mask-image:radial-gradient(350px_200px_at_top,transparent_20%,white)]"
+            }></div>
+          </div>
           </div>
         </div>
       </div>

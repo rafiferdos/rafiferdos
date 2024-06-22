@@ -8,7 +8,7 @@ interface ThemeContextType {
 }
 
 export const ThemeContext = createContext<ThemeContextType>({
-  theme: 'light', // Default theme
+  theme: 'dark', // Default theme
   setTheme: () => {} // Empty function for now
 });
 
@@ -16,16 +16,23 @@ interface ThemeProviderProps {
   children: ReactNode;
 }
 
+// Move the logic for reading the theme from localStorage outside of the component
+const getInitialTheme = () => {
+  if (typeof window !== 'undefined') {
+    const storedTheme = localStorage.getItem('theme');
+    return storedTheme ? storedTheme : 'light';
+  }
+  return 'dark'; // Default to 'light' if window is not defined
+};
+
 const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-  const [theme, setTheme] = useState<string>('light'); // Set default theme to 'light'
+  const [theme, setTheme] = useState<string>(getInitialTheme()); // Set initial theme based on localStorage
 
   useEffect(() => {
-    // Access localStorage only when the component mounts in the browser
-    const storedTheme = localStorage.getItem('theme');
-    if (storedTheme) {
-      setTheme(storedTheme);
-    }
-  }, []);
+    // Update localStorage whenever the t
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
 
   const themes: ThemeContextType = {
     theme,
