@@ -1,8 +1,9 @@
 "use client";
-import React from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import { ThemeContext } from "@/providers/ThemeProvider";
 
 const transition = {
   type: "spring",
@@ -12,6 +13,7 @@ const transition = {
   restDelta: 0.001,
   restSpeed: 0.001,
 };
+
 
 export const MenuItem = ({
   setActive,
@@ -24,11 +26,16 @@ export const MenuItem = ({
   item: string;
   children?: React.ReactNode;
 }) => {
+  const {theme} = useContext(ThemeContext);
   return (
     <div onMouseEnter={() => setActive(item)} className="relative ">
       <motion.p
         transition={{ duration: 0.3 }}
-        className="cursor-pointer text-black hover:opacity-[0.9] dark:text-white"
+        className={
+          theme === "dark"
+            ? "text-neutral-200 dark:text-neutral-300 cursor-pointer"
+            : "text-neutral-700 dark:text-neutral-200 cursor-pointer"
+        }
       >
         {item}
       </motion.p>
@@ -70,7 +77,7 @@ export const Menu = ({
   return (
     <nav
       onMouseLeave={() => setActive(null)} // resets the state
-      className="relative rounded-full overflow-x-auto navbar-menu flex border border-transparent dark:bg-black dark:border-white/[0.2] shadow-input justify-start sm:justify-center md:justify-center space-x-6 px-8 md:px-24 py-5 whitespace-nowrap backdrop-filter bg-base-100/80 backdrop-blur-xl bg-opacity-90 border-b border-gray-500 transition-shadow duration-100 [transform:translate3d(0,0,0)]"
+      className="relative rounded-full overflow-x-auto navbar-menu flex border border-transparent dark:bg-black dark:border-white/[0.2] shadow-input justify-start sm:justify-center md:justify-center space-x-6 px-8 md:px-24 py-5 whitespace-nowrap backdrop-filter bg-base-100/30 backdrop-blur-xl bg-opacity-40 border-b border-gray-500 transition-shadow duration-100 [transform:translate3d(0,0,0)] shadow-lg"
     >
       {children}
     </nav>
