@@ -120,7 +120,7 @@ export const TypewriterEffectSmooth = ({
     };
   });
   const renderWords = () => {
-    const changeTextColor = theme === 'dark' ? 'text-blue-600 text-xl md:text-3xl lg:text-4xl' : 'text-blue-800 text-xl md:text-3xl lg:text-4xl'
+    const changeTextColor = theme === 'dark' ? 'text-3xl md:text-4xl lg:text-6xl' : 'text-3xl md:text-4xl lg:text-6xl'
     return (
       <div>
         {wordsArray.map((word, idx) => {
@@ -143,9 +143,9 @@ export const TypewriterEffectSmooth = ({
   };
 
   return (
-    <div className={cn("flex space-x-1 my-6", className)}>
+    <div className={cn("flex space-x-1", className)}>
       <motion.div
-        className="overflow-hidden pb-2"
+        className="overflow-hidden px-2 md:px-3"
         initial={{
           width: "0%",
         }}
@@ -175,13 +175,13 @@ export const TypewriterEffectSmooth = ({
           opacity: 1,
         }}
         transition={{
-          duration: 0.8,
+          duration: 0.6,
 
           repeat: Infinity,
           repeatType: "reverse",
         }}
         className={cn(
-          "block rounded-sm w-[4px]  h-4 sm:h-6 xl:h-12 bg-blue-500",
+          "block rounded-sm w-[4px] my-3 h-4 sm:h-6 lg:h-8 xl:h-10 bg-white",
           cursorClassName
         )}
       ></motion.span>

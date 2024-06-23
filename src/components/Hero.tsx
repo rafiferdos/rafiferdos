@@ -12,20 +12,26 @@ import { LuDownload } from "react-icons/lu";
 import { SparklesCore } from "./ui/sparkles";
 import { BackgroundGradient } from "./ui/background-gradient";
 import Link from "next/link";
+import { FlipWords } from "./ui/flip-words";
 
 const Hero = () => {
   const { theme } = useContext(ThemeContext);
 
   const words = [
     {
-      text: "a",
+      text: "Rafi",
     },
     {
-      text: "MERN-Stack",
+      text: "Ferdos",
     },
-    {
-      text: "Developer",
-    },
+  ];
+
+  const positionWords = [
+    "MERN_Stack_Developer",
+    "React_Developer",
+    "Frontend_Developer",
+    "Full_Stack_Developer",
+    "Programmer",
   ];
 
   const description =
@@ -42,18 +48,24 @@ const Hero = () => {
       <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="blue" />
       <div className="mx-auto container max-w-7xl w-11/12">
         <div className="flex items-center justify-center gap- flex-col-reverse xl:flex-row">
-          <div className="p-4 z-10 relative max-w-3xl md:w-4/6 space-y-8">
-            <h1 className="lg:text-4xl text-2xl font-bold">Hello, I&apos;m</h1>
+          <div className="p-4 z-10 relative max-w-3xl md:w-4/6 space-y-4">
+            <h1 className="lg:text-4xl text-xl md:text-2xl font-bold">
+              Hello, I&apos;m
+            </h1>
             <h1 className="md:text-6xl text-3xl text-white font-extrabold inline-block">
               <BackgroundGradient>
-                <h1 className="px-3 py-2">Rafi Ferdos</h1>
-              </BackgroundGradient>
+              <TypewriterEffectSmooth
+                words={words}
+                cursorClassName="text-blue-500 dark:text-blue-300"
+                className='text-white'
+                />
+                </BackgroundGradient>
             </h1>
-            <TypewriterEffectSmooth
-              words={words}
-              cursorClassName="text-blue-500 dark:text-blue-300"
-              className={theme === "dark" ? "text-white" : "text-black"}
-            />
+            <br />
+            <h1 className="md:text-3xl lg:text-4xl text-xl font-semibold inline-block text-primary">
+              a <FlipWords words={positionWords} />
+            </h1>
+
             <TextGenerateEffect words={description} />
             <div className="mt-5">
               <Link
