@@ -120,7 +120,7 @@ export const TypewriterEffectSmooth = ({
     };
   });
   const renderWords = () => {
-    const changeTextColor = theme === 'dark' ? 'text-blue-600 text-xl md:text-3xl lg:text-5xl' : 'text-blue-800 text-xl md:text-3xl lg:text-5xl'
+    const changeTextColor = theme === 'dark' ? 'text-blue-600 text-xl md:text-3xl lg:text-4xl' : 'text-blue-800 text-xl md:text-3xl lg:text-4xl'
     return (
       <div>
         {wordsArray.map((word, idx) => {
