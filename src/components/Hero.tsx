@@ -13,9 +13,23 @@ import { SparklesCore } from "./ui/sparkles";
 import { BackgroundGradient } from "./ui/background-gradient";
 import Link from "next/link";
 import { FlipWords } from "./ui/flip-words";
+import { motion } from "framer-motion";
 
 const Hero = () => {
   const { theme } = useContext(ThemeContext);
+
+  const containerVariants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+        delay: 0.5,
+        duration: 0.5,
+      },
+    },
+  }
 
   const words = [
     {
@@ -38,6 +52,11 @@ const Hero = () => {
     "With a passion for crafting intuitive and user-friendly web applications, I'm dedicated to delivering seamless user experiences through clean, maintainable, and optimized code.";
 
   return (
+    <motion.div
+      initial='hidden'
+      animate='visible'
+      variants={containerVariants}
+    >
     <div
       className={
         theme === "dark"
@@ -128,6 +147,7 @@ const Hero = () => {
         </div>
       </div>
     </div>
+    </motion.div>
   );
 };
 

@@ -5,6 +5,7 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "./ui/navbar-menu";
 import { cn } from "@/utils/cn";
 import Link from "next/link";
 import { ThemeContext } from "@/providers/ThemeProvider";
+import { motion } from "framer-motion";
 
 const Navbar = ({ className }: { className?: string }) => {
   const { theme, setTheme } = useContext(ThemeContext);
@@ -21,8 +22,25 @@ const Navbar = ({ className }: { className?: string }) => {
     document.documentElement.setAttribute("data-theme", theme); // Update root element
   }, [theme]);
 
+  const navbarVariants = {
+    hidden: { y: -100, opacity: 0 }, // Start above the viewport and invisible
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.5, ease: "easeOut" },
+    }, // End at its initial position, fully visible
+  };
+
   return (
-    <>
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={navbarVariants}
+      className={cn(
+        "fixed top-0 inset-x-0 max-w-4xl mx-auto z-50 px-3",
+        className
+      )}
+    >
       <div
         className={cn(
           "fixed top-7 inset-x-0 max-w-4xl mx-auto z-50 px-3",
@@ -78,7 +96,7 @@ const Navbar = ({ className }: { className?: string }) => {
           </label>
         </Menu>
       </div>
-    </>
+    </motion.div>
   );
 };
 
