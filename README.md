@@ -1,38 +1,34 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<p align="center"><a href="https://rafiferdos.netlify.app/"><img width="80%" alt="Hello, I'm Rafi. I do MERN-Stack Development!" src="./src/assets/images/rafi-banner.png" /></a></p>
 
-## Getting Started
+<br />
 
-First, run the development server:
+I'm a self-taught passionate MERN-Stack Developer from Bangladesh 🇧🇩
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**About me**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- 📈 Built full stack websites, with various react packages and with next.js
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- ❤️ I love writing code in TypeScript, and building fun experiments on type-level
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- 💬 Ask me about anything [here](https://github.com/rafiferdos/rafiferdos/issues)
 
-## Learn More
+<code><img height="20" alt="javascript" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/javascript/javascript.png"></code>
+<code><img height="20" alt="typescript" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/typescript/typescript.png"></code>
+<code><img height="20" alt="react" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/react/react.png"></code>
+<code><img height="20" alt="redux" src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/redux-icon.png"></code>
+<code><img height="20" alt="nextjs" src="https://pbs.twimg.com/profile_images/1565710214019444737/if82cpbS_400x400.jpg"></code>
+<code><img height="20" alt="nodejs" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/nodejs/nodejs.png"></code>
+<code><img src="https://cdn.iconscout.com/icon/free/png-256/free-firebase-3521427-2944871.png?f=webp" alt="express" height="20"/></code>
 
-To learn more about Next.js, take a look at the following resources:
+<p><img align="left" height='195' src="https://github-readme-stats.vercel.app/api/top-langs/?username=rafiferdos&layout=donut" alt="rafiferdos" /></p>
+<p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=rafiferdos&show_icons=true&locale=en" alt="rafiferdos" /></p>
+<p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=rafiferdos&show_icons=true&theme=radical" alt="rafiferdos" /></p>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Connect with me**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# rafiferdos
-# rafiferdos
+<a href="https://linkedin.com/in/rafiferdos">
+  <img align="left" alt="Anurag Hazra | Twitter" width="21px" src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" />
+</a>
+<a href="https://facebook.com/rafiferdos2">
+  <img align="left" alt="Anurag Hazra | CodeSandbox" width="20px" src="https://upload.wikimedia.org/wikipedia/commons/b/b9/2023_Facebook_icon.svg" />
+</a>
