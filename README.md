@@ -20,7 +20,7 @@ I'm a self-taught passionate MERN-Stack Developer from Bangladesh 🇧🇩
 <code><img height="20" alt="nodejs" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/nodejs/nodejs.png"></code>
 <code><img src="https://cdn.iconscout.com/icon/free/png-256/free-firebase-3521427-2944871.png?f=webp" alt="express" height="20"/></code>
 
-<p><img align="left" height='195' src="https://github-readme-stats.vercel.app/api/top-langs/?username=rafiferdos&layout=donut" alt="rafiferdos" /></p>
+<p><img align="left" height='195' src="https://github-readme-stats.vercel.app/api/top-langs/?username=rafiferdos&layout=donut&theme=radical" alt="rafiferdos" /></p>
 <p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=rafiferdos&show_icons=true&theme=radical" alt="rafiferdos" /></p>
 
 **Connect with me**
