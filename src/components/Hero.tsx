@@ -15,6 +15,11 @@ import Link from "next/link";
 import { FlipWords } from "./ui/flip-words";
 import { motion } from "framer-motion";
 
+export const metadata = {
+  title: "Hero",
+  description: "Hero component for the portfolio website",
+}
+
 const Hero = () => {
   const { theme } = useContext(ThemeContext);
 
