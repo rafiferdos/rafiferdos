@@ -1,9 +1,9 @@
 "use client";
 
 import { ThemeContext } from "@/providers/ThemeProvider";
-import { useContext } from "react";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
+import { useContext } from "react";
 import { TextGenerateEffect } from "./ui/text-generate-effect";
 
 const World = dynamic(() => import("./ui/globe").then((m) => m.World), {
@@ -14,7 +14,7 @@ const Skills = () => {
 
   const globeConfig = {
     pointSize: 4,
-    globeColor: "#062056",
+    globeColor: theme === "dark" ? "#062056" : "#063081",
     showAtmosphere: true,
     atmosphereColor: "#FFFFFF",
     atmosphereAltitude: 0.1,
@@ -433,7 +433,7 @@ const Skills = () => {
         </motion.div>
       </div>
       <div className="flex w-full items-center justify-center max-w-7xl mx-auto container">
-      <motion.div
+        <motion.div
           initial={{
             opacity: 0,
             y: 20,
@@ -447,83 +447,84 @@ const Skills = () => {
           }}
           className="flex md:items-end items-center md:h-[33rem] justify-center"
         >
-
-        <div className="flex flex-col md:w-2/5 items-center justify-center h-auto relative w-full ">
-          <div className="flex flex-col gap-5 items-end justify-center">
-            <div className="flex items-center justify-center gap-3">
-              <h3 className="md:text-base text-xs font-bold">React</h3>
-              <progress
-                className="progress progress-primary w-56"
-                value="90"
-                max="100"
-              ></progress>
-            </div>
-            <div className="flex items-center justify-center gap-3">
-              <h3 className="md:text-base text-xs font-bold">Next.js</h3>
-              <progress
-                className="progress progress-primary w-56"
-                value="80"
-                max="100"
-              ></progress>
-            </div>
-            <div className="flex items-center justify-center gap-3">
-              <h3 className="md:text-base text-xs font-bold">JavaScript</h3>
-              <progress
-                className="progress progress-primary w-56"
-                value="75"
-                max="100"
-              ></progress>
-            </div>
-            <div className="flex items-center justify-center gap-3">
-              <h3 className="md:text-base text-xs font-bold">TypeScript</h3>
-              <progress
-                className="progress progress-primary w-56"
-                value="60"
-                max="100"
-              ></progress>
-            </div>
-            <div className="flex items-center justify-center gap-3">
-              <h3 className="md:text-base text-xs font-bold">Express</h3>
-              <progress
-                className="progress progress-primary w-56"
-                value="50"
-                max="100"
-              ></progress>
-            </div>
-            <div className="flex items-center justify-center gap-3">
-              <h3 className="md:text-base text-xs font-bold">MongoDB</h3>
-              <progress
-                className="progress progress-primary w-56"
-                value="60"
-                max="100"
-              ></progress>
-            </div>
-            <div className="flex items-center justify-center gap-3">
-              <h3 className="md:text-base text-xs font-bold">Tailwind/Bootstrap</h3>
-              <progress
-                className="progress progress-primary w-56"
-                value="90"
-                max="100"
-              ></progress>
-            </div>
-            <div className="flex items-center justify-center gap-3">
-              <h3 className="md:text-base text-xs font-bold">Git</h3>
-              <progress
-                className="progress progress-primary w-56"
-                value="70"
-                max="100"
-              ></progress>
-            </div>
-            <div className="flex items-center justify-center gap-3">
-              <h3 className="md:text-base text-xs font-bold">HTML/CSS</h3>
-              <progress
-                className="progress progress-primary w-56"
-                value="85"
-                max="100"
-              ></progress>
+          <div className="flex flex-col md:w-2/5 items-center justify-center h-auto relative w-full ">
+            <div className="flex flex-col gap-5 items-end justify-center">
+              <div className="flex items-center justify-center gap-3">
+                <h3 className="md:text-base text-xs font-bold">React</h3>
+                <progress
+                  className="progress progress-primary w-56"
+                  value="90"
+                  max="100"
+                ></progress>
+              </div>
+              <div className="flex items-center justify-center gap-3">
+                <h3 className="md:text-base text-xs font-bold">Next.js</h3>
+                <progress
+                  className="progress progress-primary w-56"
+                  value="80"
+                  max="100"
+                ></progress>
+              </div>
+              <div className="flex items-center justify-center gap-3">
+                <h3 className="md:text-base text-xs font-bold">JavaScript</h3>
+                <progress
+                  className="progress progress-primary w-56"
+                  value="75"
+                  max="100"
+                ></progress>
+              </div>
+              <div className="flex items-center justify-center gap-3">
+                <h3 className="md:text-base text-xs font-bold">TypeScript</h3>
+                <progress
+                  className="progress progress-primary w-56"
+                  value="60"
+                  max="100"
+                ></progress>
+              </div>
+              <div className="flex items-center justify-center gap-3">
+                <h3 className="md:text-base text-xs font-bold">Express</h3>
+                <progress
+                  className="progress progress-primary w-56"
+                  value="50"
+                  max="100"
+                ></progress>
+              </div>
+              <div className="flex items-center justify-center gap-3">
+                <h3 className="md:text-base text-xs font-bold">MongoDB</h3>
+                <progress
+                  className="progress progress-primary w-56"
+                  value="60"
+                  max="100"
+                ></progress>
+              </div>
+              <div className="flex items-center justify-center gap-3">
+                <h3 className="md:text-base text-xs font-bold">
+                  Tailwind/Bootstrap
+                </h3>
+                <progress
+                  className="progress progress-primary w-56"
+                  value="90"
+                  max="100"
+                ></progress>
+              </div>
+              <div className="flex items-center justify-center gap-3">
+                <h3 className="md:text-base text-xs font-bold">Git</h3>
+                <progress
+                  className="progress progress-primary w-56"
+                  value="70"
+                  max="100"
+                ></progress>
+              </div>
+              <div className="flex items-center justify-center gap-3">
+                <h3 className="md:text-base text-xs font-bold">HTML/CSS</h3>
+                <progress
+                  className="progress progress-primary w-56"
+                  value="85"
+                  max="100"
+                ></progress>
+              </div>
             </div>
           </div>
-        </div>
         </motion.div>
         <div className="flex items-center justify-center min-h-screen md:h-auto relative w-full md:w-3/5">
           <div className="max-w-7xl mx-auto w-full relative overflow-hidden h-full md:h-[40rem] px-4">
@@ -531,7 +532,7 @@ const Skills = () => {
               className={
                 theme === "dark"
                   ? "absolute w-full bottom-0 inset-x-0 h-52 bg-gradient-to-b pointer-events-none select-none from-transparent to-black z-40"
-                  : "absolute w-full bottom-0 inset-x-0 h-52 bg-gradient-to-b pointer-events-none select-none from-transparent to-white z-40"
+                  : "absolute w-full bottom-0 inset-x-0 h-52 bg-gradient-to-b pointer-events-none select-none from-transparent to-white/60 z-40"
               }
             />
             <div className="absolute w-full -bottom-20 h-80 md:h-full z-10">

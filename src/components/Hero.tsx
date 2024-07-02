@@ -80,8 +80,8 @@ const Hero = () => {
               {/* <BackgroundGradient> */}
               <TypewriterEffectSmooth
                 words={words}
-                cursorClassName="text-blue-500 dark:text-blue-300"
-                className='text-white'
+                cursorClassName="text-blue-500"
+                className={theme === "dark" ? "text-white" : "text-black"}
                 />
                 {/* </BackgroundGradient> */}
             </h1>
