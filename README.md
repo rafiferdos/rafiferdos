@@ -2,7 +2,9 @@
 
 <br />
 <hr>
+
 ## Current Stats
+
 <hr>
 <br />
 
@@ -16,7 +18,7 @@
 
 I'm a self-taught passionate MERN-Stack Developer from Bangladesh 🇧🇩
 
-**About me**
+## About me
 
 - 📈 Built full stack websites, with various react packages and with next.js
 
