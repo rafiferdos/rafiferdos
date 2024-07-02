@@ -1,11 +1,11 @@
 <p align="center"><a href="https://rafiferdos.netlify.app/"><img width="80%" alt="Hello, I'm Rafi. I do MERN-Stack Development!" src="./src/assets/images/rafi-banner.png" /></a></p>
 
 <br />
-<hr>
+
 
 ## Current Stats
 
-<hr>
+
 <br />
 
 <p align="center">
