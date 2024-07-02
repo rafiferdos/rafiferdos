@@ -16,7 +16,7 @@
 <hr />
 <br />
 
-I'm a self-taught passionate MERN-Stack Developer from Bangladesh 🇧🇩
+I'm a MERN-Stack Web Developer with a passion for crafting intuitive, user-friendly web applications. I'm dedicated to delivering seamless user experiences through clean, maintainable, and optimized code.
 
 ## About me
 
@@ -32,7 +32,10 @@ I'm a self-taught passionate MERN-Stack Developer from Bangladesh 🇧🇩
 <code><img height="20" alt="redux" src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/redux-icon.png"></code>
 <code><img height="20" alt="nextjs" src="https://pbs.twimg.com/profile_images/1565710214019444737/if82cpbS_400x400.jpg"></code>
 <code><img height="20" alt="nodejs" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/nodejs/nodejs.png"></code>
-<code><img src="https://cdn.iconscout.com/icon/free/png-256/free-firebase-3521427-2944871.png?f=webp" alt="express" height="20"/></code>
+<code><img src="https://cdn.iconscout.com/icon/free/png-256/free-firebase-3521427-2944871.png?f=webp" alt="firebase" height="20"/></code>
+<code><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSDKn3vA2YUbXzN0ZC3gALWJ08gJN-Drl15w&s" alt="tailwindcss" height="20"/></code>
+<code><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/512px-HTML5_logo_and_wordmark.svg.png" alt="html5" height="20"/></code>
+<code><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/340px-CSS3_logo_and_wordmark.svg.png" alt="css3" height="20"/></code>
 
 <br>
 <hr>
