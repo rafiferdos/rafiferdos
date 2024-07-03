@@ -7,6 +7,7 @@ import ThemeProvider, { ThemeContext } from "@/providers/ThemeProvider";
 import { useContext, useEffect } from "react";
 import Head from "next/head"; // Import the Head component
 import { title } from "process";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,6 +31,7 @@ export default function RootLayout({
         <ThemeProvider>
           <Navbar />
           {children}
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>
