@@ -23,12 +23,14 @@ export default function RootLayout({
   }, [theme]);
   return (
     <html lang="en">
-      <Head>
+      <head>
         <title>Rafi Ferdos</title>
-        <meta name="description" content="Rafi Ferdos portfolio website" />
-      </Head>
+      </head>
       <body className={inter.className}>
         <ThemeProvider>
+          <Head>
+            <meta name="description" content="Rafi Ferdos portfolio website" />
+          </Head>
           <Navbar />
           {children}
           <SpeedInsights />
