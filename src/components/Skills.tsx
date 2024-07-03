@@ -526,7 +526,7 @@ const Skills = () => {
             </div>
           </div>
         </motion.div>
-        <div className="flex items-center justify-center min-h-screen md:h-auto relative w-full md:w-3/5">
+        <div className="flex items-center justify-center mb-12 md:h-auto relative w-full md:w-3/5">
           <div className="max-w-7xl mx-auto w-full relative overflow-hidden h-full md:h-[40rem] px-4">
             <div
               className={
