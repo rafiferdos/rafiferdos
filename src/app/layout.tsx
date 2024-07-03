@@ -14,6 +14,7 @@ export default function RootLayout({
   title,
   children,
 }: Readonly<{
+  title: string;
   children: React.ReactNode;
 }>) {
   const { theme } = useContext(ThemeContext);
