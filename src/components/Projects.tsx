@@ -38,6 +38,7 @@ const Projects = () => {
           ? "flex items-center justify-center min-h-screen w-full flex-col relative overflow-hidden mx-auto bg-black text-white"
           : "flex items-center justify-center min-h-screen w-full flex-col relative overflow-hidden mx-auto bg-white text-black"
       }
+      id="projects"
     >
       <div>
         <motion.div

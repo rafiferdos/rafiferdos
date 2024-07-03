@@ -6,6 +6,7 @@ import { cn } from "@/utils/cn";
 import Link from "next/link";
 import { ThemeContext } from "@/providers/ThemeProvider";
 import { motion } from "framer-motion";
+import { scrollToComponent } from "./scrollToComponent";
 
 const Navbar = ({ className }: { className?: string }) => {
   const { theme, setTheme } = useContext(ThemeContext);
@@ -48,28 +49,45 @@ const Navbar = ({ className }: { className?: string }) => {
         )}
       >
         <Menu setActive={setActive}>
-          <Link href={"/"}>
-            <MenuItem setActive={setActive} active={active} item="Home" />
-          </Link>
-          <Link href={"/skills"}>
-            <MenuItem setActive={setActive} active={active} item="My Skills" />
-          </Link>
-          <Link href={"/projects"}>
-            <MenuItem
-              setActive={setActive}
-              active={active}
-              item="My Projects"
-            />
-          </Link>
-          <Link href={"/about_me"}>
-            <MenuItem setActive={setActive} active={active} item="About Me" />
-          </Link>
-          <Link href={"/education"}>
-            <MenuItem setActive={setActive} active={active} item="Education" />
-          </Link>
-          <Link href={"/contact"}>
-            <MenuItem setActive={setActive} active={active} item="Contact" />
-          </Link>
+          <MenuItem
+  onClick={() => {
+    console.log("Attempting to scroll to top");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }}
+            setActive={setActive}
+            active={active}
+            item="Home"
+          />
+          <MenuItem
+            onClick={() => scrollToComponent("skills")}
+            setActive={setActive}
+            active={active}
+            item="My Skills"
+          />
+          <MenuItem
+            onClick={() => scrollToComponent("projects")}
+            setActive={setActive}
+            active={active}
+            item="My Projects"
+          />
+          <MenuItem
+            onClick={() => scrollToComponent("about_me")}
+            setActive={setActive}
+            active={active}
+            item="About Me"
+          />
+          <MenuItem
+            onClick={() => scrollToComponent("education")}
+            setActive={setActive}
+            active={active}
+            item="Education"
+          />
+          <MenuItem
+            onClick={() => scrollToComponent("contact")}
+            setActive={setActive}
+            active={active}
+            item="Contact"
+          />
           <label className="swap swap-rotate">
             <input
               type="checkbox"

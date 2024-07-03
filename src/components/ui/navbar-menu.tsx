@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext } from "react";
+import React, { useContext, Dispatch, SetStateAction } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
@@ -14,21 +14,29 @@ const transition = {
   restSpeed: 0.001,
 };
 
-
-export const MenuItem = ({
+interface MenuItemProps {
+  setActive: Dispatch<SetStateAction<string | null>>;
+  active: string | null;
+  item: string;
+  children?: React.ReactNode;
+  onClick?: () => void; // Add this line to include the onClick prop
+}
+export const MenuItem: React.FC<MenuItemProps> = ({
   setActive,
   active,
   item,
   children,
+  onClick
 }: {
   setActive: (item: string) => void;
   active: string | null;
   item: string;
   children?: React.ReactNode;
+  onClick?: () => void;
 }) => {
   const {theme} = useContext(ThemeContext);
   return (
-    <div onMouseEnter={() => setActive(item)} className="relative ">
+    <div onMouseEnter={() => setActive(item)} onClick={onClick} className="relative ">
       <motion.p
         transition={{ duration: 0.3 }}
         className={
