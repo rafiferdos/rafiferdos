@@ -20,12 +20,12 @@ export default function RootLayout({
   const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
+    // Set the background color based on the theme
     document.body.style.backgroundColor = theme === "dark" ? "#000000" : "";
-  }, [theme]);
-
-  useEffect(() => {
-    document.title = "Rafi Ferdos";
-  }, []);
+  
+    // Set the document title
+    document.title = title;
+  }, [theme, title]); 
   return (
     <html lang="en">
       <Head>
