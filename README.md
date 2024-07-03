@@ -2,9 +2,7 @@
 
 <br />
 
-
 ## Current Stats
-
 
 <br />
 
@@ -45,8 +43,7 @@ I'm a MERN-Stack Web Developer with a passion for crafting intuitive, user-frien
 <p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=rafiferdos&show_icons=true&theme=radical" alt="rafiferdos" /></p>
 </div>
 
-<hr>
-**Connect with me**
+## Connect with me
 
 <a href="https://linkedin.com/in/rafiferdos">
   <img align="left" alt="Anurag Hazra | Twitter" width="21px" src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" />
