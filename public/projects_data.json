@@ -1,0 +1,19 @@
+{
+  "projects": [
+    {
+      "name": "Nebula Clash",
+      "description": "A full-stack contest creation platform, Nebula Clash, featuring contest creation, user participation, and winner selection. Implemented user roles(admin, user, creator), each with a dedicated dashboard, authentication, and a dynamic leaderboard, enhancing user engagement and experience with glassmorphism UI.",
+      "image": "https://i.ibb.co/K5kHkZy/Xnip2024-07-03-13-49-51.jpg"
+    },
+    {
+      "name": "Swap Savvy",
+      "description": "An interactive platform that enable users to explore and contribute to a database of alternative product information, including queries, recommendations, and user-created contents.",
+      "image": "https://i.ibb.co/b7X0rbF/Xnip2024-07-03-13-52-41.jpg"
+    },
+    {
+      "name": "Canvas Whisper",
+      "description": "A CRUD application that can interact with user, enabling the connection to database and provide protected routes also user can modify their own crafts after authorization.",
+      "image": "https://i.ibb.co/vv56g3d/Xnip2024-07-03-13-53-55.jpg"
+    }
+  ]
+}
