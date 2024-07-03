@@ -1,3 +1,4 @@
+'use client'
 export function scrollToComponent(id: string) {
   // Check if running in a browser environment
   if (typeof window !== 'undefined') {
