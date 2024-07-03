@@ -53,10 +53,24 @@ const Projects = () => {
           }}
           className="div"
         >
-          <div className="h-[30rem] w-full bg-black dark:bg-grid-white/[0.2] bg-grid-white/[0.2] relative flex items-center justify-center">
-            <div className="absolute pointer-events-none inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+          <div className={
+            theme === 'dark' 
+            ? "h-[30rem] w-full bg-black dark:bg-grid-white/[0.2] bg-grid-white/[0.2] relative flex items-center justify-center"
+            : "h-[30rem] w-full bg-white dark:bg-grid-black/[0.2] bg-grid-black/[0.2] relative flex items-center justify-center"
+          }>
+            <div
+              className={
+                theme === "dark"
+                  ? "absolute pointer-events-none inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"
+                  : "absolute pointer-events-none inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,white)]"
+              }
+            ></div>
             <div className="flex flex-col items-center justify-center px-8">
-              <p className="text-4xl sm:text-7xl font-bold relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500">
+              <p className={
+                theme === 'dark'
+                ? "text-4xl sm:text-7xl font-bold relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500"
+                : "text-4xl sm:text-7xl font-bold relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-900 to-neutral-500"
+              }>
                 Projects
               </p>
               <div className="text-center text-base md:text-lg font-normal text-neutral-500 max-w-2xl mx-auto">
