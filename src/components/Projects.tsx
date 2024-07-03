@@ -55,8 +55,8 @@ const Projects = () => {
         >
           <div className={
             theme === 'dark' 
-            ? "h-[30rem] w-full bg-black dark:bg-grid-white/[0.2] bg-grid-white/[0.2] relative flex items-center justify-center"
-            : "h-[30rem] w-full bg-white dark:bg-grid-black/[0.2] bg-grid-black/[0.2] relative flex items-center justify-center"
+            ? "h-[20rem] md:h-[30rem] w-full bg-black dark:bg-grid-white/[0.2] bg-grid-white/[0.2] relative flex items-center justify-center"
+            : "h-[20rem] md:h-[30rem] w-full bg-white dark:bg-grid-black/[0.2] bg-grid-black/[0.2] relative flex items-center justify-center"
           }>
             <div
               className={
@@ -79,8 +79,8 @@ const Projects = () => {
             </div>
           </div>
         </motion.div>
-        <div className="flex items-center justify-center">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-16 lg:gap-20">
+        <div className="flex items-center justify-center w-11/12 mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-4 md:gap-12 lg:gap-20">
             {projects.map((project) => {
               return <ProjectCard key={project.name} project={project} />;
             })}

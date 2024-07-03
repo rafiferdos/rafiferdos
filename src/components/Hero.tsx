@@ -65,8 +65,8 @@ const Hero = () => {
     <div
       className={
         theme === "dark"
-          ? "flex items-center justify-center min-h-screen w-full flex-col relative overflow-hidden mx-auto bg-black text-white"
-          : "flex items-center justify-center min-h-screen w-full flex-col relative overflow-hidden mx-auto bg-white text-black"
+          ? "flex items-center justify-center min-h-screen w-full flex-col relative overflow-hidden mx-auto bg-black text-white pt-32 xl:pt-0"
+          : "flex items-center justify-center min-h-screen w-full flex-col relative overflow-hidden mx-auto bg-white text-black pt-32 xl:pt-0"
       }
     >
       <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="blue" />

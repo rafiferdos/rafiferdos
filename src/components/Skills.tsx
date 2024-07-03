@@ -422,17 +422,17 @@ const Skills = () => {
           transition={{
             duration: 1,
           }}
-          className="div"
+          className="div my-8"
         >
           <h2 className="text-center lg:text-6xl md:text-3xl text-xl font-bold">
             Skills
           </h2>
-          <div className="text-center text-base md:text-lg font-normal text-neutral-500 max-w-2xl mt-2 mx-auto">
+          <div className="text-center text-base md:text-lg font-normal text-neutral-500 max-w-xs sm:max-w-2xl mt-2 mx-auto">
             <TextGenerateEffect words={words} />
           </div>
         </motion.div>
       </div>
-      <div className="flex w-full items-center justify-center max-w-7xl mx-auto container">
+      <div className="flex w-full items-center justify-center max-w-7xl mx-auto container flex-col md:flex-row w-11/12">
         <motion.div
           initial={{
             opacity: 0,
@@ -527,7 +527,7 @@ const Skills = () => {
           </div>
         </motion.div>
         <div className="flex items-center justify-center mb-12 md:h-auto relative w-full md:w-3/5">
-          <div className="max-w-7xl mx-auto w-full relative overflow-hidden h-full md:h-[40rem] px-4">
+          <div className="max-w-7xl mx-auto w-full relative overflow-hidden h-full md:h-[25rem] lg:h-[40rem] px-4">
             <div
               className={
                 theme === "dark"
