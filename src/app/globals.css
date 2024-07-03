@@ -41,3 +41,17 @@ body {
 .navbar-menu::-webkit-scrollbar {
   display: none; /* For WebKit browsers */
 }
+
+
+.project-card-container {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  height: 100%;
+}
+
+.project-card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}

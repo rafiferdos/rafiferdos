@@ -14,14 +14,14 @@ type ProjectCardProps = {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   const { theme } = useContext(ThemeContext);
-  const { name, description, image, link } = project;
+  const { name, description, image, link, github_link } = project;
   return (
-    <CardContainer className="inter-var">
+    <CardContainer className="inter-var project-card-container">
       <CardBody
         className={
           theme === "light"
-            ? "bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border h-[10rem]]"
-            : "bg-gray-950 relative group/card hover:shadow-2xl hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border h-[10rem]]"
+            ? "bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border h-[10rem]] project-card-body"
+            : "bg-gray-950 relative group/card hover:shadow-2xl hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border h-[10rem]] project-card-body"
         }
       >
         <CardItem
@@ -48,7 +48,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         >
           {description}
         </CardItem>
-        <CardItem translateZ="100" className="w-full mt-4">
+        <CardItem translateZ="100" className="w-full mt-4 flex-grow-0">
           <Image
             src={image}
             height="1000"
@@ -63,14 +63,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             as={Link}
             href={link}
             target="__blank"
-            className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white"
+            className="px-4 py-2 rounded-xl text-xs font-normal flex-grow-0"
           >
             View Live →
           </CardItem>
           <CardItem
             translateZ={20}
-            as="button"
-            className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
+            as={Link}
+            href={github_link}
+            target="__blank"
+            className="px-4 py-2 rounded-xl bg-black text-white text-xs font-bold"
           >
             Github
           </CardItem>
