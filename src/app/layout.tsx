@@ -11,25 +11,20 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
-  title,
   children,
-}: Readonly<{
-  title: string;
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
     // Set the background color based on the theme
     document.body.style.backgroundColor = theme === "dark" ? "#000000" : "";
-  
-    // Set the document title
-    document.title = title;
-  }, [theme, title]); 
+  }, [theme]);
   return (
     <html lang="en">
       <Head>
-        <title>{title}</title>
+        <title>Rafi Ferdos</title>
         <meta name="description" content="Rafi Ferdos portfolio website" />
       </Head>
       <body className={inter.className}>
