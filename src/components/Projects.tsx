@@ -1,24 +1,34 @@
-
-
 import { ThemeContext } from "@/providers/ThemeProvider";
-import { use, useContext, useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { TextGenerateEffect } from "./ui/text-generate-effect";
+import { useContext, useEffect, useState } from "react";
 import ProjectCard from "./ProjectCard";
+import { TextGenerateEffect } from "./ui/text-generate-effect";
+
+export interface Project {
+  name: string;
+  description: string;
+  image: string;
+  link: string;
+}
+
+interface ProjectData {
+  projects: Project[];
+}
 
 const Projects = () => {
   const { theme } = useContext(ThemeContext);
-  const words = `Here are my top best projects including full CRUD applications, RESTful APIs, and more.`
+  const words = `Here are my top best projects including full CRUD applications, RESTful APIs, and more.`;
 
-    const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState<Project[]>([]); // Type the state
 
-    useEffect(() => {
-      fetch('projects_data.json')
-        .then((response) => response.json())
-        .then((data) => {
-          setProjects(data);
-        });
-    }, [])
+  useEffect(() => {
+    fetch("projects_data.json")
+      .then((response) => response.json())
+      .then((data: ProjectData) => {
+        // Update to ProjectData
+        setProjects(data.projects); // Access the nested array
+      });
+  }, []);
 
   return (
     <div
@@ -55,17 +65,13 @@ const Projects = () => {
             </div>
           </div>
         </motion.div>
-          <div className="flex items-center justify-center">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-16 lg:gap-20">
-                {
-                    projects.map((project, index) => {
-                        return (
-                            <ProjectCard key={index} project={project} />
-                        )
-                    })
-                }
-            </div>
+        <div className="flex items-center justify-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-16 lg:gap-20">
+            {projects.map((project) => {
+              return <ProjectCard key={project.name} project={project} />;
+            })}
           </div>
+        </div>
       </div>
     </div>
   );
