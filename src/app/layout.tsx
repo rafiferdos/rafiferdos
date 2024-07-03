@@ -11,6 +11,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
+  title,
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -27,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Head>
-        <title>{document.title}</title>
+        <title>{title}</title>
         <meta name="description" content="Rafi Ferdos portfolio website" />
       </Head>
       <body className={inter.className}>

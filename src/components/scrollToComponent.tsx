@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 export function scrollToComponent(id: string) {
   const element = document.getElementById(id);

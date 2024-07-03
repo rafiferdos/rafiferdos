@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useContext, useState, useEffect } from "react";
-import { HoveredLink, Menu, MenuItem, ProductItem } from "./ui/navbar-menu";
-import { cn } from "@/utils/cn";
-import Link from "next/link";
 import { ThemeContext } from "@/providers/ThemeProvider";
+import { cn } from "@/utils/cn";
 import { motion } from "framer-motion";
+import React, { useContext, useEffect, useState } from "react";
 import { scrollToComponent } from "./scrollToComponent";
+import { Menu, MenuItem } from "./ui/navbar-menu";
 
 const Navbar = ({ className }: { className?: string }) => {
   const { theme, setTheme } = useContext(ThemeContext);
@@ -50,10 +49,9 @@ const Navbar = ({ className }: { className?: string }) => {
       >
         <Menu setActive={setActive}>
           <MenuItem
-  onClick={() => {
-    console.log("Attempting to scroll to top");
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }}
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
             setActive={setActive}
             active={active}
             item="Home"
