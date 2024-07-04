@@ -19,11 +19,16 @@ const AboutMe = () => {
     <div
       className={
         theme === "dark"
-          ? "flex items-center md:flex-row justify-center min-h-screen w-full flex-col relative overflow-hidden mx-auto bg-black text-white"
-          : "flex items-center md:flex-row justify-center min-h-screen w-full flex-col relative overflow-hidden mx-auto bg-white text-black"
+          ? "flex items-center  justify-center min-h-screen w-full flex-col relative overflow-hidden mx-auto bg-black text-white"
+          : "flex items-center  justify-center min-h-screen w-full flex-col relative overflow-hidden mx-auto bg-white text-black"
       }
       id="about_me"
     >
+      <div className="my-16">
+        <h2 className="text-center lg:text-6xl md:text-4xl text-2xl font-bold">
+          About Me
+        </h2>
+      </div>
       <div className="w-11/12 mx-auto max-w-7xl flex gap-8 justify-center flex-col md:flex-row items-center md:items-stretch">
         <div
           className={
@@ -90,11 +95,13 @@ const AboutMe = () => {
               understanding of web technologies.
             </p>
           </div>
-          <div className={
+          <div
+            className={
               theme === "dark"
                 ? "flex flex-col w-full bg-gray-950 py-7 px-4 md:px-12 lg:px-16 rounded-3xl"
                 : "flex flex-col w-full bg-gray-100 py-7 px-4 md:px-12 lg:px-16 rounded-3xl"
-            }>
+            }
+          >
             <h1 className="text-xl md:text-2xl text-left lg:text-4xl font-bold">
               Education
             </h1>
@@ -103,7 +110,8 @@ const AboutMe = () => {
               <h2 className="text-lg md:text-xl font-bold my-2">BSc in CSE</h2>
               <h3 className="font-bold">Daffodil International University</h3>
               <p className="opacity-70">
-                I&apos;m currently studying Computer Science & Engineering with my passion and dedication for become a full stack developer.
+                I&apos;m currently studying Computer Science & Engineering with
+                my passion and dedication for become a full stack developer.
               </p>
             </div>
             <div className="my-6">
@@ -111,7 +119,9 @@ const AboutMe = () => {
               <h2 className="text-lg md:text-xl font-bold my-2">Science</h2>
               <h3 className="font-bold">Nawabganj Govt College</h3>
               <p className="opacity-70">
-                Studied and completed my Higher Secondary School Certificate (HSC) in Science. With an amazing experience and memories of my college life.
+                Studied and completed my Higher Secondary School Certificate
+                (HSC) in Science. With an amazing experience and memories of my
+                college life.
               </p>
             </div>
           </div>
