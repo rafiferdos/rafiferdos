@@ -75,12 +75,6 @@ const Navbar = ({ className }: { className?: string }) => {
             item="About Me"
           />
           <MenuItem
-            onClick={() => scrollToComponent("education")}
-            setActive={setActive}
-            active={active}
-            item="Education"
-          />
-          <MenuItem
             onClick={() => scrollToComponent("contact")}
             setActive={setActive}
             active={active}
