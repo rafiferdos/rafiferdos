@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useContext } from "react";
 import {
   motion,
   useAnimationFrame,
@@ -9,6 +9,7 @@ import {
 } from "framer-motion";
 import { useRef } from "react";
 import { cn } from "@/utils/cn";
+import { ThemeContext } from "@/providers/ThemeProvider";
 
 export function Button({
   borderRadius = "1.75rem",
@@ -29,10 +30,11 @@ export function Button({
   className?: string;
   [key: string]: any;
 }) {
+  const { theme } = useContext(ThemeContext);
   return (
     <Component
       className={cn(
-        "bg-transparent relative text-xl  h-16 w-40 p-[1px] overflow-hidden ",
+        "bg-transparent relative text-xl h-16 w-40 p-[1px] overflow-hidden ",
         containerClassName
       )}
       style={{
@@ -56,7 +58,7 @@ export function Button({
 
       <div
         className={cn(
-          "relative bg-slate-900/[0.8] border border-slate-800 backdrop-blur-xl text-white flex items-center justify-center w-full h-full text-sm antialiased",
+          theme === 'dark' ? "relative bg-slate-900/[0.8] border border-slate-800 backdrop-blur-xl text-white flex items-center justify-center w-full h-full text-sm antialiased" : "relative bg-slate-200/80 border border-slate-200 backdrop-blur-xl text-black flex items-center justify-center w-full h-full text-sm antialiased",
           className
         )}
         style={{
