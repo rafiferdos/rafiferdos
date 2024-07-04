@@ -12,6 +12,7 @@ import {
   IoLogoGithub,
   IoLogoLinkedin,
 } from "react-icons/io";
+import { LinkPreview } from "./ui/link-preview";
 
 const AboutMe = () => {
   const { theme } = useContext(ThemeContext);
@@ -83,7 +84,11 @@ const AboutMe = () => {
             <h1 className="text-xl md:text-2xl text-left lg:text-4xl font-bold">
               Who am I?
             </h1>
-            <div className="flex items-center my-5 text-green-400 gap-1">
+            <div className={
+              theme === 'dark' 
+              ? "flex items-center my-5 text-green-400 gap-1"
+              : "flex items-center my-5 text-green-700 gap-1"
+            }>
               <IoIosCheckmarkCircleOutline />
               <p>Open to Work</p>
             </div>
@@ -108,7 +113,11 @@ const AboutMe = () => {
             <div className="my-6">
               <p>2022 - Present</p>
               <h2 className="text-lg md:text-xl font-bold my-2">BSc in CSE</h2>
-              <h3 className="font-bold">Daffodil International University</h3>
+              <LinkPreview url="https://daffodilvarsity.edu.bd/" className={
+                theme === 'dark'
+                ? 'text-white underline font-bold'
+                : 'text-black underline font-bold'
+              }>Daffodil International University</LinkPreview>
               <p className="opacity-70">
                 I&apos;m currently studying Computer Science & Engineering with
                 my passion and dedication for become a full stack developer.
@@ -117,7 +126,11 @@ const AboutMe = () => {
             <div className="my-6">
               <p>2018 - 2020</p>
               <h2 className="text-lg md:text-xl font-bold my-2">Science</h2>
-              <h3 className="font-bold">Nawabganj Govt College</h3>
+              <LinkPreview url="https://nawabganjgovcollege.edu.bd/" className={
+                theme === 'dark'
+                ? 'text-white underline font-bold'
+                : 'text-black underline font-bold'
+              }>Nawabganj Govt College</LinkPreview>
               <p className="opacity-70">
                 Studied and completed my Higher Secondary School Certificate
                 (HSC) in Science. With an amazing experience and memories of my
