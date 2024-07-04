@@ -22,7 +22,7 @@ const AboutMe = () => {
           ? "flex items-center md:flex-row justify-center min-h-screen w-full flex-col relative overflow-hidden mx-auto bg-black text-white"
           : "flex items-center md:flex-row justify-center min-h-screen w-full flex-col relative overflow-hidden mx-auto bg-white text-black"
       }
-      id="projects"
+      id="about_me"
     >
       <div className="w-11/12 mx-auto max-w-7xl flex gap-8 justify-center flex-col md:flex-row items-center md:items-stretch">
         <div
