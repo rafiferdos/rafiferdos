@@ -49,14 +49,6 @@ const Navbar = ({ className }: { className?: string }) => {
       >
         <Menu setActive={setActive}>
           <MenuItem
-            onClick={() => {
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
-            setActive={setActive}
-            active={active}
-            item="Home"
-          />
-          <MenuItem
             onClick={() => scrollToComponent("skills")}
             setActive={setActive}
             active={active}
