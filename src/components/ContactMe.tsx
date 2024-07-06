@@ -12,11 +12,11 @@ const ContactMe = () => {
         <title>Contact Me - Rafi Ferdos</title>
         <meta
           name="description"
-          content="Get in touch with Rafi Ferdos, a Full Stack Developer with 3 years of experience in building web applications."
+          content="Get in touch with Rafi Ferdos, a Full Stack Developer with hands on experience in building web applications."
         />
         <meta
           name="keywords"
-          content="Rafi Ferdos, Contact, Full Stack Developer, Web Developer"
+          content="Rafi Ferdos, Contact, Full Stack Developer, MERN Stack Developer, Web Developer"
         />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Contact Me - Rafi Ferdos" />
@@ -24,8 +24,8 @@ const ContactMe = () => {
           property="og:description"
           content="Get in touch with Rafi Ferdos, a Full Stack Developer with 3 years of experience in building web applications."
         />
-        <meta property="og:image" content="/path/to/og-image.jpg" />
-        <meta property="og:url" content="https://yourwebsite.com/contact" />
+        <meta property="og:image" content="../assets/images/rafi-3d.png" />
+        <meta property="og:url" content="https://rafiferdos/vercel.app/" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <div
