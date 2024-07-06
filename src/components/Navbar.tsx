@@ -60,13 +60,13 @@ const Navbar = ({ className }: { className?: string }) => {
             onClick={() => scrollToComponent("skills")}
             setActive={setActive}
             active={active}
-            item="My Skills"
+            item="Skills"
           />
           <MenuItem
             onClick={() => scrollToComponent("projects")}
             setActive={setActive}
             active={active}
-            item="My Projects"
+            item="Projects"
           />
           <MenuItem
             onClick={() => scrollToComponent("about_me")}
