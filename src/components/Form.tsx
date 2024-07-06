@@ -83,6 +83,7 @@ const Form = () => {
           placeholder="Your Name"
           value={formData.from_name}
           onChange={handleChange}
+          required
         />
       </label>
       <label className="input input-bordered flex items-center gap-2">
@@ -102,6 +103,7 @@ const Form = () => {
           placeholder="Email"
           value={formData.from_email}
           onChange={handleChange}
+          required
         />
       </label>
       <textarea
@@ -110,6 +112,7 @@ const Form = () => {
         placeholder="Write your message"
         value={formData.message}
         onChange={handleChange}
+        required
       ></textarea>
       <div className="mx-auto">
         <Button type="submit" className="gap-2">
