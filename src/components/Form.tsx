@@ -65,7 +65,7 @@ const Form = () => {
     <form
       ref={form}
       onSubmit={handleSend}
-      className="flex flex-col gap-4 px-4 py-12"
+      className="flex flex-col gap-4 px-7 py-12 w-full md:max-w-md sm:max-w-sm max-w-xs"
     >
       <label className="input input-bordered flex items-center gap-2">
         <svg

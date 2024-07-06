@@ -47,7 +47,7 @@ const ContactMe = () => {
           }
         ></div>
 
-        <div className="max-w-7xl mx-auto w-11/12 gap-10 project-card-container grid-cols-2">
+        <div className="max-w-7xl mx-auto w-11/12 gap-10 project-card-container grid-cols-1 md:grid-cols-2">
           <div
             className={
                 theme === "dark"
