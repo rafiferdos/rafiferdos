@@ -57,6 +57,8 @@ const Form = () => {
           });
         }
       );
+
+    setFormData({ from_name: "", from_email: "", message: "" });
   };
 
   return (
