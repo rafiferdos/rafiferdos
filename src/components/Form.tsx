@@ -1,8 +1,41 @@
 import { AiTwotoneMessage } from "react-icons/ai";
 import { Button } from "./ui/moving-border";
 import { BsSend } from "react-icons/bs";
+import toast, { Toaster } from "react-hot-toast";
+import { ThemeContext } from "@/providers/ThemeProvider";
+import { useContext, useRef } from "react";
 
 const Form = () => {
+
+  const { theme } = useContext(ThemeContext);
+
+  const form = useRef()
+
+  const handleSend = (e: any) => {
+    e.preventDefault();
+    emailjs
+      .sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form.current, {
+        publicKey: 'YOUR_PUBLIC_KEY',
+      })
+      .then(
+        () => {
+          console.log('SUCCESS!');
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+        },
+      );
+    toast.success("Message sent successfully!", {
+      style: {
+        borderRadius: "9999px",
+        backdropFilter: "blur(10px)",
+        background:
+          theme === "dark" ? "rgba(0, 0, 0, 0.2)" : "rgba(255, 255, 255, 0.2)",
+        color: theme === "dark" ? "#fff" : "#000",
+      },
+    });
+  };
+
   return (
     <div className="flex flex-col gap-4 px-4 py-12">
       <label className="input input-bordered flex items-center gap-2">
@@ -33,11 +66,12 @@ const Form = () => {
         placeholder="Write your message"
       ></textarea>
       <div className="mx-auto">
-        <Button className="gap-2">
+        <Button onClick={handleSend} className="gap-2">
           Send
           <BsSend />
         </Button>
       </div>
+      <Toaster />
     </div>
   );
 };

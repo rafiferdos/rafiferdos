@@ -9,7 +9,7 @@ import { SparklesCore } from "./ui/sparkles";
 const ContactMe = () => {
   const { theme } = useContext(ThemeContext);
   return (
-    <>
+    <div id="contact">
       <Head>
         <title>Contact Me - Rafi Ferdos</title>
         <meta
@@ -38,18 +38,10 @@ const ContactMe = () => {
         }
       >
         <h1 className="text-center lg:text-6xl md:text-3xl text-xl font-bold my-10 md:my-16">Contact</h1>
-        <FollowerPointerCard
-        title={
-          <TitleComponent
-            title={blogContent.author}
-            avatar={blogContent.authorAvatar}
-          />
-        }
-      >
 
         <div
           className={
-            theme === "dark"
+              theme === "dark"
               ? "absolute pointer-events-none inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"
               : "absolute pointer-events-none inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,white)]"
           }
@@ -58,7 +50,7 @@ const ContactMe = () => {
         <div className="max-w-7xl mx-auto w-11/12 gap-10 project-card-container grid-cols-2">
           <div
             className={
-              theme === "dark"
+                theme === "dark"
                 ? "flex items-center justify-center bg-blue-900/10 backdrop-blur-sm rounded-3xl transition-all hover:shadow-xl project-card-body"
                 : "flex items-center justify-center bg-blue-100/10 backdrop-blur-sm rounded-3xl transition-all hover:shadow-xl project-card-body"
             }
@@ -82,20 +74,19 @@ const ContactMe = () => {
               height={500}
             />
           </div>
-      </FollowerPointerCard>
           <div
             className={
-              theme === "dark"
+                theme === "dark"
                 ? "flex flex-col items-center justify-center bg-slate-950 rounded-3xl transition-all hover:shadow-xl pt-10 h-full project-card-body"
                 : "flex flex-col items-center justify-center bg-slate-100 rounded-3xl transition-all hover:shadow-xl pt-10 h-full project-card-body"
             }
-          >
+            >
             <h3 className="text-center lg:text-4xl md:text-2xl text-lg font-bold">Let&apos;s talk!</h3>
             <Form />
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
