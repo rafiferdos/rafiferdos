@@ -8,6 +8,7 @@ import Head from "next/head"; // Import the Head component
 import { useContext, useEffect } from "react";
 import "./globals.css";
 import Footer from "@/components/Footer";
+import { Analytics } from "@vercel/analytics/react"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <ThemeProvider>
+          <Analytics />
           <Head>
             <meta name="description" content="Rafi Ferdos portfolio website" />
           </Head>
