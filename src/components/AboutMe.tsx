@@ -49,7 +49,7 @@ const AboutMe = () => {
           <p className="opacity-70 mb-8">rafiferdos@gmail.com</p>
           <Link
             href={
-              "https://drive.google.com/file/d/1sz7Rr962BWTSx6I98NMJkOuyrGbqsVOd/view?usp=drive_link"
+              "https://drive.google.com/file/d/1Yv3WJtdwqYOJ3t7uq7GbKz6ByevbA8zC/view?usp=sharing"
             }
             target="_blank"
           >
