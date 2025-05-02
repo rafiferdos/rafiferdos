@@ -159,20 +159,17 @@ const Skills = () => {
     }
   }, [isInView, controls])
 
-  // Update the globeConfig object in the Skills component:
-
   const globeConfig = {
     pointSize: 4,
-    // Brighten the globe colors
-    globeColor: theme === 'dark' ? '#0f4c91' : '#1a73e8', // Brighter blue colors
+    globeColor: '#062056',
     showAtmosphere: true,
     atmosphereColor: '#FFFFFF',
-    atmosphereAltitude: 0.15, // Slightly increase atmosphere size
-    emissive: theme === 'dark' ? '#0a2e5c' : '#1a73e8',
-    emissiveIntensity: theme === 'dark' ? 0.2 : 0.1, // Increase intensity in dark mode
-    shininess: 0.7, // Reduce shininess
+    atmosphereAltitude: 0.1,
+    emissive: '#062056',
+    emissiveIntensity: 0.1,
+    shininess: 0.9,
     polygonColor: 'rgba(255,255,255,0.7)',
-    ambientLight: '#8ecdf8', // Brighter ambient light
+    ambientLight: '#38bdf8',
     directionalLeftLight: '#ffffff',
     directionalTopLight: '#ffffff',
     pointLight: '#ffffff',
@@ -183,13 +180,8 @@ const Skills = () => {
     initialPosition: { lat: 22.3193, lng: 114.1694 },
     autoRotate: true,
     autoRotateSpeed: 0.5,
-    // Add these properties to fix the egg shape issue
-    preserveDrawingBuffer: true,
-    antialias: true,
   }
-
   const colors = ['#06b6d4', '#3b82f6', '#6366f1']
-
   const sampleArcs = [
     {
       order: 1,
@@ -733,7 +725,7 @@ const Skills = () => {
             transition={{ duration: 0.7, delay: 0.3 }}
             className='col-span-1 lg:col-span-2 order-1 lg:order-2 flex items-center justify-center sticky top-20 self-start'
           >
-            <div className='w-full h-[300px] md:h-[400px] lg:h-[500px] relative'>
+            <div className='w-full aspect-square max-h-[500px] relative'>
               <div
                 className={
                   theme === 'dark'
@@ -741,7 +733,8 @@ const Skills = () => {
                     : 'absolute w-full bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent to-white z-10'
                 }
               />
-              <World data={sampleArcs} globeConfig={globeConfig} />
+              {/* Add a key based on theme to force re-render when theme changes */}
+              <World key={theme} data={sampleArcs} globeConfig={globeConfig} />
             </div>
           </motion.div>
         </div>
