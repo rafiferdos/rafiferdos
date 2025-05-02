@@ -159,17 +159,20 @@ const Skills = () => {
     }
   }, [isInView, controls])
 
+  // Update the globeConfig object in the Skills component:
+
   const globeConfig = {
     pointSize: 4,
-    globeColor: theme === 'dark' ? '#062056' : '#063081',
+    // Brighten the globe colors
+    globeColor: theme === 'dark' ? '#0f4c91' : '#1a73e8', // Brighter blue colors
     showAtmosphere: true,
     atmosphereColor: '#FFFFFF',
-    atmosphereAltitude: 0.1,
-    emissive: '#062056',
-    emissiveIntensity: 0.1,
-    shininess: 0.9,
+    atmosphereAltitude: 0.15, // Slightly increase atmosphere size
+    emissive: theme === 'dark' ? '#0a2e5c' : '#1a73e8',
+    emissiveIntensity: theme === 'dark' ? 0.2 : 0.1, // Increase intensity in dark mode
+    shininess: 0.7, // Reduce shininess
     polygonColor: 'rgba(255,255,255,0.7)',
-    ambientLight: '#38bdf8',
+    ambientLight: '#8ecdf8', // Brighter ambient light
     directionalLeftLight: '#ffffff',
     directionalTopLight: '#ffffff',
     pointLight: '#ffffff',
@@ -180,6 +183,9 @@ const Skills = () => {
     initialPosition: { lat: 22.3193, lng: 114.1694 },
     autoRotate: true,
     autoRotateSpeed: 0.5,
+    // Add these properties to fix the egg shape issue
+    preserveDrawingBuffer: true,
+    antialias: true,
   }
 
   const colors = ['#06b6d4', '#3b82f6', '#6366f1']
