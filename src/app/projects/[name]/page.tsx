@@ -1,15 +1,17 @@
 'use client'
 
 import ProjectDetails from '@/components/ProjectDetails'
-import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
 import { ThemeContext } from '@/providers/ThemeProvider'
 import { useContext } from 'react'
+import { use } from 'react'
 
 export default function ProjectPage({ params }: { params: { name: string } }) {
   const { theme } = useContext(ThemeContext)
-
-  console.log('Page rendering with params:', params) // Add debug log
+  
+  // Unwrap the params object using React.use()
+  const unwrappedParams = use(params)
+  const projectName = unwrappedParams.name
 
   return (
     <div
@@ -18,8 +20,7 @@ export default function ProjectPage({ params }: { params: { name: string } }) {
       }
     >
       <Navbar />
-      <ProjectDetails projectName={params.name} />
-      <Footer />
+      <ProjectDetails projectName={projectName} />
     </div>
   )
 }

@@ -85,8 +85,9 @@ const Projects = () => {
             </div>
           </div>
         </motion.div>
+     
         <div className='flex items-center justify-center w-11/12 mx-auto'>
-          <div className='grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-4 md:gap-12 lg:gap-20'>
+          <div className='grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-4 md:gap-12 lg:gap-20 auto-rows-fr'>
             {projects.map((project) => {
               return <ProjectCard key={project.name} project={project} />
             })}
