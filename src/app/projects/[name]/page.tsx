@@ -1,24 +1,17 @@
-'use client'
-
 import ProjectDetails from '@/components/ProjectDetails'
 import Navbar from '@/components/Navbar'
-import { ThemeContext } from '@/providers/ThemeProvider'
-import { useContext } from 'react'
-import { use } from 'react'
 
-export default function ProjectPage({ params }: { params: { name: string } }) {
-  const { theme } = useContext(ThemeContext)
-  
-  // Unwrap the params object using React.use()
-  const unwrappedParams = use(params)
-  const projectName = unwrappedParams.name
+// Define the correct types for the page props
+type ProjectPageProps = {
+  params: { name: string }
+}
+
+export default function ProjectPage({ params }: ProjectPageProps) {
+  // In a server component, you can access params directly
+  const projectName = params.name
 
   return (
-    <div
-      className={
-        theme === 'dark' ? 'bg-black text-white' : 'bg-white text-black'
-      }
-    >
+    <div>
       <Navbar />
       <ProjectDetails projectName={projectName} />
     </div>
