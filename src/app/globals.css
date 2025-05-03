@@ -57,10 +57,3 @@ body {
   height: 100%;
 }
 
-/* Add this to your globals.css if needed */
-.meteors-container {
-  position: relative;
-  min-height: 100%;
-  overflow: hidden;
-  pointer-events: none;
-}
