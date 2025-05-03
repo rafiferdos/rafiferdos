@@ -19,10 +19,6 @@ const nextConfig = {
       },
     ],
   },
-  experimental: {
-    // Add this to handle params in client components properly
-    missingSuspenseWithCSRBailout: false,
-  },
 }
 
 export default nextConfig;
