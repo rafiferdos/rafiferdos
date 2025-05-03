@@ -150,7 +150,7 @@ const AboutMe = () => {
               href='https://drive.google.com/file/d/1Yv3WJtdwqYOJ3t7uq7GbKz6ByevbA8zC/view?usp=sharing'
               target='_blank'
             >
-              <Button className='animate-shimmer bg-gradient-to-r from-blue-600/50 to-purple-600/50'>
+              <Button className='animate-shimmer'>
                 Resume
               </Button>
             </Link>
