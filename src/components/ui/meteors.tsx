@@ -1,6 +1,5 @@
 import { cn } from "@/utils/cn";
-import clsx from "clsx";
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 export const Meteors = ({
   number,
@@ -9,10 +8,19 @@ export const Meteors = ({
   number?: number;
   className?: string;
 }) => {
-  const meteors = new Array(number || 20).fill(true);
-  return (
-    <>
-      {meteors.map((el, idx) => (
+  // Create state to store client-side rendered meteors
+  const [meteorElements, setMeteorElements] = useState<React.ReactNode[]>([]);
+  
+  // Only generate meteors on the client side
+  useEffect(() => {
+    const meteors = new Array(number || 20).fill(true);
+    
+    const elements = meteors.map((_, idx) => {
+      const left = Math.floor(Math.random() * (400 - -400) + -400);
+      const delay = Math.random() * (0.8 - 0.2) + 0.2;
+      const duration = Math.floor(Math.random() * (10 - 2) + 2);
+      
+      return (
         <span
           key={"meteor" + idx}
           className={cn(
@@ -22,12 +30,30 @@ export const Meteors = ({
           )}
           style={{
             top: 0,
-            left: Math.floor(Math.random() * (400 - -400) + -400) + "px",
-            animationDelay: Math.random() * (0.8 - 0.2) + 0.2 + "s",
-            animationDuration: Math.floor(Math.random() * (10 - 2) + 2) + "s",
+            left: left + "px",
+            animationDelay: delay + "s",
+            animationDuration: duration + "s",
           }}
         ></span>
-      ))}
-    </>
+      );
+    });
+    
+    setMeteorElements(elements);
+  }, [number, className]);
+
+  // Return a placeholder during SSR to avoid hydration issues
+  if (typeof window === 'undefined') {
+    return (
+      <div className="meteors-container relative w-full h-full">
+        {/* Empty container for SSR */}
+      </div>
+    );
+  }
+
+  // Return client-side rendered meteors
+  return (
+    <div className="meteors-container relative w-full h-full">
+      {meteorElements}
+    </div>
   );
 };

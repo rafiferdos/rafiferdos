@@ -5,6 +5,7 @@ import { motion, useAnimation, useInView } from 'framer-motion'
 import dynamic from 'next/dynamic'
 import React, { useContext, useEffect, useRef } from 'react'
 import { TextGenerateEffect } from './ui/text-generate-effect'
+import { GlowingEffect } from './ui/glowing-effect'
 import {
   FaReact,
   FaNodeJs,
@@ -12,6 +13,12 @@ import {
   FaGitAlt,
   FaHtml5,
   FaCss3Alt,
+  FaBrain,
+  FaUsers,
+  FaLightbulb,
+  FaTasks,
+  FaClock,
+  FaComments,
 } from 'react-icons/fa'
 import {
   SiJavascript,
@@ -29,11 +36,21 @@ import {
   SiJson,
   SiMongoose,
 } from 'react-icons/si'
+import ClientOnly from './ClientOnly'
 
 const World = dynamic(() => import('./ui/globe').then((m) => m.World), {
   ssr: false,
+  loading: () => (
+    <div className='w-full h-full flex items-center justify-center'>
+      <div className='animate-pulse flex flex-col items-center'>
+        <div className='w-40 h-40 rounded-full bg-blue-500/20'></div>
+        <div className='mt-4 text-sm text-slate-500'>
+          Loading visualization...
+        </div>
+      </div>
+    </div>
+  ),
 })
-
 interface SkillCardProps {
   icon: React.ReactNode
   name: string
@@ -52,47 +69,159 @@ const SkillCard = ({ icon, name, level, color, index }: SkillCardProps) => {
       ref={ref}
       initial={{ opacity: 0, y: 20 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-      transition={{ duration: 0.4, delay: (index ?? 0) * 0.1 }}
+      transition={{
+        duration: 0.4,
+        delay: (index ?? 0) * 0.1,
+        type: 'spring',
+        stiffness: 100,
+      }}
       whileHover={{
         y: -5,
+        scale: 1.02,
         boxShadow:
           theme === 'dark'
             ? '0 10px 15px -3px rgba(0, 0, 0, 0.4)'
             : '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
         transition: { duration: 0.2 },
       }}
-      className={`rounded-xl p-5 flex flex-col items-center justify-center gap-3 border ${
+      className={`rounded-xl p-5 flex flex-col items-center justify-center gap-3 border relative overflow-hidden ${
         theme === 'dark'
           ? 'bg-slate-900/80 hover:bg-slate-800 border-slate-700'
-          : 'bg-white hover:bg-slate-50 border-slate-200'
+          : 'bg-white/90 hover:bg-slate-50 border-slate-200'
       } backdrop-blur-sm transition-all duration-300`}
     >
+      {/* Glowing effect container */}
+      <div className='absolute inset-0 -z-10'>
+        <GlowingEffect
+          blur={20}
+          disabled={false}
+          glow={true}
+          borderWidth={2}
+          spread={40}
+          movementDuration={2}
+          variant={theme === 'dark' ? 'default' : 'white'}
+        />
+      </div>
+
       <motion.div
         className='text-5xl'
         style={{ color }}
         initial={{ scale: 1 }}
-        whileHover={{ scale: 1.15, rotate: 5 }}
-        transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+        whileHover={{
+          scale: 1.15,
+          rotate: 5,
+          filter: `drop-shadow(0 0 8px ${color})`,
+        }}
+        transition={{
+          type: 'spring',
+          stiffness: 400,
+          damping: 10,
+        }}
       >
         {icon}
       </motion.div>
+
       <h3 className='font-semibold mt-1'>{name}</h3>
+
       <div className='w-full bg-gray-300/30 rounded-full h-1.5 dark:bg-gray-700/40 overflow-hidden'>
         <motion.div
           initial={{ width: 0 }}
           animate={isInView ? { width: `${level}%` } : { width: 0 }}
           transition={{
-            duration: 1,
+            duration: 1.2,
             delay: (index ?? 0) * 0.1 + 0.3,
             ease: 'easeOut',
           }}
-          className='h-1.5 rounded-full'
+          className='h-1.5 rounded-full relative'
           style={{ backgroundColor: color }}
-        ></motion.div>
+        >
+          {/* Animated glow effect for progress bar */}
+          <motion.div
+            className='absolute top-0 right-0 h-full w-5 rounded-full'
+            style={{
+              background: `linear-gradient(90deg, transparent, ${color}, transparent)`,
+              filter: 'blur(2px)',
+            }}
+            animate={{
+              x: ['-100%', '400%'],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              delay: (index ?? 0) * 0.2 + 1,
+            }}
+          />
+        </motion.div>
       </div>
     </motion.div>
   )
 }
+
+const SoftSkillCard = ({
+  icon,
+  name,
+  color,
+  index,
+}: {
+  icon: React.ReactNode
+  name: string
+  color: string
+  index?: number
+}) => {
+  const { theme } = useContext(ThemeContext)
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: '-50px' })
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{
+        duration: 0.4,
+        delay: (index ?? 0) * 0.1,
+        type: 'spring',
+        stiffness: 100,
+      }}
+      whileHover={{
+        y: -5,
+        scale: 1.02,
+        boxShadow:
+          theme === 'dark'
+            ? '0 10px 15px -3px rgba(0, 0, 0, 0.4)'
+            : '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
+        transition: { duration: 0.2 },
+      }}
+      className={`rounded-xl p-4 flex items-center gap-4 border relative overflow-hidden ${
+        theme === 'dark'
+          ? 'bg-slate-900/80 hover:bg-slate-800 border-slate-700'
+          : 'bg-white/90 hover:bg-slate-50 border-slate-200'
+      } backdrop-blur-sm transition-all duration-300`}
+    >
+      <motion.div
+        className='text-3xl'
+        style={{ color }}
+        initial={{ scale: 1 }}
+        whileHover={{
+          scale: 1.15,
+          filter: `drop-shadow(0 0 6px ${color})`,
+        }}
+      >
+        {icon}
+      </motion.div>
+      <h3 className='font-medium'>{name}</h3>
+    </motion.div>
+  )
+}
+
+const softSkills = [
+  { icon: <FaBrain />, name: 'Problem Solving', color: '#3B82F6' },
+  { icon: <FaUsers />, name: 'Team Collaboration', color: '#10B981' },
+  { icon: <FaLightbulb />, name: 'Creativity', color: '#F59E0B' },
+  { icon: <FaTasks />, name: 'Project Management', color: '#8B5CF6' },
+  { icon: <FaClock />, name: 'Time Management', color: '#EC4899' },
+  { icon: <FaComments />, name: 'Communication', color: '#14B8A6' },
+]
 
 interface SkillCategoryProps {
   title: string
@@ -117,23 +246,41 @@ const SkillCategory = ({ title, children, index }: SkillCategoryProps) => {
       ref={ref}
       initial={{ opacity: 0, y: 20 }}
       animate={controls}
-      transition={{ duration: 0.5, delay: index * 0.2 }}
+      transition={{
+        duration: 0.5,
+        delay: index * 0.3,
+        type: 'spring',
+        stiffness: 100,
+      }}
       className='w-full mb-12'
     >
       <motion.h3
         initial={{ opacity: 0, x: -20 }}
         animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-        transition={{ duration: 0.5 }}
+        transition={{
+          duration: 0.5,
+          type: 'spring',
+          stiffness: 120,
+        }}
         className={`text-xl font-bold mb-6 flex items-center ${
           theme === 'dark' ? 'text-blue-400' : 'text-blue-600'
         }`}
       >
-        <span
-          className={`inline-block w-8 h-0.5 mr-3 ${
+        <motion.span
+          initial={{ width: 0 }}
+          animate={{ width: '2rem' }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className={`inline-block h-0.5 mr-3 ${
             theme === 'dark' ? 'bg-blue-400' : 'bg-blue-600'
           }`}
-        ></span>
-        {title}
+        ></motion.span>
+        <motion.span
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
+          {title}
+        </motion.span>
       </motion.h3>
       <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4'>
         {React.Children.map(children, (child, i) => {
@@ -160,28 +307,42 @@ const Skills = () => {
   }, [isInView, controls])
 
   const globeConfig = {
-    pointSize: 4,
-    globeColor: '#062056',
+    pointSize: 4.5,
+    globeColor: theme === 'dark' ? '#062056' : '#2a4d8f',
     showAtmosphere: true,
-    atmosphereColor: '#FFFFFF',
-    atmosphereAltitude: 0.1,
-    emissive: '#062056',
-    emissiveIntensity: 0.1,
-    shininess: 0.9,
-    polygonColor: 'rgba(255,255,255,0.7)',
-    ambientLight: '#38bdf8',
+    atmosphereColor: theme === 'dark' ? '#FFFFFF' : '#e8f0ff',
+    atmosphereAltitude: theme === 'dark' ? 0.12 : 0.13,
+    emissive: theme === 'dark' ? '#062056' : '#2a4d8f',
+    emissiveIntensity: theme === 'dark' ? 0.15 : 0.08,
+    shininess: theme === 'dark' ? 0.9 : 0.7,
+    polygonColor:
+      theme === 'dark' ? 'rgba(255,255,255,0.7)' : 'rgba(255,255,255,0.85)',
+    ambientLight: theme === 'dark' ? '#38bdf8' : '#cce0ff',
     directionalLeftLight: '#ffffff',
     directionalTopLight: '#ffffff',
-    pointLight: '#ffffff',
+    pointLight: theme === 'dark' ? '#ffffff' : '#f5f5f5',
     arcTime: 1000,
     arcLength: 0.9,
-    rings: 1,
+    rings: theme === 'dark' ? 1 : 2,
     maxRings: 3,
     initialPosition: { lat: 22.3193, lng: 114.1694 },
     autoRotate: true,
     autoRotateSpeed: 0.5,
+    preserveDrawingBuffer: true,
+    antialias: true,
   }
-  const colors = ['#06b6d4', '#3b82f6', '#6366f1']
+
+  const colors =
+    theme === 'dark'
+      ? ['#06b6d4', '#3b82f6', '#6366f1']
+      : ['#0369a1', '#2563eb', '#4f46e5']
+
+  // Helper function to safely get a random color
+  const getRandomColor = (): string => {
+    // Safely get a random color from the colors array
+    return colors[Math.floor(Math.random() * colors.length)]
+  }
+
   const sampleArcs = [
     {
       order: 1,
@@ -190,7 +351,7 @@ const Skills = () => {
       endLat: -22.9068,
       endLng: -43.1729,
       arcAlt: 0.1,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 1,
@@ -199,7 +360,7 @@ const Skills = () => {
       endLat: 3.139,
       endLng: 101.6869,
       arcAlt: 0.2,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 1,
@@ -208,7 +369,7 @@ const Skills = () => {
       endLat: -1.303396,
       endLng: 36.852443,
       arcAlt: 0.5,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 2,
@@ -217,7 +378,7 @@ const Skills = () => {
       endLat: 35.6762,
       endLng: 139.6503,
       arcAlt: 0.2,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 2,
@@ -226,7 +387,7 @@ const Skills = () => {
       endLat: 3.139,
       endLng: 101.6869,
       arcAlt: 0.3,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 2,
@@ -235,7 +396,7 @@ const Skills = () => {
       endLat: 36.162809,
       endLng: -115.119411,
       arcAlt: 0.3,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 3,
@@ -244,7 +405,7 @@ const Skills = () => {
       endLat: 22.3193,
       endLng: 114.1694,
       arcAlt: 0.3,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 3,
@@ -253,7 +414,7 @@ const Skills = () => {
       endLat: 40.7128,
       endLng: -74.006,
       arcAlt: 0.3,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 3,
@@ -262,7 +423,7 @@ const Skills = () => {
       endLat: 51.5072,
       endLng: -0.1276,
       arcAlt: 0.3,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 4,
@@ -271,7 +432,7 @@ const Skills = () => {
       endLat: -15.595412,
       endLng: -56.05918,
       arcAlt: 0.5,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 4,
@@ -280,7 +441,7 @@ const Skills = () => {
       endLat: 22.3193,
       endLng: 114.1694,
       arcAlt: 0.7,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 4,
@@ -289,7 +450,7 @@ const Skills = () => {
       endLat: 48.8566,
       endLng: -2.3522,
       arcAlt: 0.1,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 5,
@@ -298,7 +459,7 @@ const Skills = () => {
       endLat: 51.5072,
       endLng: -0.1276,
       arcAlt: 0.3,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 5,
@@ -307,7 +468,7 @@ const Skills = () => {
       endLat: -33.8688,
       endLng: 151.2093,
       arcAlt: 0.2,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 5,
@@ -316,7 +477,7 @@ const Skills = () => {
       endLat: 48.8566,
       endLng: -2.3522,
       arcAlt: 0.2,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 6,
@@ -325,7 +486,7 @@ const Skills = () => {
       endLat: 1.094136,
       endLng: -63.34546,
       arcAlt: 0.7,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 6,
@@ -334,7 +495,7 @@ const Skills = () => {
       endLat: 35.6762,
       endLng: 139.6503,
       arcAlt: 0.1,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 6,
@@ -343,7 +504,7 @@ const Skills = () => {
       endLat: 51.5072,
       endLng: -0.1276,
       arcAlt: 0.3,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 7,
@@ -352,7 +513,7 @@ const Skills = () => {
       endLat: -15.595412,
       endLng: -56.05918,
       arcAlt: 0.1,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 7,
@@ -361,7 +522,7 @@ const Skills = () => {
       endLat: 52.52,
       endLng: 13.405,
       arcAlt: 0.1,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 7,
@@ -370,7 +531,7 @@ const Skills = () => {
       endLat: 34.0522,
       endLng: -118.2437,
       arcAlt: 0.2,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 8,
@@ -379,7 +540,7 @@ const Skills = () => {
       endLat: -33.936138,
       endLng: 18.436529,
       arcAlt: 0.2,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 8,
@@ -388,7 +549,7 @@ const Skills = () => {
       endLat: 52.3676,
       endLng: 4.9041,
       arcAlt: 0.2,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 8,
@@ -397,7 +558,7 @@ const Skills = () => {
       endLat: 40.7128,
       endLng: -74.006,
       arcAlt: 0.5,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 9,
@@ -406,7 +567,7 @@ const Skills = () => {
       endLat: 34.0522,
       endLng: -118.2437,
       arcAlt: 0.2,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 9,
@@ -415,7 +576,7 @@ const Skills = () => {
       endLat: -22.9068,
       endLng: -43.1729,
       arcAlt: 0.7,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 9,
@@ -424,7 +585,7 @@ const Skills = () => {
       endLat: -34.6037,
       endLng: -58.3816,
       arcAlt: 0.5,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 10,
@@ -433,7 +594,7 @@ const Skills = () => {
       endLat: 28.6139,
       endLng: 77.209,
       arcAlt: 0.7,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 10,
@@ -442,7 +603,7 @@ const Skills = () => {
       endLat: 31.2304,
       endLng: 121.4737,
       arcAlt: 0.3,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 10,
@@ -451,7 +612,7 @@ const Skills = () => {
       endLat: 52.3676,
       endLng: 4.9041,
       arcAlt: 0.3,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 11,
@@ -460,7 +621,7 @@ const Skills = () => {
       endLat: 34.0522,
       endLng: -118.2437,
       arcAlt: 0.2,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 11,
@@ -469,7 +630,7 @@ const Skills = () => {
       endLat: 31.2304,
       endLng: 121.4737,
       arcAlt: 0.2,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 11,
@@ -478,7 +639,7 @@ const Skills = () => {
       endLat: 1.3521,
       endLng: 103.8198,
       arcAlt: 0.2,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 12,
@@ -487,7 +648,7 @@ const Skills = () => {
       endLat: 37.7749,
       endLng: -122.4194,
       arcAlt: 0.1,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 12,
@@ -496,7 +657,7 @@ const Skills = () => {
       endLat: 22.3193,
       endLng: 114.1694,
       arcAlt: 0.2,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 12,
@@ -505,7 +666,7 @@ const Skills = () => {
       endLat: 34.0522,
       endLng: -118.2437,
       arcAlt: 0.3,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 13,
@@ -514,7 +675,7 @@ const Skills = () => {
       endLat: 22.3193,
       endLng: 114.1694,
       arcAlt: 0.3,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 13,
@@ -523,7 +684,7 @@ const Skills = () => {
       endLat: 35.6762,
       endLng: 139.6503,
       arcAlt: 0.3,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 13,
@@ -532,7 +693,7 @@ const Skills = () => {
       endLat: -34.6037,
       endLng: -58.3816,
       arcAlt: 0.1,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
     {
       order: 14,
@@ -541,7 +702,7 @@ const Skills = () => {
       endLat: 21.395643,
       endLng: 39.883798,
       arcAlt: 0.3,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: getRandomColor(),
     },
   ]
 
@@ -567,12 +728,17 @@ const Skills = () => {
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
-          transition={{ duration: 0.7, delay: 0.1 }}
+          transition={{ duration: 0.7, delay: 0.1, type: 'spring' }}
           className='text-center mb-16'
         >
-          <h2 className='text-4xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-500 mb-4'>
+          <motion.h2
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.2, type: 'spring' }}
+            className='text-4xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-500 mb-4'
+          >
             Technical Expertise
-          </h2>
+          </motion.h2>
           <div
             className={`text-center text-base md:text-lg font-normal ${
               theme === 'dark' ? 'text-slate-300' : 'text-slate-600'
@@ -723,32 +889,140 @@ const Skills = () => {
               isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }
             }
             transition={{ duration: 0.7, delay: 0.3 }}
-            className='col-span-1 lg:col-span-2 order-1 lg:order-2 flex items-center justify-center sticky top-20 self-start'
+            className='col-span-1 lg:col-span-2 order-1 lg:order-2 flex flex-col items-center'
           >
-            <div className='w-full aspect-square max-h-[500px] relative'>
-              <div
-                className={
-                  theme === 'dark'
-                    ? 'absolute w-full bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent to-black z-10'
-                    : 'absolute w-full bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent to-white z-10'
-                }
-              />
-              {/* Add a key based on theme to force re-render when theme changes */}
-              <World key={theme} data={sampleArcs} globeConfig={globeConfig} />
+            {/* Globe Container */}
+            <div className='sticky top-20 self-start w-full mb-8'>
+              <motion.div
+                suppressHydrationWarning
+                className='w-full aspect-square max-h-[500px] relative rounded-full overflow-hidden shadow-lg'
+                animate={{
+                  boxShadow: [
+                    '0 0 10px 2px rgba(59, 130, 246, 0.3)',
+                    '0 0 20px 2px rgba(59, 130, 246, 0.4)',
+                    '0 0 10px 2px rgba(59, 130, 246, 0.3)',
+                  ],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                }}
+              >
+                <div
+                  className={
+                    theme === 'dark'
+                      ? 'absolute w-full bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent to-black z-10'
+                      : 'absolute w-full bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent to-white z-10'
+                  }
+                />
+                <div suppressHydrationWarning className='w-full h-full'>
+                  <ClientOnly>
+                    {() => (
+                      <World
+                        key={theme}
+                        data={sampleArcs}
+                        globeConfig={{
+                          ...globeConfig,
+                        }}
+                      />
+                    )}
+                  </ClientOnly>
+                </div>
+              </motion.div>
             </div>
+
+            {/* Soft Skills Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.7, delay: 0.5 }}
+              className='w-full'
+            >
+              <motion.h3
+                initial={{ opacity: 0, x: -20 }}
+                animate={
+                  isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }
+                }
+                transition={{
+                  duration: 0.5,
+                  type: 'spring',
+                  stiffness: 120,
+                }}
+                className={`text-xl font-bold mb-6 flex items-center ${
+                  theme === 'dark' ? 'text-blue-400' : 'text-blue-600'
+                }`}
+              >
+                <motion.span
+                  initial={{ width: 0 }}
+                  animate={{ width: '2rem' }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className={`inline-block h-0.5 mr-3 ${
+                    theme === 'dark' ? 'bg-blue-400' : 'bg-blue-600'
+                  }`}
+                ></motion.span>
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                >
+                  Soft Skills
+                </motion.span>
+              </motion.h3>
+              <div className='grid grid-cols-1 gap-3'>
+                {softSkills.map((skill, index) => (
+                  <SoftSkillCard
+                    key={skill.name}
+                    icon={skill.icon}
+                    name={skill.name}
+                    color={skill.color}
+                    index={index}
+                  />
+                ))}
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </motion.div>
 
-      {/* Background decoration */}
-      <div className='absolute top-1/3 -left-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-pulse' />
-      <div
-        className='absolute bottom-1/3 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-pulse'
-        style={{ animationDelay: '2s' }}
+      {/* Animated background decorations */}
+      <motion.div
+        className='absolute top-1/3 -left-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-20'
+        animate={{
+          opacity: [0.15, 0.3, 0.15],
+          scale: [1, 1.1, 1],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
       />
-      <div
-        className='absolute top-2/3 left-1/3 w-64 h-64 bg-cyan-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-10 animate-pulse'
-        style={{ animationDelay: '4s' }}
+      <motion.div
+        className='absolute bottom-1/3 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-20'
+        animate={{
+          opacity: [0.15, 0.25, 0.15],
+          scale: [1, 1.15, 1],
+        }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          ease: 'easeInOut',
+          delay: 2,
+        }}
+      />
+      <motion.div
+        className='absolute top-2/3 left-1/3 w-64 h-64 bg-cyan-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-10'
+        animate={{
+          opacity: [0.05, 0.15, 0.05],
+          scale: [1, 1.2, 1],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: 'easeInOut',
+          delay: 4,
+        }}
       />
     </div>
   )

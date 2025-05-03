@@ -1,3 +1,4 @@
+/* filepath: e:\Web_Development\Portfolio\rafiferdos\src\app\globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -54,4 +55,12 @@ body {
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+}
+
+/* Add this to your globals.css if needed */
+.meteors-container {
+  position: relative;
+  min-height: 100%;
+  overflow: hidden;
+  pointer-events: none;
 }
