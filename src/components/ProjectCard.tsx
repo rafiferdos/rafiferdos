@@ -21,8 +21,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
     name.toLowerCase().replace(/ /g, '-')
   )}`
 
+  const handleCardClick = () => {
+    router.push(projectPath)
+  }
+
   return (
-    <Link href={projectPath} className='block cursor-pointer h-full'>
+    // Remove the Link wrapper and replace with a div
+    <div className='block cursor-pointer h-full' onClick={handleCardClick}>
       <CardContainer className='inter-var project-card-container h-full'>
         <CardBody
           className={
@@ -69,9 +74,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             className='flex justify-between items-center mt-6'
             onClick={(e) => e.stopPropagation()}
           >
+            {/* Use button styling instead of Link for external links */}
             <CardItem
               translateZ={20}
-              as={Link}
+              as='a' // Change to 'a' instead of Link
               href={link}
               target='__blank'
               className='px-4 py-2 rounded-xl text-xs font-normal flex-grow-0'
@@ -80,7 +86,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             </CardItem>
             <CardItem
               translateZ={20}
-              as={Link}
+              as='a' // Change to 'a' instead of Link
               href={github_link}
               target='__blank'
               className={
@@ -94,7 +100,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           </div>
         </CardBody>
       </CardContainer>
-    </Link>
+    </div>
   )
 }
 
