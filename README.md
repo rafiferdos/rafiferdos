@@ -1,14 +1,14 @@
 # <div align="center">⚡ ℝ𝔸𝔽𝕀 𝔽𝔼ℝ𝔻𝕆𝕊 ⚡</div>
 
 <div align="center">
-  <a href="https://rafiferdos.netlify.app/">
+  <a href="https://rafiferdos.vercel.app/">
     <img src="./src/assets/images/rafi-banner.png" alt="Rafi Ferdos - MERN Stack Developer" width="100%" style="border-radius:15px; margin-bottom:20px;"/>
   </a>
 </div>
 
 <div align="center">
   
-  [![Portfolio](https://img.shields.io/badge/Portfolio-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://rafiferdos.netlify.app/)
+  [![Portfolio](https://img.shields.io/badge/Portfolio-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://rafiferdos.vercel.app/)
   [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/rafiferdos)
   [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/rafiferdos)
   
@@ -84,7 +84,7 @@ I'm a **Full-Stack Web Developer** specializing in the **MERN Stack** with a pas
   [![LinkedIn](https://img.shields.io/badge/LinkedIn-rafiferdos-0A66C2?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/rafiferdos)
   [![Facebook](https://img.shields.io/badge/Facebook-rafiferdos2-1877F2?style=for-the-badge&logo=facebook)](https://facebook.com/rafiferdos2)
   [![GitHub](https://img.shields.io/badge/GitHub-rafiferdos-181717?style=for-the-badge&logo=github)](https://github.com/rafiferdos/rafiferdos/issues)
-  [![Portfolio](https://img.shields.io/badge/Portfolio-Visit%20Site-00C7B7?style=for-the-badge&logo=netlify)](https://rafiferdos.netlify.app/)
+  [![Portfolio](https://img.shields.io/badge/Portfolio-Visit%20Site-00C7B7?style=for-the-badge&logo=netlify)](https://rafiferdos.vercel.app/)
   
 </div>
 
