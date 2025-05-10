@@ -88,10 +88,8 @@ const BlogPage = () => {
           }`}
           style={{
             backgroundSize: "30px 30px",
-            backgroundImage:
-              "linear-gradient(to right, rgba(128,128,128,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(128,128,128,0.05) 1px, transparent 1px)",
-            maskImage:
-              "radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 0%, transparent 80%)",
+            backgroundImage: `linear-gradient(to right, rgba(128,128,128,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(128,128,128,0.05) 1px, transparent 1px)`,
+            maskImage: `radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 0%, transparent 80%)`,
           }}
         />
       </div>

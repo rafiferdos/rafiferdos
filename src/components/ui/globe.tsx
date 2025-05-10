@@ -1,10 +1,10 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
-import { Color, Scene, Fog, PerspectiveCamera, Vector3, Group } from "three";
-import ThreeGlobe from "three-globe";
-import { useThree, Canvas, extend } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
 import countries from "@/data/globe.json";
+import { OrbitControls } from "@react-three/drei";
+import { Canvas, extend, useThree } from "@react-three/fiber";
+import { useEffect, useRef, useState } from "react";
+import { Color, Fog, Group, PerspectiveCamera, Scene, Vector3 } from "three";
+import ThreeGlobe from "three-globe";
 declare module "@react-three/fiber" {
   interface ThreeElements {
     threeGlobe: ThreeElements["mesh"] & {
@@ -145,9 +145,9 @@ export function Globe({ globeConfig, data }: WorldProps) {
       (v, i, a) =>
         a.findIndex((v2) =>
           ["lat", "lng"].every(
-            (k) => v2[k as "lat" | "lng"] === v[k as "lat" | "lng"],
-          ),
-        ) === i,
+            (k) => v2[k as "lat" | "lng"] === v[k as "lat" | "lng"]
+          )
+        ) === i
     );
 
     globeRef.current
@@ -186,7 +186,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
       .ringMaxRadius(defaultProps.maxRings)
       .ringPropagationSpeed(RING_PROPAGATION_SPEED)
       .ringRepeatPeriod(
-        (defaultProps.arcTime * defaultProps.arcLength) / defaultProps.rings,
+        (defaultProps.arcTime * defaultProps.arcLength) / defaultProps.rings
       );
   }, [
     isInitialized,
@@ -212,7 +212,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
       const newNumbersOfRings = genRandomNumbers(
         0,
         data.length,
-        Math.floor((data.length * 4) / 5),
+        Math.floor((data.length * 4) / 5)
       );
 
       const ringsData = data
@@ -236,12 +236,11 @@ export function Globe({ globeConfig, data }: WorldProps) {
 
 export function WebGLRendererConfig() {
   const { gl, size } = useThree();
-
   useEffect(() => {
     gl.setPixelRatio(window.devicePixelRatio);
     gl.setSize(size.width, size.height);
     gl.setClearColor(0xffaaff, 0);
-  }, []);
+  }, [gl, size.width, size.height]);
 
   return null;
 }
@@ -252,12 +251,12 @@ export function World(props: WorldProps) {
   const { globeConfig } = props;
   const scene = new Scene();
   scene.fog = new Fog(0xffffff, 400, 2000);
-  
+
   return (
-    <Canvas 
-      scene={scene} 
+    <Canvas
+      scene={scene}
       camera={new PerspectiveCamera(50, aspect, 180, 1800)}
-      style={{ width: '100%', height: '100%' }} // Add explicit styling
+      style={{ width: "100%", height: "100%" }} // Add explicit styling
       resize={{ scroll: false, offsetSize: true }} // Better resize handling
     >
       <WebGLRendererConfig />

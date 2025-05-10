@@ -43,6 +43,7 @@ export const TypewriterEffect = ({
         }
       );
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isInView]);
 
   const renderWords = () => {
@@ -111,7 +112,7 @@ export const TypewriterEffectSmooth = ({
   className?: string;
   cursorClassName?: string;
 }) => {
-  const {theme} = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   // split text inside of words into array of characters
   const wordsArray = words.map((word) => {
     return {
@@ -120,7 +121,10 @@ export const TypewriterEffectSmooth = ({
     };
   });
   const renderWords = () => {
-    const changeTextColor = theme === 'dark' ? 'text-3xl md:text-4xl lg:text-6xl' : 'text-3xl md:text-4xl lg:text-6xl'
+    const changeTextColor =
+      theme === "dark"
+        ? "text-3xl md:text-4xl lg:text-6xl"
+        : "text-3xl md:text-4xl lg:text-6xl";
     return (
       <div>
         {wordsArray.map((word, idx) => {

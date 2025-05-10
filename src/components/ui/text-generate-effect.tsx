@@ -1,8 +1,8 @@
 "use client";
-import { useContext, useEffect } from "react";
-import { motion, stagger, useAnimate } from "framer-motion";
-import { cn } from "@/utils/cn";
 import { ThemeContext } from "@/providers/ThemeProvider";
+import { cn } from "@/utils/cn";
+import { motion, stagger, useAnimate } from "framer-motion";
+import { useContext, useEffect } from "react";
 
 export const TextGenerateEffect = ({
   words,
@@ -11,7 +11,7 @@ export const TextGenerateEffect = ({
   words: string;
   className?: string;
 }) => {
-  const {theme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   const [scope, animate] = useAnimate();
   let wordsArray = words.split(" ");
   useEffect(() => {
@@ -25,7 +25,8 @@ export const TextGenerateEffect = ({
         delay: stagger(0.2),
       }
     );
-  }, [scope.current]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const renderWords = () => {
     return (
@@ -34,7 +35,11 @@ export const TextGenerateEffect = ({
           return (
             <motion.span
               key={word + idx}
-              className={theme === "dark" ? "text-white opacity-0 font-normal text-sm sm:text-lg md:text-xl lg:text-2xl" : "text-black opacity-0 font-normal text-sm sm:text-lg md:text-xl lg:text-2xl"}
+              className={
+                theme === "dark"
+                  ? "text-white opacity-0 font-normal text-sm sm:text-lg md:text-xl lg:text-2xl"
+                  : "text-black opacity-0 font-normal text-sm sm:text-lg md:text-xl lg:text-2xl"
+              }
             >
               {word}{" "}
             </motion.span>

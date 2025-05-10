@@ -138,8 +138,9 @@ export default function BlogPostPage(props: PageProps) {
             Article Not Found
           </h1>
           <p className="mb-6 max-w-md opacity-80">
-            We couldn't find the blog post you're looking for. It might have
-            been moved or deleted.
+            {" "}
+            We couldn&apos;t find the blog post you&apos;re looking for. It
+            might have been moved or deleted.
           </p>
           <Link href="/blog">
             <Button
@@ -195,10 +196,8 @@ export default function BlogPostPage(props: PageProps) {
           }`}
           style={{
             backgroundSize: "30px 30px",
-            backgroundImage:
-              "linear-gradient(to right, rgba(128,128,128,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(128,128,128,0.05) 1px, transparent 1px)",
-            maskImage:
-              "radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 0%, transparent 80%)",
+            backgroundImage: `linear-gradient(to right, rgba(128,128,128,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(128,128,128,0.05) 1px, transparent 1px)`,
+            maskImage: `radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 0%, transparent 80%)`,
           }}
         />
 
