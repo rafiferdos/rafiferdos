@@ -134,15 +134,13 @@ export const CardItem = ({
     }
   };
 
-  return (
-    <Tag
-      ref={ref}
-      className={cn("w-fit transition duration-200 ease-linear", className)}
-      {...rest}
-    >
-      {children}
-    </Tag>
-  );
+  const props = {
+    ref,
+    className: cn("w-fit transition duration-200 ease-linear", className),
+    ...rest
+  };
+
+  return React.createElement(Tag, props, children);
 };
 
 // Create a hook to use the context
