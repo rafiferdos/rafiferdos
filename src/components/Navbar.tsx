@@ -10,25 +10,15 @@ import { scrollToComponent } from "./scrollToComponent";
 const Navbar = ({ className }: { className?: string }) => {
   const { theme, setTheme } = useContext(ThemeContext);
   const [active, setActive] = useState<string | null>(null);
-
   const router = useRouter();
-
-  const toggleThemeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTheme(e.target.checked ? "dark" : "light");
-  };
 
   useEffect(() => {
     localStorage.setItem("theme", theme);
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 
-  const navbarVariants = {
-    hidden: { y: -100, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.8, ease: [0.23, 1, 0.32, 1] },
-    },
+  const toggleThemeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTheme(e.target.checked ? "dark" : "light");
   };
 
   const menuItems = [
@@ -41,101 +31,92 @@ const Navbar = ({ className }: { className?: string }) => {
 
   return (
     <>
-      {/* SVG Filter for corner liquid glass effect */}
+      {/*
+        =============================================================================
+          SVG filters to create a stronger “liquid distortion” effect on the corners
+        =============================================================================
+      */}
       <svg style={{ position: "absolute", width: 0, height: 0 }}>
         <defs>
-          <filter id="corner-frosted" primitiveUnits="objectBoundingBox">
-            {/* Create a radial gradient mask for corners only */}
-            <feGaussianBlur
-              in="SourceGraphic"
-              stdDeviation="0.01"
-              result="blur"
-            />
-            <feImage
-              href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3CradialGradient id='corner-mask' cx='0' cy='0' r='0.3'%3E%3Cstop offset='0%25' stop-color='white'/%3E%3Cstop offset='100%25' stop-color='black'/%3E%3C/radialGradient%3E%3CradialGradient id='corner-mask2' cx='100' cy='0' r='0.3'%3E%3Cstop offset='0%25' stop-color='white'/%3E%3Cstop offset='100%25' stop-color='black'/%3E%3C/radialGradient%3E%3CradialGradient id='corner-mask3' cx='0' cy='100' r='0.3'%3E%3Cstop offset='0%25' stop-color='white'/%3E%3Cstop offset='100%25' stop-color='black'/%3E%3C/radialGradient%3E%3CradialGradient id='corner-mask4' cx='100' cy='100' r='0.3'%3E%3Cstop offset='0%25' stop-color='white'/%3E%3Cstop offset='100%25' stop-color='black'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='100' height='100' fill='url(%23corner-mask)'/%3E%3Crect width='100' height='100' fill='url(%23corner-mask2)' style='mix-blend-mode: multiply'/%3E%3Crect width='100' height='100' fill='url(%23corner-mask3)' style='mix-blend-mode: multiply'/%3E%3Crect width='100' height='100' fill='url(%23corner-mask4)' style='mix-blend-mode: multiply'/%3E%3C/svg%3E"
-              x="0"
-              y="0"
-              width="1"
-              height="1"
-              result="corner-mask"
+          {/* Turbulence-based distortion */}
+          <filter id="appleLiquidGlass" x="0" y="0" width="100%" height="100%">
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0.005"
+              numOctaves="2"
+              seed="2"
+              result="turbulence"
             />
             <feDisplacementMap
-              in="blur"
-              in2="corner-mask"
-              scale="2"
+              in="SourceGraphic"
+              in2="turbulence"
+              scale="20"
               xChannelSelector="R"
               yChannelSelector="G"
-              result="displaced"
-            >
-              <animate
-                attributeName="scale"
-                to="3"
-                dur="0.3s"
-                begin="navbar.mouseover"
-                fill="freeze"
-              />
-              <animate
-                attributeName="scale"
-                to="2"
-                dur="0.3s"
-                begin="navbar.mouseout"
-                fill="freeze"
-              />
-            </feDisplacementMap>
-            <feComposite in="SourceGraphic" in2="displaced" operator="over" />
+              result="distorted"
+            />
           </filter>
+          {/*
+            You can animate or tweak scale/frequencies for different intensities.
+            Example:
+            <animate attributeName="scale" begin="navbar.mouseover" dur="0.3s" to="30" fill="freeze" />
+            <animate attributeName="scale" begin="navbar.mouseout" dur="0.3s" to="20" fill="freeze" />
+          */}
         </defs>
       </svg>
 
       <div className="fixed top-6 left-0 right-0 z-50 flex justify-center">
         <motion.nav
           id="navbar"
-          initial="hidden"
-          animate="visible"
-          variants={navbarVariants}
+          initial={{ y: -100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
           className={cn(
-            "relative px-8 py-4 rounded-full border-2 border-transparent shadow-[0_0_0_2px_rgba(255,255,255,0.6),0_16px_32px_rgba(0,0,0,0.12)] dark:shadow-[0_0_0_2px_rgba(255,255,255,0.3),0_16px_32px_rgba(0,0,0,0.3)] cursor-pointer outline-none overflow-hidden",
+            "relative px-8 py-4 rounded-full border-2 border-transparent",
+            "shadow-[0_0_0_2px_rgba(255,255,255,0.6),0_16px_32px_rgba(0,0,0,0.12)]",
+            "dark:shadow-[0_0_0_2px_rgba(255,255,255,0.3),0_16px_32px_rgba(0,0,0,0.3)]",
+            "cursor-pointer overflow-hidden backdrop-blur-xl",
             className
           )}
           style={{
             background: "rgba(255, 255, 255, 0.08)",
-            backdropFilter: "blur(20px) saturate(180%)",
             WebkitBackdropFilter: "blur(20px) saturate(180%)",
+            backdropFilter: "blur(20px) saturate(180%)",
           }}
         >
-          {/* Corner distortion overlay - only affects corners */}
+          {/*
+            Corners are selectively distorted using an absolutely positioned element
+            that only covers corners, with the filter applied.
+          */}
           <div
-            className="absolute inset-0 rounded-full pointer-events-none"
+            className="pointer-events-none absolute inset-0 rounded-full"
             style={{
-              backdropFilter: "url(#corner-frosted)",
-              WebkitBackdropFilter: "url(#corner-frosted)",
+              filter: "url(#appleLiquidGlass)",
+              WebkitFilter: "url(#appleLiquidGlass)",
             }}
           />
 
-          {/* Corner highlights for glass effect */}
-          <div className="absolute top-0 left-4 w-8 h-8 rounded-full bg-gradient-radial from-white/40 to-transparent dark:from-white/20 pointer-events-none" />
-          <div className="absolute top-0 right-4 w-8 h-8 rounded-full bg-gradient-radial from-white/40 to-transparent dark:from-white/20 pointer-events-none" />
-          <div className="absolute bottom-0 left-4 w-6 h-6 rounded-full bg-gradient-radial from-white/30 to-transparent dark:from-white/15 pointer-events-none" />
-          <div className="absolute bottom-0 right-4 w-6 h-6 rounded-full bg-gradient-radial from-white/30 to-transparent dark:from-white/15 pointer-events-none" />
-
-          {/* Main glass overlay */}
-          <div className="absolute inset-[1px] rounded-full bg-gradient-to-b from-white/10 to-transparent dark:from-white/5 dark:to-transparent pointer-events-none" />
+          {/* Subtle corner highlights to accentuate the liquid effect */}
+          <div className="absolute top-0 left-2 w-10 h-10 bg-white/20 rounded-full blur-lg mix-blend-overlay pointer-events-none" />
+          <div className="absolute top-0 right-2 w-10 h-10 bg-white/20 rounded-full blur-lg mix-blend-overlay pointer-events-none" />
+          <div className="absolute bottom-0 left-3 w-8 h-8 bg-white/10 rounded-full blur-md mix-blend-overlay pointer-events-none" />
+          <div className="absolute bottom-0 right-3 w-8 h-8 bg-white/10 rounded-full blur-md mix-blend-overlay pointer-events-none" />
 
           <div className="relative flex items-center space-x-6">
-            {menuItems.map((item, index) => (
+            {menuItems.map((item) => (
               <motion.button
                 key={item.label}
                 onClick={item.action}
                 onMouseEnter={() => setActive(item.label)}
                 onMouseLeave={() => setActive(null)}
-                className="relative px-4 py-2 text-sm font-medium text-gray-700/90 dark:text-white/90 hover:text-gray-900 dark:hover:text-white transition-all duration-300 rounded-full"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                className="relative px-4 py-2 text-sm font-medium text-gray-700/90 dark:text-white/90 transition-all rounded-full hover:text-gray-900 dark:hover:text-white"
               >
                 {active === item.label && (
                   <motion.div
                     layoutId="activeBackground"
-                    className="absolute inset-0 rounded-full bg-white/20 dark:bg-white/8 backdrop-blur-sm border border-white/20 dark:border-white/10 shadow-lg"
+                    className="absolute inset-0 rounded-full bg-white/20 dark:bg-white/10 backdrop-blur-sm border border-white/20 dark:border-white/10 shadow-lg"
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.8 }}
@@ -146,9 +127,9 @@ const Navbar = ({ className }: { className?: string }) => {
               </motion.button>
             ))}
 
-            {/* Theme toggle */}
+            {/* Theme toggle button */}
             <div className="relative">
-              <label className="relative inline-flex items-center cursor-pointer">
+              <label className="inline-flex items-center cursor-pointer">
                 <input
                   type="checkbox"
                   className="sr-only"
@@ -169,15 +150,6 @@ const Navbar = ({ className }: { className?: string }) => {
                   }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  {/* Corner distortion for toggle */}
-                  <div
-                    className="absolute inset-0 rounded-full pointer-events-none opacity-50"
-                    style={{
-                      backdropFilter: "url(#corner-frosted)",
-                      WebkitBackdropFilter: "url(#corner-frosted)",
-                    }}
-                  />
-
                   <motion.div
                     className="absolute top-1 w-6 h-6 rounded-full bg-white/95 shadow-lg flex items-center justify-center z-10"
                     animate={{
