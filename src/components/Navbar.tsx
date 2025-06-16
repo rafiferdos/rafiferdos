@@ -46,21 +46,29 @@ const Navbar = ({ className }: { className?: string }) => {
         animate="visible"
         variants={navbarVariants}
         className={cn(
-          "relative px-8 py-4 rounded-full backdrop-blur-2xl bg-white/20 dark:bg-black/20 border border-white/30 dark:border-white/10 shadow-2xl shadow-black/10 dark:shadow-black/20",
+          "relative px-8 py-4 rounded-full border-2 border-transparent shadow-[0_0_0_2px_rgba(255,255,255,0.6),0_16px_32px_rgba(0,0,0,0.12)] dark:shadow-[0_0_0_2px_rgba(255,255,255,0.3),0_16px_32px_rgba(0,0,0,0.3)]",
           className
         )}
+        style={{
+          background: "rgba(255, 255, 255, 0.08)",
+          backdropFilter: "blur(7px) saturate(180%)",
+          WebkitBackdropFilter: "blur(20px) saturate(180%)",
+        }}
       >
-        {/* Liquid glass effect layers */}
-        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/40 via-white/10 to-transparent dark:from-white/20 dark:via-white/5 dark:to-transparent pointer-events-none" />
+        {/* Glass texture overlay with frosted effect */}
+        <div
+          className="absolute inset-0 rounded-full pointer-events-none opacity-60"
+          style={{
+            background: `url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAF6ESURBVHgB7b1ZsB3HeSb4ZZ1zV+wEQCykAJIASHERQNBaKRKySMkxYYVly+6x3fNgR0e4rZn2vIw7RnbMONrd0X5wKMLTT+7psf0w7ocZWz22pZ5Wz0xL1EaJ1M5NJEWR1EKBK0gAF/ae+icr1//PzKpT595zsZE/ULeycquqrP+rf8uso/7lHxPhTZoqqZmzUBteRbXzOQz2fB/Y9CKgjzG7pLezoGZTI5CuR3NNugYNRjZPtyeqQKOh3g9AS/OglVnQ8rzJgz7GaAY4vQnqhT2onn8LqpevRPXSlVArM3iTpktDvEmrpmr2DIZXP43hjp+g2nISatNLGOz6AdSWFxyzE2r+lwj2beTfSQSfowuTzpUu0dsi7B52X7s9qSav0seuXj3UQNkF9eJuvd+BwavbMfzZ1Zh55sY3gbMGehMgE5AansP8wQcxc+WPMbv/UQz3/ABULTMY6H0DAqoNwzc5aNLk0g2bGxx4mESg8Hx9JvdfuVIV8pWye5OnKn1chfRo62nQth860Nj8RgoNjx/E7A9vxtxz12H2xzegWlrEm9SP3gRIBw0WX8W8VpFmdv8AC4cewGD7s3rEliwUSEsIvWFUm71hdrJAaQBCRnN1gDFlbjMM7qAhtNuSpuuAoSJATDXl8yqzV0aiVCFPub3NG2B596NY2vM4Xm3y6hnMHr8Ocz+6GfM/uR6zJ/ZjcHoz3qQyvQmQhKq5M9h48NvYePN9mN39NNT8a5onRxoQDggOEDAA8WkPDAsKDwZyilEAB1IVCxEklOSrCA4VShQrruyxstLEgIKBxuZVRrKQBolyew17DZZHcWbv40bK4NwGzB8/gE0Pvh+Lz9yEwZmNeJMivQkQNKrTMhav..." />`,
+            backgroundSize: "200px 200px",
+          }}
+        />
 
-        {/* Subtle inner highlight */}
+        {/* Inner glow highlights */}
         <div className="absolute inset-[1px] rounded-full bg-gradient-to-b from-white/20 to-transparent dark:from-white/10 dark:to-transparent pointer-events-none" />
 
-        {/* Inner shadow for depth */}
-        <div className="absolute inset-0 rounded-full shadow-inner shadow-black/5 dark:shadow-white/5 pointer-events-none" />
-
-        {/* Frosted glass texture */}
-        <div className="absolute inset-0 rounded-full bg-white/5 dark:bg-white/5 backdrop-blur-xl pointer-events-none" />
+        {/* Additional liquid glass layers */}
+        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/30 via-white/5 to-transparent dark:from-white/15 dark:via-white/3 dark:to-transparent pointer-events-none" />
 
         <div className="relative flex items-center space-x-6">
           {menuItems.map((item, index) => (
@@ -77,7 +85,7 @@ const Navbar = ({ className }: { className?: string }) => {
               {active === item.label && (
                 <motion.div
                   layoutId="activeBackground"
-                  className="absolute inset-0 rounded-full bg-white/40 dark:bg-white/15 backdrop-blur-sm border border-white/20 dark:border-white/10 shadow-lg"
+                  className="absolute inset-0 rounded-full bg-white/30 dark:bg-white/10 backdrop-blur-sm border border-white/20 dark:border-white/10 shadow-lg"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.8 }}
@@ -88,7 +96,7 @@ const Navbar = ({ className }: { className?: string }) => {
             </motion.button>
           ))}
 
-          {/* Apple-style theme toggle */}
+          {/* Apple-style theme toggle with liquid glass */}
           <div className="relative">
             <label className="relative inline-flex items-center cursor-pointer">
               <input
@@ -98,26 +106,36 @@ const Navbar = ({ className }: { className?: string }) => {
                 checked={theme === "dark"}
               />
               <motion.div
-                className="relative w-14 h-8 rounded-full bg-gray-200/80 dark:bg-gray-700/80 backdrop-blur-sm border border-gray-300/50 dark:border-gray-600/50 shadow-inner transition-colors duration-300"
-                whileTap={{ scale: 0.95 }}
-                animate={{
-                  backgroundColor:
+                className="relative w-14 h-8 rounded-full border-2 border-transparent shadow-inner backdrop-blur-sm"
+                style={{
+                  background:
                     theme === "dark"
-                      ? "rgba(34, 197, 94, 0.8)"
-                      : "rgba(229, 231, 235, 0.8)",
+                      ? "rgba(34, 197, 94, 0.3)"
+                      : "rgba(229, 231, 235, 0.3)",
+                  backdropFilter: "blur(10px)",
+                  WebkitBackdropFilter: "blur(10px)",
+                  boxShadow:
+                    theme === "dark"
+                      ? "0 0 0 1px rgba(255,255,255,0.2), inset 0 2px 4px rgba(0,0,0,0.2)"
+                      : "0 0 0 1px rgba(255,255,255,0.4), inset 0 2px 4px rgba(0,0,0,0.1)",
                 }}
+                whileTap={{ scale: 0.95 }}
               >
                 {/* Track glow effect */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-white/20 to-transparent dark:via-white/10 pointer-events-none" />
+                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-white/15 to-transparent dark:via-white/8 pointer-events-none" />
 
                 <motion.div
-                  className="absolute top-1 w-6 h-6 rounded-full bg-white shadow-lg flex items-center justify-center transition-shadow duration-300"
+                  className="absolute top-1 w-6 h-6 rounded-full bg-white/95 shadow-lg flex items-center justify-center"
+                  style={{
+                    backdropFilter: "blur(10px)",
+                    WebkitBackdropFilter: "blur(10px)",
+                  }}
                   animate={{
                     x: theme === "dark" ? 24 : 4,
                     boxShadow:
                       theme === "dark"
-                        ? "0 2px 8px rgba(0,0,0,0.2), 0 1px 3px rgba(0,0,0,0.1)"
-                        : "0 2px 8px rgba(0,0,0,0.15), 0 1px 3px rgba(0,0,0,0.1)",
+                        ? "0 2px 8px rgba(0,0,0,0.25), 0 1px 3px rgba(0,0,0,0.15)"
+                        : "0 2px 8px rgba(0,0,0,0.2), 0 1px 3px rgba(0,0,0,0.1)",
                   }}
                   transition={{
                     type: "spring",
