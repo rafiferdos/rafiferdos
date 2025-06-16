@@ -4,12 +4,13 @@ import { ThemeContext } from "@/providers/ThemeProvider";
 import { cn } from "@/utils/cn";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { scrollToComponent } from "./scrollToComponent";
 
 const Navbar = ({ className }: { className?: string }) => {
   const { theme, setTheme } = useContext(ThemeContext);
   const [active, setActive] = useState<string | null>(null);
+  const [isToggleHovered, setIsToggleHovered] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -17,8 +18,8 @@ const Navbar = ({ className }: { className?: string }) => {
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 
-  const toggleThemeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTheme(e.target.checked ? "dark" : "light");
+  const toggleThemeChange = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
   };
 
   const menuItems = [
@@ -31,37 +32,229 @@ const Navbar = ({ className }: { className?: string }) => {
 
   return (
     <>
-      {/*
-        =============================================================================
-          SVG filters to create a stronger “liquid distortion” effect on the corners
-        =============================================================================
-      */}
+      {/* Ultra Advanced SVG Filters */}
       <svg style={{ position: "absolute", width: 0, height: 0 }}>
         <defs>
-          {/* Turbulence-based distortion */}
-          <filter id="appleLiquidGlass" x="0" y="0" width="100%" height="100%">
+          {/* Liquid Crystal Morphing */}
+          <filter
+            id="liquidCrystalMorph"
+            x="-50%"
+            y="-50%"
+            width="200%"
+            height="200%"
+          >
             <feTurbulence
               type="fractalNoise"
-              baseFrequency="0.005"
-              numOctaves="2"
-              seed="2"
-              result="turbulence"
-            />
+              baseFrequency="0.004"
+              numOctaves="6"
+              seed="15"
+              result="crystalNoise"
+            >
+              <animate
+                attributeName="baseFrequency"
+                values="0.004;0.012;0.004"
+                dur="20s"
+                repeatCount="indefinite"
+              />
+            </feTurbulence>
             <feDisplacementMap
               in="SourceGraphic"
-              in2="turbulence"
-              scale="20"
-              xChannelSelector="R"
-              yChannelSelector="G"
-              result="distorted"
+              in2="crystalNoise"
+              scale="2"
+              result="crystalDistorted"
+            >
+              <animate
+                attributeName="scale"
+                values="2;6;2"
+                dur="15s"
+                repeatCount="indefinite"
+              />
+            </feDisplacementMap>
+            <feGaussianBlur
+              in="crystalDistorted"
+              stdDeviation="0.2"
+              result="crystalBlurred"
+            />
+            <feColorMatrix
+              in="crystalBlurred"
+              type="saturate"
+              values="1.5"
+              result="crystalSaturated"
+            />
+            <feComposite
+              in="crystalSaturated"
+              in2="SourceAlpha"
+              operator="in"
             />
           </filter>
-          {/*
-            You can animate or tweak scale/frequencies for different intensities.
-            Example:
-            <animate attributeName="scale" begin="navbar.mouseover" dur="0.3s" to="30" fill="freeze" />
-            <animate attributeName="scale" begin="navbar.mouseout" dur="0.3s" to="20" fill="freeze" />
-          */}
+
+          {/* Holographic Prism Effect */}
+          <filter id="holoPrism" x="-30%" y="-30%" width="160%" height="160%">
+            <feConvolveMatrix
+              order="3"
+              kernelMatrix="0 -1 0 -1 5 -1 0 -1 0"
+              result="sharpen"
+            />
+            <feColorMatrix in="sharpen" type="hueRotate" result="hueShift">
+              <animate
+                attributeName="values"
+                values="0;360;0"
+                dur="8s"
+                repeatCount="indefinite"
+              />
+            </feColorMatrix>
+            <feGaussianBlur in="hueShift" stdDeviation="0.1" />
+          </filter>
+
+          {/* Quantum Field Generator */}
+          <pattern
+            id="quantumField"
+            x="0"
+            y="0"
+            width="40"
+            height="40"
+            patternUnits="userSpaceOnUse"
+          >
+            <circle cx="20" cy="20" r="1.5" fill="rgba(255,255,255,0.2)">
+              <animate
+                attributeName="r"
+                values="1.5;3;1.5"
+                dur="4s"
+                repeatCount="indefinite"
+              />
+            </circle>
+            <circle cx="10" cy="10" r="1" fill="rgba(59,130,246,0.3)">
+              <animate
+                attributeName="r"
+                values="1;2;1"
+                dur="3s"
+                repeatCount="indefinite"
+                begin="0.5s"
+              />
+            </circle>
+            <circle cx="30" cy="30" r="1" fill="rgba(147,51,234,0.3)">
+              <animate
+                attributeName="r"
+                values="1;2.5;1"
+                dur="5s"
+                repeatCount="indefinite"
+                begin="1s"
+              />
+            </circle>
+            <circle cx="5" cy="35" r="0.8" fill="rgba(236,72,153,0.4)">
+              <animate
+                attributeName="r"
+                values="0.8;1.8;0.8"
+                dur="3.5s"
+                repeatCount="indefinite"
+                begin="1.5s"
+              />
+            </circle>
+          </pattern>
+
+          {/* Prismatic Gradient */}
+          <linearGradient
+            id="prismaticFlow"
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="100%"
+          >
+            <stop offset="0%" stopColor="#ff6b6b">
+              <animate
+                attributeName="stop-color"
+                values="#ff6b6b;#4ecdc4;#45b7d1;#96ceb4;#feca57;#ff9ff3;#ff6b6b"
+                dur="6s"
+                repeatCount="indefinite"
+              />
+            </stop>
+            <stop offset="25%" stopColor="#4ecdc4">
+              <animate
+                attributeName="stop-color"
+                values="#4ecdc4;#45b7d1;#96ceb4;#feca57;#ff9ff3;#ff6b6b;#4ecdc4"
+                dur="6s"
+                repeatCount="indefinite"
+              />
+            </stop>
+            <stop offset="50%" stopColor="#45b7d1">
+              <animate
+                attributeName="stop-color"
+                values="#45b7d1;#96ceb4;#feca57;#ff9ff3;#ff6b6b;#4ecdc4;#45b7d1"
+                dur="6s"
+                repeatCount="indefinite"
+              />
+            </stop>
+            <stop offset="75%" stopColor="#96ceb4">
+              <animate
+                attributeName="stop-color"
+                values="#96ceb4;#feca57;#ff9ff3;#ff6b6b;#4ecdc4;#45b7d1;#96ceb4"
+                dur="6s"
+                repeatCount="indefinite"
+              />
+            </stop>
+            <stop offset="100%" stopColor="#feca57">
+              <animate
+                attributeName="stop-color"
+                values="#feca57;#ff9ff3;#ff6b6b;#4ecdc4;#45b7d1;#96ceb4;#feca57"
+                dur="6s"
+                repeatCount="indefinite"
+              />
+            </stop>
+          </linearGradient>
+
+          {/* Dimensional Portal */}
+          <radialGradient id="dimensionalPortal" cx="50%" cy="50%">
+            <stop offset="0%" stopColor="rgba(255,255,255,0.8)" />
+            <stop offset="30%" stopColor="rgba(59,130,246,0.6)" />
+            <stop offset="60%" stopColor="rgba(147,51,234,0.4)" />
+            <stop offset="80%" stopColor="rgba(236,72,153,0.3)" />
+            <stop offset="100%" stopColor="transparent" />
+            <animateTransform
+              attributeName="gradientTransform"
+              type="rotate"
+              values="0 50 50;360 50 50"
+              dur="12s"
+              repeatCount="indefinite"
+            />
+          </radialGradient>
+
+          {/* Neural Network Pattern */}
+          <pattern
+            id="neuralNet"
+            x="0"
+            y="0"
+            width="60"
+            height="60"
+            patternUnits="userSpaceOnUse"
+          >
+            <g stroke="rgba(255,255,255,0.1)" strokeWidth="0.5" fill="none">
+              <path d="M30,10 L50,30 L30,50 L10,30 Z">
+                <animate
+                  attributeName="stroke-opacity"
+                  values="0.1;0.4;0.1"
+                  dur="4s"
+                  repeatCount="indefinite"
+                />
+              </path>
+              <path d="M15,15 L45,15 L45,45 L15,45 Z">
+                <animate
+                  attributeName="stroke-opacity"
+                  values="0.1;0.3;0.1"
+                  dur="5s"
+                  repeatCount="indefinite"
+                  begin="1s"
+                />
+              </path>
+              <circle cx="30" cy="30" r="3" fill="rgba(255,255,255,0.2)">
+                <animate
+                  attributeName="r"
+                  values="3;5;3"
+                  dur="3s"
+                  repeatCount="indefinite"
+                />
+              </circle>
+            </g>
+          </pattern>
         </defs>
       </svg>
 
@@ -84,24 +277,6 @@ const Navbar = ({ className }: { className?: string }) => {
             backdropFilter: "blur(20px) saturate(180%)",
           }}
         >
-          {/*
-            Corners are selectively distorted using an absolutely positioned element
-            that only covers corners, with the filter applied.
-          */}
-          <div
-            className="pointer-events-none absolute inset-0 rounded-full"
-            style={{
-              filter: "url(#appleLiquidGlass)",
-              WebkitFilter: "url(#appleLiquidGlass)",
-            }}
-          />
-
-          {/* Subtle corner highlights to accentuate the liquid effect */}
-          <div className="absolute top-0 left-2 w-10 h-10 bg-white/20 rounded-full blur-lg mix-blend-overlay pointer-events-none" />
-          <div className="absolute top-0 right-2 w-10 h-10 bg-white/20 rounded-full blur-lg mix-blend-overlay pointer-events-none" />
-          <div className="absolute bottom-0 left-3 w-8 h-8 bg-white/10 rounded-full blur-md mix-blend-overlay pointer-events-none" />
-          <div className="absolute bottom-0 right-3 w-8 h-8 bg-white/10 rounded-full blur-md mix-blend-overlay pointer-events-none" />
-
           <div className="relative flex items-center space-x-6">
             {menuItems.map((item) => (
               <motion.button
@@ -127,78 +302,264 @@ const Navbar = ({ className }: { className?: string }) => {
               </motion.button>
             ))}
 
-            {/* Theme toggle button */}
-            <div className="relative">
-              <label className="inline-flex items-center cursor-pointer">
-                <input
-                  type="checkbox"
-                  className="sr-only"
-                  onChange={toggleThemeChange}
-                  checked={theme === "dark"}
+            {/* 🌟 PEAK CREATIVITY: QUANTUM DIMENSIONAL THEME TOGGLE 🌟 */}
+            <motion.div
+              className="relative w-24 h-12 perspective-1000"
+              onHoverStart={() => setIsToggleHovered(true)}
+              onHoverEnd={() => setIsToggleHovered(false)}
+            >
+              <motion.button
+                onClick={toggleThemeChange}
+                className="relative w-full h-full rounded-2xl overflow-hidden group"
+                style={{
+                  background: "rgba(0, 0, 0, 0.05)",
+                  backdropFilter: "blur(40px) saturate(300%)",
+                  WebkitBackdropFilter: "blur(40px) saturate(300%)",
+                  border: "1px solid rgba(255, 255, 255, 0.08)",
+                  boxShadow: `
+                    0 0 0 1px rgba(255, 255, 255, 0.1),
+                    0 20px 40px rgba(0, 0, 0, 0.1),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                    inset 0 -1px 0 rgba(0, 0, 0, 0.1)
+                  `,
+                  filter: "url(#liquidCrystalMorph)",
+                  WebkitFilter: "url(#liquidCrystalMorph)",
+                  transformStyle: "preserve-3d",
+                }}
+                animate={{
+                  rotateY: isToggleHovered ? 15 : 0,
+                  rotateX: isToggleHovered ? -5 : 0,
+                  scale: isToggleHovered ? 1.05 : 1,
+                }}
+                whileTap={{
+                  scale: 0.95,
+                  rotateZ: theme === "dark" ? -180 : 180,
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 400,
+                  damping: 25,
+                  duration: 0.6,
+                }}
+              >
+                {/* Quantum Field Background */}
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background: "url(#quantumField)",
+                    opacity: 0.4,
+                  }}
                 />
+
+                {/* Neural Network Overlay */}
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background: "url(#neuralNet)",
+                    opacity: 0.3,
+                    mixBlendMode: "overlay",
+                  }}
+                />
+
+                {/* Prismatic Flow Layer */}
                 <motion.div
-                  className="relative w-14 h-8 rounded-full border-2 border-transparent shadow-inner backdrop-blur-sm overflow-hidden"
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background: "url(#prismaticFlow)",
+                    opacity: 0.15,
+                    mixBlendMode: "color-dodge",
+                  }}
+                  animate={{
+                    opacity: isToggleHovered ? 0.25 : 0.15,
+                  }}
+                />
+
+                {/* Dimensional Portal in Center */}
+                <motion.div
+                  className="absolute inset-2 rounded-xl pointer-events-none"
+                  style={{
+                    background: "url(#dimensionalPortal)",
+                    filter: "url(#holoPrism)",
+                  }}
+                  animate={{
+                    scale: [1, 1.1, 1],
+                    rotate: [0, 5, 0],
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+
+                {/* Floating Quantum Orbs */}
+                {[...Array(12)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="absolute w-1.5 h-1.5 rounded-full pointer-events-none"
+                    style={{
+                      background: `hsl(${
+                        (i * 30 + (theme === "dark" ? 240 : 45)) % 360
+                      }, 70%, 60%)`,
+                      boxShadow: `0 0 8px hsl(${
+                        (i * 30 + (theme === "dark" ? 240 : 45)) % 360
+                      }, 70%, 60%)`,
+                      left: "50%",
+                      top: "50%",
+                    }}
+                    animate={{
+                      x: [
+                        0,
+                        Math.cos((i * 30 * Math.PI) / 180) * 30,
+                        Math.cos(((i * 30 + 180) * Math.PI) / 180) * 25,
+                        0,
+                      ],
+                      y: [
+                        0,
+                        Math.sin((i * 30 * Math.PI) / 180) * 20,
+                        Math.sin(((i * 30 + 180) * Math.PI) / 180) * 15,
+                        0,
+                      ],
+                      opacity: [0.3, 1, 0.6, 0.3],
+                      scale: [0.8, 1.5, 1, 0.8],
+                    }}
+                    transition={{
+                      duration: 8 + i * 0.3,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: i * 0.2,
+                    }}
+                  />
+                ))}
+
+                {/* Central Energy Core */}
+                <motion.div
+                  className="absolute top-1/2 left-1/2 w-6 h-6 -mt-3 -ml-3 rounded-full"
                   style={{
                     background:
                       theme === "dark"
-                        ? "rgba(34, 197, 94, 0.3)"
-                        : "rgba(229, 231, 235, 0.3)",
+                        ? "radial-gradient(circle, rgba(147, 51, 234, 0.9), rgba(79, 70, 229, 0.7), rgba(59, 130, 246, 0.5))"
+                        : "radial-gradient(circle, rgba(251, 191, 36, 0.9), rgba(245, 158, 11, 0.7), rgba(249, 115, 22, 0.5))",
                     boxShadow:
                       theme === "dark"
-                        ? "0 0 0 1px rgba(255,255,255,0.2), inset 0 2px 4px rgba(0,0,0,0.2)"
-                        : "0 0 0 1px rgba(255,255,255,0.4), inset 0 2px 4px rgba(0,0,0,0.1)",
+                        ? "0 0 20px rgba(147, 51, 234, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3)"
+                        : "0 0 20px rgba(251, 191, 36, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3)",
+                    border: "1px solid rgba(255, 255, 255, 0.2)",
                   }}
-                  whileTap={{ scale: 0.95 }}
+                  animate={{
+                    scale: [1, 1.3, 1],
+                    rotate: [0, 360],
+                    boxShadow:
+                      theme === "dark"
+                        ? [
+                            "0 0 20px rgba(147, 51, 234, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3)",
+                            "0 0 30px rgba(147, 51, 234, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.5)",
+                            "0 0 20px rgba(147, 51, 234, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3)",
+                          ]
+                        : [
+                            "0 0 20px rgba(251, 191, 36, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3)",
+                            "0 0 30px rgba(251, 191, 36, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.5)",
+                            "0 0 20px rgba(251, 191, 36, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3)",
+                          ],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
                 >
+                  {/* Core Inner Rings */}
+                  {[...Array(3)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute inset-0 rounded-full border pointer-events-none"
+                      style={{
+                        borderColor: "rgba(255, 255, 255, 0.3)",
+                        borderWidth: "1px",
+                      }}
+                      animate={{
+                        scale: [1, 1.5 + i * 0.3, 1],
+                        opacity: [0.8, 0.2, 0.8],
+                        rotate: [0, -360],
+                      }}
+                      transition={{
+                        duration: 2 + i * 0.5,
+                        repeat: Infinity,
+                        ease: "linear",
+                        delay: i * 0.3,
+                      }}
+                    />
+                  ))}
+                </motion.div>
+
+                {/* Energy Trails */}
+                {[...Array(8)].map((_, i) => (
                   <motion.div
-                    className="absolute top-1 w-6 h-6 rounded-full bg-white/95 shadow-lg flex items-center justify-center z-10"
+                    key={`trail-${i}`}
+                    className="absolute w-0.5 h-8 pointer-events-none"
+                    style={{
+                      background: `linear-gradient(to bottom, 
+                        hsl(${
+                          (i * 45 + (theme === "dark" ? 240 : 45)) % 360
+                        }, 70%, 60%), 
+                        transparent)`,
+                      left: "50%",
+                      top: "50%",
+                      transformOrigin: "bottom center",
+                      transform: `rotate(${i * 45}deg) translateY(-20px)`,
+                    }}
                     animate={{
-                      x: theme === "dark" ? 24 : 4,
-                      boxShadow:
-                        theme === "dark"
-                          ? "0 2px 8px rgba(0,0,0,0.25), 0 1px 3px rgba(0,0,0,0.15)"
-                          : "0 2px 8px rgba(0,0,0,0.2), 0 1px 3px rgba(0,0,0,0.1)",
+                      scaleY: [0.5, 1.5, 0.5],
+                      opacity: [0.3, 0.8, 0.3],
+                      rotate: [i * 45, i * 45 + 360, i * 45],
                     }}
                     transition={{
-                      type: "spring",
-                      stiffness: 700,
-                      damping: 30,
-                      mass: 0.8,
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: i * 0.1,
                     }}
-                  >
-                    <motion.div
-                      animate={{
-                        rotate: theme === "dark" ? 0 : 180,
-                        scale: theme === "dark" ? 1 : 0.9,
-                      }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      {theme === "dark" ? (
-                        <svg
-                          className="w-3.5 h-3.5 text-gray-600"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                        >
-                          <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-                        </svg>
-                      ) : (
-                        <svg
-                          className="w-3.5 h-3.5 text-yellow-500"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707a1 1 0 001.415-1.415zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      )}
-                    </motion.div>
-                  </motion.div>
-                </motion.div>
-              </label>
-            </div>
+                  />
+                ))}
+
+                {/* Click Ripple Effect */}
+                <motion.div
+                  className="absolute inset-0 rounded-2xl pointer-events-none"
+                  style={{
+                    background: "rgba(255, 255, 255, 0.1)",
+                  }}
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 0, opacity: 0 }}
+                  whileTap={{
+                    scale: [0, 2, 0],
+                    opacity: [0, 0.5, 0],
+                  }}
+                  transition={{ duration: 0.6 }}
+                />
+
+                {/* Holographic Scan Lines */}
+                <motion.div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background: `repeating-linear-gradient(
+                      0deg,
+                      transparent,
+                      transparent 2px,
+                      rgba(255, 255, 255, 0.03) 2px,
+                      rgba(255, 255, 255, 0.03) 4px
+                    )`,
+                  }}
+                  animate={{
+                    backgroundPosition: ["0px 0px", "0px 20px"],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
+                />
+              </motion.button>
+            </motion.div>
           </div>
         </motion.nav>
       </div>
