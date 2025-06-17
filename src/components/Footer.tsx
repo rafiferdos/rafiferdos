@@ -184,7 +184,7 @@ const Footer = () => {
 
             <p className="text-lg leading-relaxed opacity-80 max-w-md">
               Full-Stack Developer crafting digital experiences that push the
-              boundaries of modern web development. Building tomorrow's
+              boundaries of modern web development. Building tomorrow&apos;s
               interfaces today.
             </p>
 
