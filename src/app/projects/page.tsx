@@ -56,6 +56,39 @@ const AllProjectsPage = () => {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [sortBy, setSortBy] = useState<"name" | "date" | "tech">("name");
   const [showFilters, setShowFilters] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+  const [quantumParticles, setQuantumParticles] = useState<
+    Array<{
+      width: number;
+      height: number;
+      brightness: number;
+      left: number;
+      top: number;
+      boxShadow: number;
+      yOffset: number;
+      xOffset: number;
+      scale: number;
+      duration: number;
+    }>
+  >([]);
+
+  useEffect(() => {
+    setIsClient(true);
+    // Generate quantum particle properties only on client
+    const particles = Array.from({ length: 50 }, (_, i) => ({
+      width: Math.random() * 3 + 1,
+      height: Math.random() * 3 + 1,
+      brightness: 60 + Math.random() * 30,
+      left: Math.random() * 100,
+      top: Math.random() * 100,
+      boxShadow: Math.random() * 20 + 10,
+      yOffset: -200 - Math.random() * 100,
+      xOffset: Math.sin(i) * 150 + Math.random() * 100,
+      scale: 2 + Math.random(),
+      duration: 15 + i * 0.3 + Math.random() * 10,
+    }));
+    setQuantumParticles(particles);
+  }, []);
 
   useEffect(() => {
     fetch("/projects_data.json")
@@ -381,35 +414,36 @@ const AllProjectsPage = () => {
         ))}
 
         {/* Quantum Particles Storm */}
-        {[...Array(50)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full pointer-events-none"
-            style={{
-              width: `${Math.random() * 3 + 1}px`,
-              height: `${Math.random() * 3 + 1}px`,
-              background: `hsl(${(i * 20 + 200) % 360}, 80%, ${
-                60 + Math.random() * 30
-              }%)`,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              boxShadow: `0 0 ${Math.random() * 20 + 10}px currentColor`,
-            }}
-            animate={{
-              y: [0, -200 - Math.random() * 100, 0],
-              x: [0, Math.sin(i) * 150 + Math.random() * 100, 0],
-              opacity: [0.2, 0.9, 0.2],
-              scale: [1, 2 + Math.random(), 1],
-              rotate: [0, 360],
-            }}
-            transition={{
-              duration: 15 + i * 0.3 + Math.random() * 10,
-              repeat: Infinity,
-              delay: i * 0.1,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
+        {isClient &&
+          quantumParticles.map((particle, i) => (
+            <motion.div
+              key={i}
+              className="absolute rounded-full pointer-events-none"
+              style={{
+                width: `${particle.width}px`,
+                height: `${particle.height}px`,
+                background: `hsl(${(i * 20 + 200) % 360}, 80%, ${
+                  particle.brightness
+                }%)`,
+                left: `${particle.left}%`,
+                top: `${particle.top}%`,
+                boxShadow: `0 0 ${particle.boxShadow}px currentColor`,
+              }}
+              animate={{
+                y: [0, particle.yOffset, 0],
+                x: [0, particle.xOffset, 0],
+                opacity: [0.2, 0.9, 0.2],
+                scale: [1, particle.scale, 1],
+                rotate: [0, 360],
+              }}
+              transition={{
+                duration: particle.duration,
+                repeat: Infinity,
+                delay: i * 0.1,
+                ease: "easeInOut",
+              }}
+            />
+          ))}
 
         {/* Holographic Scan Lines */}
         <motion.div

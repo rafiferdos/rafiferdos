@@ -3,10 +3,24 @@
 import { ThemeContext } from "@/providers/ThemeProvider";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
 const Footer = () => {
   const { theme } = useContext(ThemeContext);
+  const [isClient, setIsClient] = useState(false);
+  const [orbPositions, setOrbPositions] = useState<
+    Array<{ left: number; top: number }>
+  >([]);
+
+  useEffect(() => {
+    setIsClient(true);
+    // Generate orb positions only on client
+    const positions = Array.from({ length: 12 }, () => ({
+      left: Math.random() * 100,
+      top: Math.random() * 100,
+    }));
+    setOrbPositions(positions);
+  }, []);
 
   const socialLinks = [
     {
@@ -110,30 +124,31 @@ const Footer = () => {
       </div>
 
       {/* Floating Orbs */}
-      {[...Array(12)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute w-2 h-2 rounded-full pointer-events-none"
-          style={{
-            background: `hsl(${(i * 30 + 200) % 360}, 70%, 50%)`,
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            filter: "blur(1px)",
-          }}
-          animate={{
-            y: [0, -30, 0],
-            x: [0, Math.sin(i) * 20, 0],
-            opacity: [0.3, 0.8, 0.3],
-            scale: [1, 1.5, 1],
-          }}
-          transition={{
-            duration: 8 + i * 0.5,
-            repeat: Infinity,
-            delay: i * 0.3,
-            ease: "easeInOut",
-          }}
-        />
-      ))}
+      {isClient &&
+        orbPositions.map((position, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-2 h-2 rounded-full pointer-events-none"
+            style={{
+              background: `hsl(${(i * 30 + 200) % 360}, 70%, 50%)`,
+              left: `${position.left}%`,
+              top: `${position.top}%`,
+              filter: "blur(1px)",
+            }}
+            animate={{
+              y: [0, -30, 0],
+              x: [0, Math.sin(i) * 20, 0],
+              opacity: [0.3, 0.8, 0.3],
+              scale: [1, 1.5, 1],
+            }}
+            transition={{
+              duration: 8 + i * 0.5,
+              repeat: Infinity,
+              delay: i * 0.3,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
 
       {/* Main Content */}
       <div className="relative container mx-auto px-6 py-16">
