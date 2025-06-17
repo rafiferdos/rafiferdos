@@ -2,11 +2,11 @@
 
 import { ThemeContext } from "@/providers/ThemeProvider";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import ProjectCard from "./ProjectCard";
-import { TextGenerateEffect } from "./ui/text-generate-effect";
-import Link from "next/link";
 import { HoverBorderGradient } from "./ui/hover-border-gradient";
+import { TextGenerateEffect } from "./ui/text-generate-effect";
 
 export interface Project {
   name: string;
@@ -130,9 +130,7 @@ const Projects = () => {
           {/* Hero Section */}
           <div
             className={`h-[20rem] md:h-[30rem] w-full relative flex items-center justify-center ${
-              theme === "dark"
-                ? "bg-grid-white/[0.2]"
-                : "bg-grid-black/[0.2]"
+              theme === "dark" ? "bg-grid-white/[0.2]" : "bg-grid-black/[0.2]"
             }`}
           >
             <div
