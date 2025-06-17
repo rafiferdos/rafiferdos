@@ -26,6 +26,31 @@
       "challenge": "Implementing a complex role-based access control system that enforced different permissions while maintaining a streamlined user experience."
     },
     {
+      "name": "Nebula Clash",
+      "description": "A full-stack contest creation platform, Nebula Clash, featuring contest creation, user participation, and winner selection. Implemented user roles(admin, user, creator), each with a dedicated dashboard, authentication, and a dynamic leaderboard, enhancing user engagement and experience with glassmorphism UI.",
+      "image": "https://i.ibb.co.com/DYRXq7F/nebula-clash.png",
+      "link": "https://nebula-clash.web.app/",
+      "github_link": "https://github.com/rafiferdos/nebula-clash/",
+      "tech_stack": [
+        "React",
+        "Firebase",
+        "TailwindCSS",
+        "Express.js",
+        "Node.js",
+        "MongoDB"
+      ],
+      "features": [
+        "Contest creation and participation system",
+        "User roles with dedicated dashboards",
+        "Secure authentication and authorization",
+        "Dynamic leaderboard",
+        "Glassmorphism UI design"
+      ],
+      "screenshots": ["https://i.ibb.co.com/DYRXq7F/nebula-clash.png"],
+      "completion_date": "March 2025",
+      "challenge": "Implementing a complex role-based access control system that enforced different permissions while maintaining a streamlined user experience."
+    },
+    {
       "name": "Swap Savvy",
       "description": "An interactive platform that enable users to explore and contribute to a database of alternative product information, including queries, recommendations, and user-created contents.",
       "image": "https://i.ibb.co.com/GMSqSQK/swap-savvy.png",
