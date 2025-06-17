@@ -2,7 +2,6 @@
 
 import ProjectCard from "@/components/ProjectCard";
 import { Project } from "@/components/Projects";
-import { Spotlight } from "@/components/ui/Spotlight";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import { ThemeContext } from "@/providers/ThemeProvider";
 import { AnimatePresence, motion } from "framer-motion";
@@ -12,12 +11,14 @@ import {
   IoArrowBackOutline,
   IoFilterOutline,
   IoGridOutline,
+  IoInfiniteOutline,
   IoListOutline,
   IoSearchOutline,
 } from "react-icons/io5";
 import {
   RiCircuitLine,
   RiCpuLine,
+  RiGalaxyLine,
   RiPlanetLine,
   RiRadarLine,
   RiSpaceShipLine,
@@ -27,6 +28,23 @@ import {
 interface ProjectData {
   projects: Project[];
 }
+
+// Custom Spotlight component since it might not be available
+const CustomSpotlight = ({
+  className,
+  fill,
+}: {
+  className: string;
+  fill: string;
+}) => (
+  <div
+    className={className}
+    style={{
+      background: `radial-gradient(ellipse 600px 400px at 50% 0%, ${fill}, transparent)`,
+      pointerEvents: "none",
+    }}
+  />
+);
 
 const AllProjectsPage = () => {
   const { theme } = useContext(ThemeContext);
@@ -278,7 +296,7 @@ const AllProjectsPage = () => {
     >
       {/* ULTIMATE FUTURISTIC BACKGROUND SYSTEM */}
 
-      {/* Space Navbar Padding */}
+      {/* Space for Navbar */}
       <div className="h-20" />
 
       {/* Holographic Matrix Grid */}
@@ -298,7 +316,6 @@ const AllProjectsPage = () => {
                 rgba(6, 182, 212, 0.1) 270deg, 
                 rgba(59, 130, 246, 0.1) 360deg)
             `,
-            animation: "holographicRotate 30s linear infinite",
           }}
         />
 
@@ -418,7 +435,7 @@ const AllProjectsPage = () => {
       </div>
 
       {/* Spotlight Effects */}
-      <Spotlight
+      <CustomSpotlight
         className="absolute -top-40 left-0 md:left-60"
         fill={
           theme === "dark"
@@ -426,7 +443,7 @@ const AllProjectsPage = () => {
             : "rgba(59, 130, 246, 0.25)"
         }
       />
-      <Spotlight
+      <CustomSpotlight
         className="absolute -top-40 right-0 md:right-60"
         fill={
           theme === "dark"
@@ -580,7 +597,7 @@ const AllProjectsPage = () => {
                   bg: "rgba(34, 197, 94, 0.1)",
                 },
                 {
-                  icon: RiInfiniteOutline,
+                  icon: IoInfiniteOutline,
                   value: "∞",
                   label: "Possibilities",
                   color: "from-orange-400 to-red-400",
@@ -984,56 +1001,57 @@ const AllProjectsPage = () => {
               key={`${viewMode}-${selectedTech}-${searchTerm}-${sortBy}`}
               initial={{ opacity: 0, y: 80 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -60 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
+              exit={{ opacity: 0, y: -80 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
               className={
                 viewMode === "grid"
-                  ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-                  : "space-y-8"
+                  ? "grid grid-cols-1 lg:grid-cols-2 gap-6"
+                  : "space-y-6"
               }
             >
               {filteredProjects.length > 0 ? (
                 filteredProjects.map((project, index) => (
                   <motion.div
                     key={project.name}
-                    initial={{ opacity: 0, y: 80, scale: 0.8 }}
+                    initial={{ opacity: 0, y: 100, scale: 0.8 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     transition={{
-                      duration: 0.6,
+                      duration: 0.8,
                       delay: index * 0.1,
                       type: "spring",
                       stiffness: 100,
                     }}
-                    className={viewMode === "list" ? "max-w-4xl mx-auto" : ""}
+                    className={viewMode === "list" ? "max-w-6xl mx-auto" : ""}
                   >
                     <ProjectCard project={project} />
                   </motion.div>
                 ))
               ) : (
                 <motion.div
-                  className="col-span-full text-center py-32"
+                  className="col-span-full text-center py-40"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.8 }}
+                  transition={{ duration: 1 }}
                 >
                   <motion.div
-                    className="text-8xl mb-8"
+                    className="text-9xl mb-8"
                     animate={{
                       rotate: [0, 10, -10, 0],
                       scale: [1, 1.1, 1],
                     }}
-                    transition={{ duration: 2, repeat: Infinity }}
+                    transition={{ duration: 3, repeat: Infinity }}
                   >
-                    🔍
+                    <RiGalaxyLine className="mx-auto text-purple-400" />
                   </motion.div>
 
-                  <h3 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                    No Projects Found in This Dimension
+                  <h3 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 bg-clip-text text-transparent">
+                    No Signals in This Dimension
                   </h3>
 
-                  <p className="text-xl text-gray-500 mb-8 max-w-md mx-auto">
-                    The quantum search yielded no results. Try adjusting your
-                    parameters or exploring different dimensions.
+                  <p className="text-xl text-gray-500 mb-10 max-w-2xl mx-auto leading-relaxed">
+                    The quantum search matrix found no matching frequencies.
+                    Recalibrate your parameters to explore different dimensional
+                    layers.
                   </p>
 
                   <motion.button
@@ -1041,50 +1059,61 @@ const AllProjectsPage = () => {
                       setSearchTerm("");
                       setSelectedTech("All");
                     }}
-                    className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-2xl font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25"
-                    whileHover={{ scale: 1.05 }}
+                    className="px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300"
+                    style={{
+                      background: "linear-gradient(135deg, #3b82f6, #8b5cf6)",
+                      boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)",
+                    }}
+                    whileHover={{
+                      scale: 1.05,
+                      boxShadow: "0 25px 50px rgba(59, 130, 246, 0.4)",
+                    }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    Reset Quantum Matrix
+                    Reset Dimensional Matrix
                   </motion.button>
                 </motion.div>
               )}
             </motion.div>
           </AnimatePresence>
 
-          {/* Results Status Display */}
+          {/* Quantum Status Display */}
           {filteredProjects.length > 0 && (
             <motion.div
-              className="text-center mt-16 opacity-60"
+              className="text-center mt-20 opacity-70"
               initial={{ opacity: 0 }}
-              animate={{ opacity: 0.6 }}
-              transition={{ duration: 0.8, delay: 1 }}
+              animate={{ opacity: 0.7 }}
+              transition={{ duration: 1, delay: 1.5 }}
             >
               <motion.div
-                className="inline-flex items-center gap-4 px-6 py-3 rounded-full backdrop-blur-sm bg-white/5 border border-white/10"
+                className="inline-flex items-center gap-4 px-8 py-4 rounded-full backdrop-blur-sm border"
+                style={{
+                  background: "rgba(255, 255, 255, 0.05)",
+                  borderColor: "rgba(255, 255, 255, 0.1)",
+                }}
                 animate={{
                   boxShadow: [
                     "0 0 20px rgba(0,0,0,0.1)",
-                    "0 0 30px rgba(59,130,246,0.2)",
+                    "0 0 40px rgba(59,130,246,0.2)",
                     "0 0 20px rgba(0,0,0,0.1)",
                   ],
                 }}
-                transition={{ duration: 3, repeat: Infinity }}
+                transition={{ duration: 4, repeat: Infinity }}
               >
                 <motion.div
-                  className="w-2 h-2 bg-green-400 rounded-full"
-                  animate={{ scale: [1, 1.3, 1] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
+                  className="w-3 h-3 bg-green-400 rounded-full"
+                  animate={{ scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] }}
+                  transition={{ duration: 2, repeat: Infinity }}
                 />
-                <span>
-                  Displaying {filteredProjects.length} of {projects.length}{" "}
-                  quantum projects
+                <span className="font-medium">
+                  Matrix Active: {filteredProjects.length} of {projects.length}{" "}
+                  quantum projects synchronized
                 </span>
                 <motion.div
                   animate={{ rotate: 360 }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
                 >
-                  ⚡
+                  <RiSparklingLine className="text-blue-400" />
                 </motion.div>
               </motion.div>
             </motion.div>
@@ -1092,8 +1121,8 @@ const AllProjectsPage = () => {
         </div>
       </div>
 
-      {/* Bottom Quantum Atmosphere */}
-      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-32 bg-gradient-to-t from-blue-500/10 via-purple-500/5 to-transparent blur-3xl" />
+      {/* Quantum Atmosphere */}
+      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-40 bg-gradient-to-t from-blue-500/10 via-purple-500/5 to-transparent blur-3xl" />
     </div>
   );
 };
