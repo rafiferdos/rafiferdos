@@ -265,7 +265,7 @@ const Navbar = ({ className }: { className?: string }) => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
           className={cn(
-            "relative px-8 py-4 rounded-full border-2 border-transparent",
+            "relative px-8 py-4 rounded-full border-4 border-transparent",
             "shadow-[0_0_0_2px_rgba(255,255,255,0.6),0_16px_32px_rgba(0,0,0,0.12)]",
             "dark:shadow-[0_0_0_2px_rgba(255,255,255,0.3),0_16px_32px_rgba(0,0,0,0.3)]",
             "cursor-pointer overflow-hidden backdrop-blur-xl",
@@ -273,8 +273,8 @@ const Navbar = ({ className }: { className?: string }) => {
           )}
           style={{
             background: "rgba(255, 255, 255, 0.08)",
-            WebkitBackdropFilter: "blur(20px) saturate(180%)",
-            backdropFilter: "blur(20px) saturate(180%)",
+            WebkitBackdropFilter: "blur(20px) saturate(500%)",
+            backdropFilter: "blur(20px) saturate(500%)",
           }}
         >
           <div className="relative flex items-center space-x-6">
