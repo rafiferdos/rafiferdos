@@ -10,15 +10,19 @@ import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import {
   IoArrowBackOutline,
-  IoCodeSlashOutline,
   IoFilterOutline,
-  IoGlobeOutline,
   IoGridOutline,
   IoListOutline,
-  IoRocketOutline,
   IoSearchOutline,
-  IoStatsChartOutline,
 } from "react-icons/io5";
+import {
+  RiCircuitLine,
+  RiCpuLine,
+  RiPlanetLine,
+  RiRadarLine,
+  RiSpaceShipLine,
+  RiSparklingLine,
+} from "react-icons/ri";
 
 interface ProjectData {
   projects: Project[];
@@ -61,7 +65,6 @@ const AllProjectsPage = () => {
   useEffect(() => {
     let filtered = projects;
 
-    // Filter by search term
     if (searchTerm) {
       filtered = filtered.filter(
         (project) =>
@@ -75,14 +78,12 @@ const AllProjectsPage = () => {
       );
     }
 
-    // Filter by technology
     if (selectedTech !== "All") {
       filtered = filtered.filter((project) =>
         project.tech_stack?.includes(selectedTech)
       );
     }
 
-    // Sort projects
     filtered = filtered.sort((a, b) => {
       if (sortBy === "name") {
         return a.name.localeCompare(b.name);
@@ -103,78 +104,166 @@ const AllProjectsPage = () => {
           theme === "dark" ? "bg-black text-white" : "bg-white text-black"
         }`}
       >
-        {/* Loading Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-cyan-500/10" />
+        {/* Ultra Futuristic Loading Background */}
+        <div className="absolute inset-0">
+          {/* Holographic Matrix Background */}
+          <div
+            className="absolute inset-0 opacity-20"
+            style={{
+              background: `
+                radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(147, 51, 234, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(6, 182, 212, 0.25) 0%, transparent 50%),
+                conic-gradient(from 0deg at 50% 50%, rgba(59, 130, 246, 0.1), rgba(147, 51, 234, 0.1), rgba(236, 72, 153, 0.1), rgba(59, 130, 246, 0.1))
+              `,
+            }}
+          />
 
-        {/* Loading Animation */}
-        <motion.div className="relative z-10 flex flex-col items-center space-y-8">
-          {/* Holographic Loading Ring */}
-          <div className="relative w-32 h-32">
+          {/* Animated Circuit Lines */}
+          {[...Array(15)].map((_, i) => (
             <motion.div
-              className="absolute inset-0 rounded-full border-4 border-blue-500/30"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-            />
-            <motion.div
-              className="absolute inset-2 rounded-full border-4 border-purple-500/50 border-t-transparent"
-              animate={{ rotate: -360 }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-            />
-            <motion.div
-              className="absolute inset-4 rounded-full border-4 border-cyan-500/70 border-t-transparent border-r-transparent"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-            />
-
-            {/* Center Pulse */}
-            <motion.div
-              className="absolute inset-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-500"
+              key={i}
+              className="absolute"
+              style={{
+                width: "1px",
+                height: "100vh",
+                left: `${5 + i * 6}%`,
+                background: `linear-gradient(to bottom, transparent, rgba(59, 130, 246, 0.5), transparent)`,
+              }}
               animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.5, 1, 0.5],
+                opacity: [0.2, 0.8, 0.2],
+                scaleY: [0.5, 1.2, 0.5],
+                filter: [
+                  "brightness(1) hue-rotate(0deg)",
+                  "brightness(1.5) hue-rotate(180deg)",
+                  "brightness(1) hue-rotate(360deg)",
+                ],
               }}
               transition={{
-                duration: 2,
+                duration: 4 + i * 0.3,
                 repeat: Infinity,
+                delay: i * 0.2,
                 ease: "easeInOut",
               }}
             />
+          ))}
+        </div>
+
+        {/* Quantum Loading System */}
+        <motion.div className="relative z-10 flex flex-col items-center space-y-12">
+          {/* Multi-Ring Holographic Loader */}
+          <div className="relative w-48 h-48">
+            {[...Array(5)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute inset-0 rounded-full"
+                style={{
+                  border: `2px solid rgba(${
+                    i % 2 === 0 ? "59, 130, 246" : "147, 51, 234"
+                  }, ${0.3 + i * 0.1})`,
+                  borderTop: `2px solid rgba(${
+                    i % 2 === 0 ? "147, 51, 234" : "59, 130, 246"
+                  }, 0.8)`,
+                  filter: "drop-shadow(0 0 10px currentColor)",
+                }}
+                animate={{
+                  rotate: i % 2 === 0 ? 360 : -360,
+                  scale: [1, 1.05, 1],
+                }}
+                transition={{
+                  rotate: {
+                    duration: 2 - i * 0.2,
+                    repeat: Infinity,
+                    ease: "linear",
+                  },
+                  scale: { duration: 3, repeat: Infinity, delay: i * 0.2 },
+                }}
+              />
+            ))}
+
+            {/* Central Quantum Core */}
+            <motion.div
+              className="absolute inset-8 rounded-full flex items-center justify-center"
+              style={{
+                background:
+                  "conic-gradient(from 0deg, rgba(59, 130, 246, 0.8), rgba(147, 51, 234, 0.8), rgba(236, 72, 153, 0.8), rgba(59, 130, 246, 0.8))",
+              }}
+              animate={{
+                rotate: [0, 360],
+                scale: [1, 1.15, 1],
+                boxShadow: [
+                  "0 0 30px rgba(59, 130, 246, 0.5)",
+                  "0 0 50px rgba(147, 51, 234, 0.8)",
+                  "0 0 30px rgba(59, 130, 246, 0.5)",
+                ],
+              }}
+              transition={{
+                rotate: { duration: 4, repeat: Infinity, ease: "linear" },
+                scale: { duration: 2, repeat: Infinity },
+                boxShadow: { duration: 3, repeat: Infinity },
+              }}
+            >
+              <RiSpaceShipLine className="text-4xl text-white" />
+            </motion.div>
           </div>
 
-          {/* Loading Text */}
+          {/* Loading Status */}
           <motion.div
-            className="text-center space-y-4"
-            animate={{ opacity: [0.5, 1, 0.5] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
+            className="text-center space-y-6"
+            animate={{ opacity: [0.6, 1, 0.6] }}
+            transition={{ duration: 2, repeat: Infinity }}
           >
-            <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-              Initializing Project Matrix
-            </h2>
-            <div className="flex items-center space-x-2 text-sm opacity-70">
+            <div className="flex items-center space-x-3">
               <motion.div
-                animate={{ rotate: 360 }}
+                animate={{ rotate: 360, scale: [1, 1.3, 1] }}
                 transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
               >
-                ⚡
+                <RiCircuitLine className="text-2xl text-blue-400" />
               </motion.div>
-              <span>Loading quantum data streams...</span>
+              <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent">
+                Initializing Quantum Matrix
+              </h2>
+            </div>
+
+            <div className="flex items-center justify-center space-x-2 text-sm opacity-70">
+              <span>Syncing with digital dimensions</span>
+              <motion.div
+                animate={{ opacity: [0, 1, 0] }}
+                transition={{ duration: 1, repeat: Infinity }}
+              >
+                <RiSparklingLine />
+              </motion.div>
             </div>
           </motion.div>
 
-          {/* Loading Progress Bar */}
-          <div className="w-64 h-2 bg-white/10 rounded-full overflow-hidden">
-            <motion.div
-              className="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500"
-              animate={{
-                x: [-256, 256],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              style={{ width: "50%" }}
-            />
+          {/* Quantum Progress Bars */}
+          <div className="space-y-3 w-80">
+            {["Neural Networks", "Data Streams", "Holographic Interface"].map(
+              (label, i) => (
+                <div key={label} className="space-y-1">
+                  <div className="flex justify-between text-xs opacity-60">
+                    <span>{label}</span>
+                    <span>100%</span>
+                  </div>
+                  <div className="h-1 bg-white/10 rounded-full overflow-hidden">
+                    <motion.div
+                      className="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500"
+                      animate={{
+                        x: [-320, 320],
+                        opacity: [0.5, 1, 0.5],
+                      }}
+                      transition={{
+                        duration: 2 + i * 0.3,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: i * 0.5,
+                      }}
+                      style={{ width: "40%" }}
+                    />
+                  </div>
+                </div>
+              )
+            )}
           </div>
         </motion.div>
       </div>
@@ -187,368 +276,359 @@ const AllProjectsPage = () => {
         theme === "dark" ? "bg-black text-white" : "bg-white text-black"
       }`}
     >
-      {/* FUTURISTIC BACKGROUND SYSTEM */}
+      {/* ULTIMATE FUTURISTIC BACKGROUND SYSTEM */}
 
-      {/* Primary Gradient Layer */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/10 to-cyan-500/5" />
+      {/* Space Navbar Padding */}
+      <div className="h-20" />
 
-      {/* Animated Neural Network Background */}
-      <div className="absolute inset-0 opacity-20">
-        <motion.div
-          className="w-full h-full"
-          animate={{
-            backgroundPosition: ["0% 0%", "100% 100%"],
-          }}
-          transition={{
-            duration: 30,
-            repeat: Infinity,
-            ease: "linear",
-          }}
+      {/* Holographic Matrix Grid */}
+      <div className="fixed inset-0 pointer-events-none">
+        <div
+          className="absolute inset-0 opacity-15"
           style={{
-            backgroundImage: `
-              radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 40%),
-              radial-gradient(circle at 80% 80%, rgba(147, 51, 234, 0.15) 0%, transparent 40%),
-              radial-gradient(circle at 40% 60%, rgba(6, 182, 212, 0.1) 0%, transparent 40%),
-              radial-gradient(circle at 60% 40%, rgba(236, 72, 153, 0.1) 0%, transparent 40%)
+            background: `
+              radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.4) 0%, transparent 25%),
+              radial-gradient(circle at 75% 25%, rgba(147, 51, 234, 0.4) 0%, transparent 25%),
+              radial-gradient(circle at 25% 75%, rgba(236, 72, 153, 0.4) 0%, transparent 25%),
+              radial-gradient(circle at 75% 75%, rgba(6, 182, 212, 0.4) 0%, transparent 25%),
+              conic-gradient(from 0deg at 50% 50%, 
+                rgba(59, 130, 246, 0.1) 0deg, 
+                rgba(147, 51, 234, 0.1) 90deg, 
+                rgba(236, 72, 153, 0.1) 180deg, 
+                rgba(6, 182, 212, 0.1) 270deg, 
+                rgba(59, 130, 246, 0.1) 360deg)
             `,
-            backgroundSize: "800px 800px",
+            animation: "holographicRotate 30s linear infinite",
           }}
         />
-      </div>
 
-      {/* Hexagonal Grid Pattern */}
-      <div className="absolute inset-0 opacity-10">
+        {/* Neural Network Lines */}
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute"
+            style={{
+              width: i % 3 === 0 ? "2px" : "1px",
+              height: "100vh",
+              left: `${3 + i * 4.8}%`,
+              background: `linear-gradient(to bottom, 
+                transparent 0%, 
+                rgba(${
+                  i % 4 === 0
+                    ? "59, 130, 246"
+                    : i % 4 === 1
+                    ? "147, 51, 234"
+                    : i % 4 === 2
+                    ? "236, 72, 153"
+                    : "6, 182, 212"
+                }, 0.3) 20%, 
+                rgba(${
+                  i % 4 === 0
+                    ? "59, 130, 246"
+                    : i % 4 === 1
+                    ? "147, 51, 234"
+                    : i % 4 === 2
+                    ? "236, 72, 153"
+                    : "6, 182, 212"
+                }, 0.6) 50%, 
+                rgba(${
+                  i % 4 === 0
+                    ? "59, 130, 246"
+                    : i % 4 === 1
+                    ? "147, 51, 234"
+                    : i % 4 === 2
+                    ? "236, 72, 153"
+                    : "6, 182, 212"
+                }, 0.3) 80%, 
+                transparent 100%)`,
+              filter: `hue-rotate(${i * 30}deg) brightness(${
+                1 + Math.sin(i) * 0.3
+              })`,
+            }}
+            animate={{
+              opacity: [0.3, 0.8, 0.3],
+              scaleY: [0.8, 1.2, 0.8],
+              filter: [
+                `hue-rotate(${i * 30}deg) brightness(1)`,
+                `hue-rotate(${i * 30 + 180}deg) brightness(1.5)`,
+                `hue-rotate(${i * 30 + 360}deg) brightness(1)`,
+              ],
+            }}
+            transition={{
+              duration: 5 + i * 0.2,
+              repeat: Infinity,
+              delay: i * 0.1,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
+
+        {/* Quantum Particles Storm */}
+        {[...Array(50)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full pointer-events-none"
+            style={{
+              width: `${Math.random() * 3 + 1}px`,
+              height: `${Math.random() * 3 + 1}px`,
+              background: `hsl(${(i * 20 + 200) % 360}, 80%, ${
+                60 + Math.random() * 30
+              }%)`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              boxShadow: `0 0 ${Math.random() * 20 + 10}px currentColor`,
+            }}
+            animate={{
+              y: [0, -200 - Math.random() * 100, 0],
+              x: [0, Math.sin(i) * 150 + Math.random() * 100, 0],
+              opacity: [0.2, 0.9, 0.2],
+              scale: [1, 2 + Math.random(), 1],
+              rotate: [0, 360],
+            }}
+            transition={{
+              duration: 15 + i * 0.3 + Math.random() * 10,
+              repeat: Infinity,
+              delay: i * 0.1,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
+
+        {/* Holographic Scan Lines */}
         <motion.div
-          className="w-full h-full"
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: `repeating-linear-gradient(
+              0deg,
+              transparent,
+              transparent 4px,
+              rgba(59, 130, 246, 0.03) 4px,
+              rgba(59, 130, 246, 0.03) 8px
+            )`,
+          }}
           animate={{
-            backgroundPosition: ["0px 0px", "60px 35px"],
+            backgroundPosition: ["0px 0px", "0px 40px"],
           }}
           transition={{
-            duration: 20,
+            duration: 3,
             repeat: Infinity,
             ease: "linear",
-          }}
-          style={{
-            backgroundImage: `
-              linear-gradient(30deg, rgba(59, 130, 246, 0.3) 12%, transparent 12.5%, transparent 87%, rgba(59, 130, 246, 0.3) 87.5%, rgba(59, 130, 246, 0.3)),
-              linear-gradient(150deg, rgba(59, 130, 246, 0.3) 12%, transparent 12.5%, transparent 87%, rgba(59, 130, 246, 0.3) 87.5%, rgba(59, 130, 246, 0.3)),
-              linear-gradient(30deg, rgba(59, 130, 246, 0.3) 12%, transparent 12.5%, transparent 87%, rgba(59, 130, 246, 0.3) 87.5%, rgba(59, 130, 246, 0.3)),
-              linear-gradient(150deg, rgba(59, 130, 246, 0.3) 12%, transparent 12.5%, transparent 87%, rgba(59, 130, 246, 0.3) 87.5%, rgba(59, 130, 246, 0.3))
-            `,
-            backgroundSize: "60px 35px",
-            backgroundPosition: "0 0, 0 0, 30px 15px, 30px 15px",
           }}
         />
       </div>
 
       {/* Spotlight Effects */}
       <Spotlight
-        className="hidden md:block -top-40 left-0 md:left-60"
+        className="absolute -top-40 left-0 md:left-60"
         fill={
           theme === "dark"
-            ? "rgba(30, 64, 175, 0.2)"
-            : "rgba(59, 130, 246, 0.2)"
+            ? "rgba(59, 130, 246, 0.25)"
+            : "rgba(59, 130, 246, 0.25)"
         }
       />
       <Spotlight
-        className="hidden lg:block -top-40 right-0 md:right-60"
+        className="absolute -top-40 right-0 md:right-60"
         fill={
           theme === "dark"
-            ? "rgba(147, 51, 234, 0.2)"
-            : "rgba(168, 85, 247, 0.2)"
+            ? "rgba(147, 51, 234, 0.25)"
+            : "rgba(168, 85, 247, 0.25)"
         }
       />
-      <Spotlight
-        className="hidden xl:block top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-        fill={
-          theme === "dark"
-            ? "rgba(6, 182, 212, 0.15)"
-            : "rgba(8, 145, 178, 0.15)"
-        }
-      />
-
-      {/* Quantum Particles System */}
-      {[...Array(25)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute rounded-full pointer-events-none"
-          style={{
-            width: `${Math.random() * 4 + 1}px`,
-            height: `${Math.random() * 4 + 1}px`,
-            background: `hsl(${(i * 15 + 180) % 360}, 70%, ${
-              50 + Math.random() * 30
-            }%)`,
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            filter: "blur(0.5px)",
-            boxShadow: `0 0 ${Math.random() * 10 + 5}px hsl(${
-              (i * 15 + 180) % 360
-            }, 70%, 50%)`,
-          }}
-          animate={{
-            y: [0, -100 - Math.random() * 50, 0],
-            x: [0, Math.sin(i) * 80 + Math.random() * 40, 0],
-            opacity: [0.2, 0.8, 0.2],
-            scale: [1, 1.5 + Math.random(), 1],
-          }}
-          transition={{
-            duration: 12 + i * 0.5 + Math.random() * 5,
-            repeat: Infinity,
-            delay: i * 0.2,
-            ease: "easeInOut",
-          }}
-        />
-      ))}
-
-      {/* Data Streams */}
-      {[...Array(6)].map((_, i) => (
-        <motion.div
-          key={`stream-${i}`}
-          className="absolute w-px opacity-30"
-          style={{
-            height: "100vh",
-            left: `${15 + i * 15}%`,
-            background: `linear-gradient(to bottom, transparent, rgba(59, 130, 246, 0.5), transparent)`,
-          }}
-          animate={{
-            opacity: [0.1, 0.5, 0.1],
-            scaleY: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 3 + i * 0.5,
-            repeat: Infinity,
-            delay: i * 0.3,
-            ease: "easeInOut",
-          }}
-        />
-      ))}
 
       {/* MAIN CONTENT */}
-      <div className="relative z-10 pt-20 pb-16">
+      <div className="relative z-10 pt-10 pb-16">
         <div className="max-w-7xl mx-auto px-6">
-          {/* HERO HEADER SECTION */}
+          {/* HYPER-FUTURISTIC HEADER */}
           <motion.div
-            className="text-center mb-20"
-            initial={{ opacity: 0, y: -50 }}
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: -80 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
           >
-            {/* Navigation Breadcrumb */}
+            {/* Navigation Portal */}
             <Link href="/#projects">
               <motion.div
-                className="inline-flex items-center gap-3 mb-12 text-sm px-6 py-3 rounded-full backdrop-blur-xl border transition-all duration-300"
+                className="inline-flex items-center gap-4 mb-12 px-8 py-4 rounded-full transition-all duration-500 group"
                 style={{
-                  background: "rgba(255, 255, 255, 0.08)",
-                  borderColor: "rgba(255, 255, 255, 0.12)",
-                  boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
+                  background:
+                    "linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(147, 51, 234, 0.15))",
+                  backdropFilter: "blur(20px) saturate(200%)",
+                  border: "1px solid rgba(255, 255, 255, 0.1)",
+                  boxShadow:
+                    "0 20px 40px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
                 }}
                 whileHover={{
                   scale: 1.05,
-                  x: -10,
-                  boxShadow: "0 12px 40px rgba(59, 130, 246, 0.2)",
+                  x: -15,
+                  boxShadow:
+                    "0 25px 50px rgba(59, 130, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3)",
                 }}
                 whileTap={{ scale: 0.95 }}
               >
                 <motion.div
-                  animate={{ x: [0, -3, 0] }}
+                  className="p-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500"
+                  animate={{
+                    rotate: [0, -10, 10, 0],
+                    scale: [1, 1.1, 1],
+                  }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  <IoArrowBackOutline className="text-white" size={18} />
+                </motion.div>
+                <span className="text-sm font-medium opacity-90 group-hover:opacity-100 transition-opacity">
+                  Return to Command Center
+                </span>
+                <motion.div
+                  animate={{
+                    scale: [1, 1.3, 1],
+                    opacity: [0.5, 1, 0.5],
+                  }}
                   transition={{ duration: 1.5, repeat: Infinity }}
                 >
-                  <IoArrowBackOutline className="text-blue-400" size={16} />
+                  <RiCircuitLine className="text-blue-400" size={16} />
                 </motion.div>
-                <span className="opacity-80 hover:opacity-100 transition-opacity">
-                  Back to Portfolio Hub
-                </span>
-                <div className="w-1 h-1 bg-blue-400 rounded-full animate-pulse" />
               </motion.div>
             </Link>
 
-            {/* Main Title with Holographic Effect */}
+            {/* Ultimate Title System */}
             <motion.div
-              className="relative mb-8"
-              initial={{ scale: 0.8, opacity: 0 }}
+              className="relative mb-12"
+              initial={{ scale: 0.5, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.8, type: "spring", bounce: 0.3 }}
+              transition={{ duration: 1, type: "spring", bounce: 0.4 }}
             >
               <motion.h1
-                className={`text-6xl md:text-8xl lg:text-9xl font-black relative z-10 ${
-                  theme === "dark"
-                    ? "text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400"
-                    : "text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600"
-                }`}
+                className="text-7xl md:text-9xl lg:text-[12rem] font-black relative z-10 leading-none"
+                style={{
+                  background:
+                    "linear-gradient(45deg, #3b82f6, #9333ea, #ec4899, #06b6d4, #3b82f6)",
+                  backgroundSize: "400% 400%",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  textShadow: "0 0 100px rgba(59, 130, 246, 0.5)",
+                  filter: "drop-shadow(0 0 20px rgba(147, 51, 234, 0.3))",
+                }}
                 animate={{
                   backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                }}
-                transition={{
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                style={{
-                  backgroundSize: "300% 300%",
-                  textShadow: "0 0 50px rgba(59, 130, 246, 0.3)",
-                }}
-              >
-                PROJECT
-              </motion.h1>
-
-              {/* Holographic Overlay */}
-              <motion.h1
-                className="absolute inset-0 text-6xl md:text-8xl lg:text-9xl font-black text-blue-400/20 blur-sm"
-                animate={{
-                  scale: [1, 1.02, 1],
-                  opacity: [0.2, 0.4, 0.2],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              >
-                PROJECT
-              </motion.h1>
-            </motion.div>
-
-            <motion.div
-              className="relative mb-8"
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{
-                duration: 0.8,
-                delay: 0.2,
-                type: "spring",
-                bounce: 0.3,
-              }}
-            >
-              <motion.h2
-                className={`text-4xl md:text-6xl lg:text-7xl font-black ${
-                  theme === "dark"
-                    ? "text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-400"
-                    : "text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 via-purple-600 to-pink-600"
-                }`}
-                animate={{
-                  backgroundPosition: ["100% 50%", "0% 50%", "100% 50%"],
                 }}
                 transition={{
                   duration: 8,
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                style={{
-                  backgroundSize: "300% 300%",
-                  textShadow: "0 0 30px rgba(147, 51, 234, 0.3)",
+              >
+                NEXUS
+              </motion.h1>
+
+              {/* Holographic Echo */}
+              <motion.h1
+                className="absolute inset-0 text-7xl md:text-9xl lg:text-[12rem] font-black text-blue-400/20 blur-sm leading-none"
+                animate={{
+                  scale: [1, 1.03, 1],
+                  opacity: [0.2, 0.5, 0.2],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
                 }}
               >
                 NEXUS
-              </motion.h2>
+              </motion.h1>
             </motion.div>
 
-            {/* Subtitle with Typewriter Effect */}
             <motion.div
-              className="text-xl md:text-2xl max-w-4xl mx-auto mb-16 opacity-80"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 0.8, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
+              className="text-xl md:text-2xl max-w-5xl mx-auto mb-20 opacity-90"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 0.9, y: 0 }}
+              transition={{ duration: 1, delay: 0.3 }}
             >
               <TextGenerateEffect
-                words="Welcome to the quantum realm of innovation. Each project represents a breakthrough in digital architecture, engineered with precision and futuristic vision to shape tomorrow's digital landscape."
-                className="text-lg md:text-xl leading-relaxed"
+                words="Enter the quantum realm where innovation transcends reality. Each project is a gateway to the future, engineered with cosmic precision and interdimensional creativity."
+                className="text-lg md:text-xl leading-relaxed bg-gradient-to-r from-gray-300 via-white to-gray-300 bg-clip-text text-transparent"
               />
             </motion.div>
 
-            {/* Quantum Stats Dashboard */}
+            {/* Quantum Stats Command Center */}
             <motion.div
-              className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto"
+              className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
+              transition={{ duration: 1, delay: 0.6 }}
             >
               {[
                 {
-                  icon: IoRocketOutline,
+                  icon: RiSpaceShipLine,
                   value: projects.length,
-                  label: "Live Projects",
+                  label: "Quantum Projects",
                   color: "from-blue-400 to-cyan-400",
-                  delay: 0,
+                  bg: "rgba(59, 130, 246, 0.1)",
                 },
                 {
-                  icon: IoCodeSlashOutline,
+                  icon: RiCpuLine,
                   value: allTechnologies.length,
-                  label: "Technologies",
+                  label: "Neural Networks",
                   color: "from-purple-400 to-pink-400",
-                  delay: 0.2,
+                  bg: "rgba(147, 51, 234, 0.1)",
                 },
                 {
-                  icon: IoGlobeOutline,
+                  icon: RiPlanetLine,
                   value: projects.filter((p) => p.link).length,
-                  label: "Deployed",
+                  label: "Live Portals",
                   color: "from-green-400 to-emerald-400",
-                  delay: 0.4,
+                  bg: "rgba(34, 197, 94, 0.1)",
                 },
                 {
-                  icon: IoStatsChartOutline,
+                  icon: RiInfiniteOutline,
                   value: "∞",
-                  label: "Innovation",
+                  label: "Possibilities",
                   color: "from-orange-400 to-red-400",
-                  delay: 0.6,
+                  bg: "rgba(249, 115, 22, 0.1)",
                 },
               ].map((stat, index) => (
                 <motion.div
                   key={stat.label}
                   className="relative group"
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 40 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: stat.delay }}
+                  transition={{ duration: 0.8, delay: 0.8 + index * 0.1 }}
+                  whileHover={{ scale: 1.05, y: -5 }}
                 >
                   <div
-                    className="relative p-6 rounded-2xl backdrop-blur-xl border transition-all duration-500 group-hover:scale-105"
+                    className="relative p-6 rounded-2xl backdrop-blur-xl border transition-all duration-500"
                     style={{
-                      background: "rgba(255, 255, 255, 0.05)",
-                      borderColor: "rgba(255, 255, 255, 0.1)",
-                      boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
+                      background: `linear-gradient(135deg, ${stat.bg}, rgba(255, 255, 255, 0.05))`,
+                      borderColor: "rgba(255, 255, 255, 0.15)",
+                      boxShadow:
+                        "0 15px 35px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
                     }}
                   >
-                    {/* Animated Background Glow */}
                     <motion.div
-                      className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${stat.color} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
+                      className={`text-4xl mb-4 bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}
                       animate={{
-                        scale: [1, 1.05, 1],
+                        scale: [1, 1.2, 1],
+                        rotate: stat.value === "∞" ? [0, 360] : [0, 10, -10, 0],
                       }}
                       transition={{
-                        duration: 3,
+                        duration: stat.value === "∞" ? 8 : 3,
                         repeat: Infinity,
-                        delay: index * 0.5,
-                      }}
-                    />
-
-                    <motion.div
-                      className={`text-3xl mb-3 bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}
-                      animate={{
-                        scale: [1, 1.1, 1],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        delay: index * 0.3,
+                        ease: stat.value === "∞" ? "linear" : "easeInOut",
+                        delay: index * 0.2,
                       }}
                     >
                       <stat.icon />
                     </motion.div>
 
                     <motion.div
-                      className={`text-3xl lg:text-4xl font-bold mb-2 bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}
-                      animate={
-                        stat.value !== "∞"
-                          ? {
-                              scale: [1, 1.05, 1],
-                            }
-                          : {
-                              rotate: [0, 360],
-                            }
-                      }
+                      className={`text-3xl font-bold mb-2 bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}
+                      animate={{
+                        scale: [1, 1.05, 1],
+                      }}
                       transition={{
-                        duration: stat.value !== "∞" ? 2 : 8,
+                        duration: 2,
                         repeat: Infinity,
-                        ease: stat.value !== "∞" ? "easeInOut" : "linear",
+                        delay: index * 0.3,
                       }}
                     >
                       {stat.value}
@@ -557,41 +637,72 @@ const AllProjectsPage = () => {
                     <div className="text-sm opacity-70 font-medium">
                       {stat.label}
                     </div>
+
+                    {/* Quantum Glow Effect */}
+                    <motion.div
+                      className="absolute inset-0 rounded-2xl pointer-events-none"
+                      style={{
+                        background: `linear-gradient(135deg, ${stat.bg}, transparent)`,
+                        opacity: 0,
+                      }}
+                      animate={{
+                        opacity: [0, 0.3, 0],
+                        scale: [1, 1.05, 1],
+                      }}
+                      transition={{
+                        duration: 4,
+                        repeat: Infinity,
+                        delay: index * 0.5,
+                      }}
+                    />
                   </div>
                 </motion.div>
               ))}
             </motion.div>
           </motion.div>
 
-          {/* QUANTUM CONTROL PANEL */}
+          {/* QUANTUM CONTROL INTERFACE */}
           <motion.div
-            className="mb-16"
-            initial={{ opacity: 0, y: 50 }}
+            className="mb-12"
+            initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}
+            transition={{ duration: 1, delay: 1 }}
           >
-            {/* Main Controls Row */}
-            <div className="flex flex-col xl:flex-row gap-6 mb-8">
-              {/* Advanced Search Module */}
+            {/* Advanced Control Matrix */}
+            <div className="flex flex-col xl:flex-row gap-4 mb-6">
+              {/* Quantum Search Module */}
               <motion.div
                 className="flex-1 relative group"
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 <div
-                  className="relative backdrop-blur-xl border rounded-2xl p-6 transition-all duration-500"
+                  className="relative backdrop-blur-xl rounded-2xl p-6 transition-all duration-500"
                   style={{
-                    background: "rgba(255, 255, 255, 0.08)",
-                    borderColor: "rgba(255, 255, 255, 0.12)",
-                    boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
+                    background:
+                      "linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 51, 234, 0.1))",
+                    border: "1px solid rgba(255, 255, 255, 0.15)",
+                    boxShadow:
+                      "0 20px 40px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
                   }}
                 >
                   <div className="flex items-center gap-4 mb-4">
-                    <IoSearchOutline className="text-blue-400 text-xl" />
-                    <h3 className="font-semibold text-lg">Quantum Search</h3>
+                    <motion.div
+                      animate={{ rotate: 360, scale: [1, 1.2, 1] }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "linear",
+                      }}
+                    >
+                      <RiRadarLine className="text-blue-400 text-2xl" />
+                    </motion.div>
+                    <h3 className="font-bold text-lg">
+                      Neural Search Interface
+                    </h3>
                     <motion.div
                       className="w-2 h-2 bg-blue-400 rounded-full"
-                      animate={{ opacity: [0.5, 1, 0.5] }}
+                      animate={{ opacity: [0.3, 1, 0.3], scale: [1, 1.5, 1] }}
                       transition={{ duration: 2, repeat: Infinity }}
                     />
                   </div>
@@ -599,50 +710,57 @@ const AllProjectsPage = () => {
                   <div className="relative">
                     <input
                       type="text"
-                      placeholder="Search projects, technologies, or descriptions..."
+                      placeholder="Search across quantum dimensions..."
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
-                      className={`w-full px-4 py-3 rounded-xl backdrop-blur-sm border transition-all duration-300 ${
+                      className={`w-full px-6 py-4 rounded-xl backdrop-blur-sm border-2 transition-all duration-300 ${
                         theme === "dark"
-                          ? "bg-white/5 border-white/20 text-white placeholder-gray-400 focus:border-blue-400"
-                          : "bg-black/5 border-black/20 text-black placeholder-gray-600 focus:border-blue-600"
-                      } focus:outline-none focus:ring-2 focus:ring-blue-500/20`}
+                          ? "bg-black/20 border-white/20 text-white placeholder-gray-400 focus:border-blue-400 focus:bg-black/30"
+                          : "bg-white/30 border-black/20 text-black placeholder-gray-600 focus:border-blue-600 focus:bg-white/50"
+                      } focus:outline-none focus:ring-2 focus:ring-blue-500/30 font-medium`}
+                      style={{
+                        boxShadow:
+                          "inset 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1)",
+                      }}
                     />
                     <motion.div
                       className="absolute right-4 top-1/2 transform -translate-y-1/2 text-blue-400"
                       animate={{
                         rotate: searchTerm ? [0, 360] : [0, 15, -15, 0],
-                        scale: searchTerm ? [1, 1.2, 1] : 1,
+                        scale: searchTerm ? [1, 1.3, 1] : [1, 1.1, 1],
                       }}
                       transition={{
-                        duration: searchTerm ? 0.5 : 2,
-                        repeat: searchTerm ? 1 : Infinity,
+                        duration: searchTerm ? 0.8 : 2,
+                        repeat: Infinity,
+                        ease: "easeInOut",
                       }}
                     >
-                      <IoSearchOutline />
+                      <IoSearchOutline size={20} />
                     </motion.div>
                   </div>
                 </div>
               </motion.div>
 
-              {/* View & Sort Controls */}
+              {/* Control Panel */}
               <motion.div
-                className="flex gap-4"
-                initial={{ opacity: 0, x: 50 }}
+                className="flex gap-3"
+                initial={{ opacity: 0, x: 60 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 1.2 }}
+                transition={{ duration: 0.8, delay: 1.2 }}
               >
-                {/* View Mode Selector */}
+                {/* View Mode Matrix */}
                 <div
-                  className="flex p-2 rounded-xl backdrop-blur-xl border"
+                  className="flex p-2 rounded-xl backdrop-blur-xl"
                   style={{
-                    background: "rgba(255, 255, 255, 0.05)",
-                    borderColor: "rgba(255, 255, 255, 0.1)",
+                    background:
+                      "linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05))",
+                    border: "1px solid rgba(255, 255, 255, 0.15)",
+                    boxShadow: "0 8px 16px rgba(0, 0, 0, 0.1)",
                   }}
                 >
                   {[
-                    { mode: "grid", icon: IoGridOutline, label: "Grid" },
-                    { mode: "list", icon: IoListOutline, label: "List" },
+                    { mode: "grid", icon: IoGridOutline, label: "Matrix Grid" },
+                    { mode: "list", icon: IoListOutline, label: "Data Stream" },
                   ].map((option) => (
                     <motion.button
                       key={option.mode}
@@ -656,6 +774,7 @@ const AllProjectsPage = () => {
                       }`}
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
+                      title={option.label}
                     >
                       {viewMode === option.mode && (
                         <motion.div
@@ -664,6 +783,9 @@ const AllProjectsPage = () => {
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           transition={{ duration: 0.3 }}
+                          style={{
+                            boxShadow: "0 0 20px rgba(59, 130, 246, 0.5)",
+                          }}
                         />
                       )}
                       <option.icon className="relative z-10" size={20} />
@@ -671,105 +793,132 @@ const AllProjectsPage = () => {
                   ))}
                 </div>
 
-                {/* Sort Selector */}
+                {/* Sort Quantum Selector */}
                 <motion.select
                   value={sortBy}
                   onChange={(e) =>
                     setSortBy(e.target.value as "name" | "date" | "tech")
                   }
-                  className={`px-4 py-3 rounded-xl backdrop-blur-xl border transition-all duration-300 ${
+                  className={`px-4 py-3 rounded-xl backdrop-blur-xl border-2 transition-all duration-300 font-medium ${
                     theme === "dark"
-                      ? "bg-white/5 border-white/20 text-white"
-                      : "bg-black/5 border-black/20 text-black"
-                  } focus:outline-none focus:ring-2 focus:ring-blue-500/20 cursor-pointer`}
-                  whileHover={{ scale: 1.05 }}
+                      ? "bg-black/20 border-white/20 text-white focus:border-blue-400 focus:bg-black/30"
+                      : "bg-white/30 border-black/20 text-black focus:border-blue-600 focus:bg-white/50"
+                  } focus:outline-none focus:ring-2 focus:ring-blue-500/30 cursor-pointer`}
+                  whileHover={{ scale: 1.02 }}
                   style={{
-                    boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
+                    boxShadow:
+                      "0 8px 16px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
                   }}
                 >
-                  <option value="name">Sort by Name</option>
-                  <option value="date">Sort by Date</option>
-                  <option value="tech">Sort by Tech Stack</option>
+                  <option value="name">Sort by Designation</option>
+                  <option value="date">Sort by Timeline</option>
+                  <option value="tech">Sort by Complexity</option>
                 </motion.select>
 
-                {/* Filter Toggle */}
+                {/* Filter Portal Toggle */}
                 <motion.button
                   onClick={() => setShowFilters(!showFilters)}
-                  className={`p-3 rounded-xl backdrop-blur-xl border transition-all duration-300 ${
+                  className={`p-3 rounded-xl backdrop-blur-xl border-2 transition-all duration-300 ${
                     showFilters
-                      ? "text-white bg-gradient-to-r from-purple-500 to-blue-500"
-                      : "text-gray-400 hover:text-white"
+                      ? "text-white border-purple-500/50"
+                      : "text-gray-400 hover:text-white border-white/20 hover:border-white/30"
                   }`}
                   style={{
-                    borderColor: "rgba(255, 255, 255, 0.1)",
-                    boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
+                    background: showFilters
+                      ? "linear-gradient(135deg, rgba(147, 51, 234, 0.3), rgba(236, 72, 153, 0.3))"
+                      : "rgba(255, 255, 255, 0.05)",
+                    boxShadow: showFilters
+                      ? "0 0 30px rgba(147, 51, 234, 0.4)"
+                      : "0 8px 16px rgba(0, 0, 0, 0.1)",
                   }}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  <IoFilterOutline size={20} />
+                  <motion.div
+                    animate={{ rotate: showFilters ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <IoFilterOutline size={20} />
+                  </motion.div>
                 </motion.button>
               </motion.div>
             </div>
 
-            {/* Technology Filter Panel */}
+            {/* Quantum Filter Interface */}
             <AnimatePresence>
               {showFilters && (
                 <motion.div
-                  initial={{ opacity: 0, height: 0, y: -20 }}
+                  initial={{ opacity: 0, height: 0, y: -30 }}
                   animate={{ opacity: 1, height: "auto", y: 0 }}
-                  exit={{ opacity: 0, height: 0, y: -20 }}
-                  transition={{ duration: 0.5, ease: "easeOut" }}
+                  exit={{ opacity: 0, height: 0, y: -30 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
                   className="overflow-hidden"
                 >
                   <div
                     className="p-6 rounded-2xl backdrop-blur-xl border"
                     style={{
-                      background: "rgba(255, 255, 255, 0.05)",
-                      borderColor: "rgba(255, 255, 255, 0.1)",
-                      boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
+                      background:
+                        "linear-gradient(135deg, rgba(147, 51, 234, 0.1), rgba(236, 72, 153, 0.1))",
+                      borderColor: "rgba(255, 255, 255, 0.15)",
+                      boxShadow:
+                        "0 20px 40px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
                     }}
                   >
-                    <div className="flex items-center gap-3 mb-6">
+                    <div className="flex items-center gap-4 mb-6">
                       <motion.div
                         animate={{ rotate: [0, 360] }}
                         transition={{
-                          duration: 3,
+                          duration: 4,
                           repeat: Infinity,
                           ease: "linear",
                         }}
                       >
-                        <IoFilterOutline className="text-purple-400 text-xl" />
+                        <RiCircuitLine className="text-purple-400 text-2xl" />
                       </motion.div>
-                      <h3 className="font-semibold text-lg">
-                        Technology Matrix
+                      <h3 className="font-bold text-lg">
+                        Dimensional Filter Matrix
                       </h3>
-                      <div className="text-sm opacity-60">
-                        ({filteredProjects.length} of {projects.length}{" "}
-                        projects)
+                      <div
+                        className="text-sm px-3 py-1 rounded-full font-medium"
+                        style={{
+                          background: "rgba(147, 51, 234, 0.2)",
+                          color: "#a855f7",
+                        }}
+                      >
+                        {filteredProjects.length} of {projects.length}{" "}
+                        dimensions active
                       </div>
                     </div>
 
-                    <div className="flex flex-wrap gap-3">
+                    <div className="flex flex-wrap gap-2">
                       <motion.button
                         onClick={() => setSelectedTech("All")}
-                        className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                        className={`px-5 py-3 rounded-full text-sm font-bold transition-all duration-300 ${
                           selectedTech === "All"
-                            ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg"
+                            ? "text-white shadow-2xl"
                             : `${
                                 theme === "dark"
-                                  ? "bg-white/10 text-gray-300 hover:bg-white/20"
-                                  : "bg-black/10 text-gray-700 hover:bg-black/20"
-                              } backdrop-blur-sm border border-white/10`
+                                  ? "text-gray-300 hover:text-white"
+                                  : "text-gray-700 hover:text-black"
+                              } hover:shadow-lg`
                         }`}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
                         style={{
+                          background:
+                            selectedTech === "All"
+                              ? "linear-gradient(135deg, #3b82f6, #8b5cf6)"
+                              : "rgba(255, 255, 255, 0.1)",
+                          border:
+                            selectedTech === "All"
+                              ? "1px solid rgba(59, 130, 246, 0.5)"
+                              : "1px solid rgba(255, 255, 255, 0.1)",
                           boxShadow:
                             selectedTech === "All"
-                              ? "0 0 20px rgba(59, 130, 246, 0.3)"
+                              ? "0 0 30px rgba(59, 130, 246, 0.4)"
                               : "none",
+                          backdropFilter: "blur(10px)",
                         }}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
                       >
                         All Dimensions ({projects.length})
                       </motion.button>
@@ -778,31 +927,40 @@ const AllProjectsPage = () => {
                         <motion.button
                           key={tech.name}
                           onClick={() => setSelectedTech(tech.name)}
-                          className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
+                          className={`px-4 py-3 rounded-full text-sm font-bold transition-all duration-300 flex items-center gap-2 ${
                             selectedTech === tech.name
-                              ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg"
+                              ? "text-white shadow-2xl"
                               : `${
                                   theme === "dark"
-                                    ? "bg-white/10 text-gray-300 hover:bg-white/20"
-                                    : "bg-black/10 text-gray-700 hover:bg-black/20"
-                                } backdrop-blur-sm border border-white/10`
+                                    ? "text-gray-300 hover:text-white"
+                                    : "text-gray-700 hover:text-black"
+                                } hover:shadow-lg`
                           }`}
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.3, delay: index * 0.05 }}
                           style={{
+                            background:
+                              selectedTech === tech.name
+                                ? "linear-gradient(135deg, #8b5cf6, #ec4899)"
+                                : "rgba(255, 255, 255, 0.1)",
+                            border:
+                              selectedTech === tech.name
+                                ? "1px solid rgba(139, 92, 246, 0.5)"
+                                : "1px solid rgba(255, 255, 255, 0.1)",
                             boxShadow:
                               selectedTech === tech.name
-                                ? "0 0 20px rgba(147, 51, 234, 0.3)"
+                                ? "0 0 30px rgba(139, 92, 246, 0.4)"
                                 : "none",
+                            backdropFilter: "blur(10px)",
                           }}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          initial={{ opacity: 0, x: -30 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.4, delay: index * 0.03 }}
                         >
                           <span>{tech.name}</span>
                           <motion.span
-                            className="text-xs px-2 py-1 rounded-full bg-white/20"
-                            animate={{ scale: [1, 1.1, 1] }}
+                            className="text-xs px-2 py-1 rounded-full bg-white/30 font-bold"
+                            animate={{ scale: [1, 1.15, 1] }}
                             transition={{
                               duration: 2,
                               repeat: Infinity,
@@ -820,11 +978,11 @@ const AllProjectsPage = () => {
             </AnimatePresence>
           </motion.div>
 
-          {/* PROJECTS QUANTUM GRID */}
+          {/* QUANTUM PROJECTS MATRIX */}
           <AnimatePresence mode="wait">
             <motion.div
               key={`${viewMode}-${selectedTech}-${searchTerm}-${sortBy}`}
-              initial={{ opacity: 0, y: 60 }}
+              initial={{ opacity: 0, y: 80 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -60 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
