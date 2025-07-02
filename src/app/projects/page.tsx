@@ -16,9 +16,7 @@ import {
   IoSearchOutline,
 } from "react-icons/io5";
 import {
-  RiCircuitLine,
   RiCpuLine,
-  RiGalaxyLine,
   RiPlanetLine,
   RiRadarLine,
   RiSpaceShipLine,

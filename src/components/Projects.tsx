@@ -176,7 +176,7 @@ const Projects = () => {
           <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-4 md:gap-12 lg:gap-20 auto-rows-fr">
             {projects.map((project, index) => (
               <motion.div
-                key={project.name}
+                key={`${project.name}-${index}`}
                 initial={{ opacity: 0, y: 60, scale: 0.8 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{
