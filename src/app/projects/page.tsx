@@ -163,7 +163,7 @@ const AllProjectsPage = () => {
             style={{
               background: `
                 radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(147, 51, 234, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(147, 51, 234,.3) 0%, transparent 50%),
                 radial-gradient(circle at 40% 40%, rgba(6, 182, 212, 0.25) 0%, transparent 50%),
                 conic-gradient(from 0deg at 50% 50%, rgba(59, 130, 246, 0.1), rgba(147, 51, 234, 0.1), rgba(236, 72, 153, 0.1), rgba(59, 130, 246, 0.1))
               `,
@@ -269,7 +269,7 @@ const AllProjectsPage = () => {
                 animate={{ rotate: 360, scale: [1, 1.3, 1] }}
                 transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
               >
-                <RiCircuitLine className="text-2xl text-blue-400" />
+                <RiCircleLine className="text-2xl text-blue-400" />
               </motion.div>
               <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent">
                 Initializing Quantum Matrix
@@ -536,7 +536,7 @@ const AllProjectsPage = () => {
                   }}
                   transition={{ duration: 1.5, repeat: Infinity }}
                 >
-                  <RiCircuitLine className="text-blue-400" size={16} />
+                  <RiCircleLine className="text-blue-400" size={16} />
                 </motion.div>
               </motion.div>
             </Link>
