@@ -16,7 +16,9 @@ import {
   IoSearchOutline,
 } from "react-icons/io5";
 import {
+  RiCircleLine,
   RiCpuLine,
+  RiFocus3Line,
   RiPlanetLine,
   RiRadarLine,
   RiSpaceShipLine,
@@ -922,7 +924,7 @@ const AllProjectsPage = () => {
                           ease: "linear",
                         }}
                       >
-                        <RiCircuitLine className="text-purple-400 text-2xl" />
+                        <RiCircleLine className="text-purple-400 text-2xl" />
                       </motion.div>
                       <h3 className="font-bold text-lg">
                         Dimensional Filter Matrix
@@ -1073,7 +1075,7 @@ const AllProjectsPage = () => {
                     }}
                     transition={{ duration: 3, repeat: Infinity }}
                   >
-                    <RiGalaxyLine className="mx-auto text-purple-400" />
+                    <RiFocus3Line className="mx-auto text-purple-400" />
                   </motion.div>
 
                   <h3 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 bg-clip-text text-transparent">
