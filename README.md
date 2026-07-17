@@ -37,6 +37,7 @@
 I build robust digital solutions, transitioning seamlessly from complex backend database architectures to highly responsive, visually stunning front-end UIs. My development philosophy centers on:
 
 ### ⚙️ `execution_protocols`
+
 - `[✓]` **Scalable Architecture:** Writing clean, modular, and maintainable code.
 - `[✓]` **Cross-Platform:** Delivering seamless experiences across web and mobile.
 - `[✓]` **User-Centric UI/UX:** Prioritizing intuitive journeys and pixel-perfect design.
@@ -48,10 +49,12 @@ I build robust digital solutions, transitioning seamlessly from complex backend 
 <div align="center">
 
 ### Languages
+
 <img src="https://img.shields.io/badge/TypeScript-%233178C6.svg?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript"/>
 <img src="https://img.shields.io/badge/JavaScript_ES6-%23F7DF1E.svg?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript"/>
 
 ### Frontend & Mobile
+
 <img src="https://img.shields.io/badge/Next.js-%23000000.svg?style=flat-square&logo=next.js&logoColor=white" alt="Next.js"/>
 <img src="https://img.shields.io/badge/React-%2361DAFB.svg?style=flat-square&logo=react&logoColor=black" alt="React"/>
 <img src="https://img.shields.io/badge/React_Native-%2361DAFB.svg?style=flat-square&logo=react&logoColor=black" alt="React Native"/>
@@ -60,6 +63,7 @@ I build robust digital solutions, transitioning seamlessly from complex backend 
 <img src="https://img.shields.io/badge/Tailwind_CSS-%2306B6D4.svg?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind CSS"/>
 
 ### Backend & Real-time
+
 <img src="https://img.shields.io/badge/Node.js-%23339933.svg?style=flat-square&logo=node.js&logoColor=white" alt="Node.js"/>
 <img src="https://img.shields.io/badge/Express.js-%23000000.svg?style=flat-square&logo=express&logoColor=white" alt="Express.js"/>
 <img src="https://img.shields.io/badge/GraphQL-%23E10098.svg?style=flat-square&logo=graphql&logoColor=white" alt="GraphQL"/>
@@ -67,6 +71,7 @@ I build robust digital solutions, transitioning seamlessly from complex backend 
 <img src="https://img.shields.io/badge/Socket.io-%23010101.svg?style=flat-square&logo=socket.io&logoColor=white" alt="Socket.io"/>
 
 ### Database & ORM
+
 <img src="https://img.shields.io/badge/PostgreSQL-%234169E1.svg?style=flat-square&logo=postgresql&logoColor=white" alt="PostgreSQL"/>
 <img src="https://img.shields.io/badge/MongoDB-%2347A248.svg?style=flat-square&logo=mongodb&logoColor=white" alt="MongoDB"/>
 <img src="https://img.shields.io/badge/Prisma-%232D3748.svg?style=flat-square&logo=prisma&logoColor=white" alt="Prisma"/>
@@ -74,6 +79,7 @@ I build robust digital solutions, transitioning seamlessly from complex backend 
 <img src="https://img.shields.io/badge/Firebase-%23FFCA28.svg?style=flat-square&logo=firebase&logoColor=black" alt="Firebase"/>
 
 ### DevOps & Tools
+
 <img src="https://img.shields.io/badge/Docker-%232496ED.svg?style=flat-square&logo=docker&logoColor=white" alt="Docker"/>
 <img src="https://img.shields.io/badge/CI%2FCD-%232671E5.svg?style=flat-square" alt="CI/CD"/>
 <img src="https://img.shields.io/badge/Git-%23F05032.svg?style=flat-square&logo=git&logoColor=white" alt="Git"/>
