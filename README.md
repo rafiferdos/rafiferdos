@@ -2,15 +2,16 @@
 
 <div align="center">
   <a href="https://rafiferdos.vercel.app/">
-    <img src="./src/assets/images/rafi-banner.png" alt="Rafi Ferdos - MERN Stack Developer" width="100%" style="border-radius:15px; margin-bottom:20px;"/>
+    <img src="./src/assets/images/rafi-ferdos-banner.png" alt="Rafi Ferdos - MERN Stack Developer" width="100%" style="border-radius:15px; margin-bottom:20px;"/>
   </a>
 </div>
 
 <div align="center">
   
-  [![Portfolio](https://img.shields.io/badge/Portfolio-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://rafiferdos.vercel.app/)
-  [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/rafiferdos)
-  [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/rafiferdos)
+  [![Portfolio](https://img.shields.io/badge/Portfolio-%230D1117.svg?style=for-the-badge&logo=vercel&logoColor=white)](https://rafiferdos.vercel.app/)
+  [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230D1117.svg?style=for-the-badge&logo=linkedin&logoColor=%230A66C2)](https://linkedin.com/in/rafiferdos)
+  [![GitHub](https://img.shields.io/badge/GitHub-%230D1117.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/rafiferdos)
+  [![X](https://img.shields.io/badge/X-%230D1117.svg?style=for-the-badge&logo=x&logoColor=white)](https://x.com/rafiferdos)
   
 </div>
 
@@ -38,18 +39,42 @@ I'm a **Full-Stack Web Developer** specializing in the **MERN Stack** with a pas
 - 🔄 **Continuous learning** to stay at the cutting edge of web development
 
 <br clear="right"/>
-
 ## 💻 **Tech Arsenal**
 
 <div align="center">
 
-|                                                                                                                                                                                                                                                                                                                                                                                                                                          Frontend                                                                                                                                                                                                                                                                                                                                                                                                                                           |                                                                                                                                                                                                                                                                                  Backend                                                                                                                                                                                                                                                                                   |                                                                                                                                                                                                                                                                       Tools & Platforms                                                                                                                                                                                                                                                                        |
-| :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| <div align="center"><img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black"/> <img src="https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=next.js&logoColor=white"/> <img src="https://img.shields.io/badge/Redux-764ABC?style=flat-square&logo=redux&logoColor=white"/> <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white"/> <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black"/> <img src="https://img.shields.io/badge/TailwindCSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white"/> <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white"/> <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white"/></div> | <div align="center"><img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node.js&logoColor=white"/> <img src="https://img.shields.io/badge/Express.js-000000?style=flat-square&logo=express&logoColor=white"/> <img src="https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white"/> <img src="https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=black"/> <img src="https://img.shields.io/badge/JWT-000000?style=flat-square&logo=json-web-tokens&logoColor=white"/></div> | <div align="center"><img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white"/> <img src="https://img.shields.io/badge/VS_Code-007ACC?style=flat-square&logo=visual-studio-code&logoColor=white"/> <img src="https://img.shields.io/badge/Figma-F24E1E?style=flat-square&logo=figma&logoColor=white"/> <img src="https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white"/> <img src="https://img.shields.io/badge/Netlify-00C7B7?style=flat-square&logo=netlify&logoColor=white"/></div> |
+### Languages
+<img src="https://img.shields.io/badge/TypeScript-%233178C6.svg?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript"/>
+<img src="https://img.shields.io/badge/JavaScript_ES6-%23F7DF1E.svg?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript"/>
+
+### Frontend & Mobile
+<img src="https://img.shields.io/badge/Next.js-%23000000.svg?style=flat-square&logo=next.js&logoColor=white" alt="Next.js"/>
+<img src="https://img.shields.io/badge/React-%2361DAFB.svg?style=flat-square&logo=react&logoColor=black" alt="React"/>
+<img src="https://img.shields.io/badge/React_Native-%2361DAFB.svg?style=flat-square&logo=react&logoColor=black" alt="React Native"/>
+<img src="https://img.shields.io/badge/Expo-%23000020.svg?style=flat-square&logo=expo&logoColor=white" alt="Expo"/>
+<img src="https://img.shields.io/badge/Redux-%23764ABC.svg?style=flat-square&logo=redux&logoColor=white" alt="Redux"/>
+<img src="https://img.shields.io/badge/Tailwind_CSS-%2306B6D4.svg?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind CSS"/>
+
+### Backend & Real-time
+<img src="https://img.shields.io/badge/Node.js-%23339933.svg?style=flat-square&logo=node.js&logoColor=white" alt="Node.js"/>
+<img src="https://img.shields.io/badge/Express.js-%23000000.svg?style=flat-square&logo=express&logoColor=white" alt="Express.js"/>
+<img src="https://img.shields.io/badge/GraphQL-%23E10098.svg?style=flat-square&logo=graphql&logoColor=white" alt="GraphQL"/>
+<img src="https://img.shields.io/badge/REST_API-%23005571.svg?style=flat-square" alt="REST API"/>
+<img src="https://img.shields.io/badge/Socket.io-%23010101.svg?style=flat-square&logo=socket.io&logoColor=white" alt="Socket.io"/>
+
+### Database & ORM
+<img src="https://img.shields.io/badge/PostgreSQL-%234169E1.svg?style=flat-square&logo=postgresql&logoColor=white" alt="PostgreSQL"/>
+<img src="https://img.shields.io/badge/MongoDB-%2347A248.svg?style=flat-square&logo=mongodb&logoColor=white" alt="MongoDB"/>
+<img src="https://img.shields.io/badge/Prisma-%232D3748.svg?style=flat-square&logo=prisma&logoColor=white" alt="Prisma"/>
+<img src="https://img.shields.io/badge/Mongoose-%23880000.svg?style=flat-square&logo=mongoose&logoColor=white" alt="Mongoose"/>
+<img src="https://img.shields.io/badge/Firebase-%23FFCA28.svg?style=flat-square&logo=firebase&logoColor=black" alt="Firebase"/>
+
+### DevOps & Tools
+<img src="https://img.shields.io/badge/Docker-%232496ED.svg?style=flat-square&logo=docker&logoColor=white" alt="Docker"/>
+<img src="https://img.shields.io/badge/CI%2FCD-%232671E5.svg?style=flat-square" alt="CI/CD"/>
+<img src="https://img.shields.io/badge/Git-%23F05032.svg?style=flat-square&logo=git&logoColor=white" alt="Git"/>
 
 </div>
-
-<br/>
 
 ## 📊 **Performance Matrix**
 
@@ -77,22 +102,38 @@ I'm a **Full-Stack Web Developer** specializing in the **MERN Stack** with a pas
 
 <br/>
 
-## 📬 **Let's Connect**
+## 📬 **Let's Connect & Collaborate**
 
 <div align="center">
+  <p> <i>✨ Actively open for full-time engineering roles and exciting freelance projects. ✨</i> </p>
+  <p> Whether you have a question, a project idea, or just want to say hi, my inbox is always open! </p>
   
-  [![LinkedIn](https://img.shields.io/badge/LinkedIn-rafiferdos-0A66C2?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/rafiferdos)
-  [![Facebook](https://img.shields.io/badge/Facebook-rafiferdos2-1877F2?style=for-the-badge&logo=facebook)](https://facebook.com/rafiferdos2)
-  [![GitHub](https://img.shields.io/badge/GitHub-rafiferdos-181717?style=for-the-badge&logo=github)](https://github.com/rafiferdos/rafiferdos/issues)
-  [![Portfolio](https://img.shields.io/badge/Portfolio-Visit%20Site-00C7B7?style=for-the-badge&logo=netlify)](https://rafiferdos.vercel.app/)
+  <br/>
+
+  <a href="mailto:rafiferdos@gmail.com">
+    <img src="https://img.shields.io/badge/Let's_Talk_-_Email_Me-%230D1117.svg?style=for-the-badge&logo=minutemailer&logoColor=white" alt="Email Me"/>
+  </a>
+  <a href="https://drive.google.com/file/d/1wFjb1ZqswXkKHIQQwq2_qaqCiauGnX24/view?usp=sharing" target="_blank">
+    <img src="https://img.shields.io/badge/Grab_My_Resume-%230D1117.svg?style=for-the-badge&logo=read-the-docs&logoColor=white" alt="Resume"/>
+  </a>
+  <a href="https://linkedin.com/in/rafiferdos">
+    <img src="https://img.shields.io/badge/LinkedIn-%230D1117.svg?style=for-the-badge&logo=linkedin&logoColor=%230A66C2" alt="LinkedIn"/>
+  </a>
   
 </div>
 
+<br/>
+
 <div align="center">
-
-_✨ Open to freelance projects, collaborations, and full-time opportunities ✨_
-
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=footer&animation=fadeIn" width="100%"/>
 </div>
+
+<br/>
+<div align="center">
+  <h3> 🚀 Actively seeking full-time roles and exciting freelance projects. </h3>
+  <p> Have an idea? Let's build something amazing together. </p>
+</div>
+<br/>
 
 <br/>
 
