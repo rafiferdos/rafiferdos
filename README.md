@@ -44,6 +44,7 @@ I build robust digital solutions, transitioning seamlessly from complex backend 
 - `[✓]` **Continuous Evolution:** Always integrating cutting-edge tech into the stack.
 
 <br clear="right"/>
+
 ## 💻 **Tech Arsenal**
 
 <div align="center">
