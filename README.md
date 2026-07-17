@@ -18,7 +18,7 @@
 <br/>
 
 <div align="center">
-  <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=22&pause=1000&color=FF1CF7&center=true&vCenter=true&width=620&lines=MERN-Stack+Developer+%7C+Full-Stack+Web+Artist;Building+digital+things+that+inspire+%26+engage;Crafting+intuitive+UIs+with+modern+technologies" alt="Typing SVG" /></a>
+  <img src="https://readme-typing-svg.demolab.com?font=Cascadia+Code&weight=600&size=22&pause=1000&color=E6EDF3&center=true&vCenter=true&width=650&lines=%3E_+Software+Developer;%3E_+MERN+%26+PERN+Stack+Engineer;%3E_+React+Native+Mobile+Developer;%3E_+Building+cross-platform+solutions" alt="Typing SVG" />
 </div>
 
 <br/>
@@ -27,16 +27,20 @@
 
 <br/>
 
-## 🌟 **About Me**
+## 👨‍💻 `whoami`
 
-<img align="right" src="./src/assets/images/rafi-3d.png" width="280px" alt="3D Avatar"/>
+<img align="right" src="./src/assets/images/rafi-3d.png" width="260px" alt="Rafi 3D Avatar"/>
 
-I'm a **Full-Stack Web Developer** specializing in the **MERN Stack** with a passion for building intuitive, responsive, and visually stunning web applications. My development philosophy centers on:
+> **System Status:** `[ONLINE]` <br>
+> **Current Role:** Full-Stack Web Developer | React Native Mobile Developer <br>
 
-- 🚀 **Innovation-driven solutions** that push the boundaries of web technology
-- 💼 **User-centric design** that prioritizes intuitive experiences and accessibility
-- 🧩 **Clean, maintainable code** that scales elegantly with project growth
-- 🔄 **Continuous learning** to stay at the cutting edge of web development
+I build robust digital solutions, transitioning seamlessly from complex backend database architectures to highly responsive, visually stunning front-end UIs. My development philosophy centers on:
+
+### ⚙️ `execution_protocols`
+- `[✓]` **Scalable Architecture:** Writing clean, modular, and maintainable code.
+- `[✓]` **Cross-Platform:** Delivering seamless experiences across web and mobile.
+- `[✓]` **User-Centric UI/UX:** Prioritizing intuitive journeys and pixel-perfect design.
+- `[✓]` **Continuous Evolution:** Always integrating cutting-edge tech into the stack.
 
 <br clear="right"/>
 ## 💻 **Tech Arsenal**
